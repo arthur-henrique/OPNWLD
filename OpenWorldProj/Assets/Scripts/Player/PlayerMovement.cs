@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 _playerInput;
     Vector2 currentMovementInput;
     Vector3 currentMovement;
-    Vector3 currentRunMovemet;
+    Vector3 currentRunMovement;
+    Vector3 appliedMovement;
     bool isMovementPressed;
     bool isRunningPressed;
 
@@ -43,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
     Coroutine currentJumpResetRoutine = null;
 
 
+    // Camera Relative Movement
+    Vector3 forward;
+    Vector3 right;
+    Vector3 cameraRelativeMovement;
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -68,10 +74,10 @@ public class PlayerMovement : MonoBehaviour
     void OnMovement(InputAction.CallbackContext context)
     {
         currentMovementInput = context.ReadValue<Vector2>();
-        currentMovement.x = currentMovementInput.x;
-        currentMovement.z = currentMovementInput.y;
-        currentRunMovemet.x = currentMovementInput.x * runFactor;
-        currentRunMovemet.z = currentMovementInput.y * runFactor;
+        currentMovement.x = currentMovementInput.x * 2;
+        currentMovement.z = currentMovementInput.y * 2;
+        currentRunMovement.x = currentMovementInput.x * runFactor;
+        currentRunMovement.z = currentMovementInput.y * runFactor;
         isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
 
     }
@@ -144,9 +150,9 @@ public class PlayerMovement : MonoBehaviour
     void HandleRotation()
     {
         Vector3 positionToLookAt;
-        positionToLookAt.x = currentMovement.x;
+        positionToLookAt.x = cameraRelativeMovement.x;
         positionToLookAt.y = zero;
-        positionToLookAt.z = currentMovement.z;
+        positionToLookAt.z = cameraRelativeMovement.z;
         Quaternion currentRotation = transform.rotation;
         if(isMovementPressed)
         {
@@ -174,23 +180,19 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
             currentMovement.y = groundedGravity;
-            currentRunMovemet.y = groundedGravity;
+            appliedMovement.y = groundedGravity;
         }
         else if(isFalling)
         {
             float previousYVelocity = currentMovement.y;
-            float newYVelocity = currentMovement.y + (jumpGravities[jumpCount] * fallMultiplier * Time.deltaTime);
-            float nextYVelocity = Mathf.Max((previousYVelocity + newYVelocity) * 0.5f, -20f);
-            currentMovement.y = nextYVelocity;
-            currentRunMovemet.y = nextYVelocity;
+            currentMovement.y = currentMovement.y + (jumpGravities[jumpCount] * fallMultiplier * Time.deltaTime);
+            appliedMovement.y = Mathf.Max((previousYVelocity + currentMovement.y) * 0.5f, -20f);
         }
         else
         {
             float previousYVelocity = currentMovement.y;
-            float newYVelocity = currentMovement.y + (jumpGravities[jumpCount] * Time.deltaTime);
-            float nextYVelocity = (previousYVelocity + newYVelocity) * 0.5f;
-            currentMovement.y = nextYVelocity;
-            currentRunMovemet.y = nextYVelocity;
+            currentMovement.y = currentMovement.y + (jumpGravities[jumpCount] * Time.deltaTime);
+            appliedMovement.y = (previousYVelocity + currentMovement.y) * 0.5f;
         }
     }
 
@@ -207,8 +209,8 @@ public class PlayerMovement : MonoBehaviour
             isJumpAnimPlaying = true;
             jumpCount += 1;
             _anim.SetInteger(jumpCountHash, jumpCount);
-            currentMovement.y = initialJumpVelocities[jumpCount] * 0.5f;
-            currentRunMovemet.y = initialJumpVelocities[jumpCount] * 0.5f;
+            currentMovement.y = initialJumpVelocities[jumpCount];
+            appliedMovement.y = initialJumpVelocities[jumpCount];
         }
         else if (!isJumpedPressed && isJumping && _characterController.isGrounded)
         {
@@ -232,16 +234,37 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void HandleCameraRelativeMovement(Vector3 moveVector)
+    {
+        forward = Camera.main.transform.forward;
+        right = Camera.main.transform.right;
+        forward.y = 0f;
+        right.y = 0f;
+        forward = forward.normalized;
+        right = right.normalized;
+
+        Vector3 forwardRelativeMovement = moveVector.z * forward;
+        Vector3 rightRelativeMovement = moveVector.x * right;
+        cameraRelativeMovement = forwardRelativeMovement + rightRelativeMovement;
+        
+        cameraRelativeMovement.y = moveVector.y;
+        _characterController.Move(cameraRelativeMovement * Time.deltaTime);
+    }
+
     private void Update()
     {
-        if(isRunningPressed)
+        if (isRunningPressed)
         {
-            _characterController.Move(currentRunMovemet * Time.deltaTime);
+            appliedMovement.x = currentRunMovement.x;
+            appliedMovement.z = currentRunMovement.z;
         }
         else
         {
-            _characterController.Move(currentMovement * Time.deltaTime);
+            appliedMovement.x = currentMovement.x;
+            appliedMovement.z = currentMovement.z;
         }
+        HandleCameraRelativeMovement(appliedMovement);
+        //transform.forward = new Vector3(cameraRelativeMovement.x, 0f, cameraRelativeMovement.z);
         HandleAnimation();
         HandleRotation();
         HandleGravity();
