@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Look",
-                    "type": "Value",
-                    "id": "6319d319-fe7d-411a-a5d3-c1a610ef68d5",
-                    "expectedControlType": "Vector2",
-                    "processors": "NormalizeVector2",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Run",
                     "type": "Button",
                     "id": "a0b77493-a9a1-4571-b2e4-920eebb9aad5",
@@ -111,28 +102,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e90f5b47-19e5-4a69-9f15-26338c680ebe",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8a327d0a-2bff-4f45-81b9-6c374862ec37",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "0878954a-1220-4188-a8f7-4a33005c0dea",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -161,6 +130,54 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "FreeLookCamera",
+            "id": "f9ce7e66-9a79-4b4a-a6b3-158700e2c77f",
+            "actions": [
+                {
+                    "name": "MouseLookXY",
+                    "type": "PassThrough",
+                    "id": "a29f86e8-6696-4d4b-8e31-b4716a2c2eb6",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseZoom",
+                    "type": "PassThrough",
+                    "id": "50f0520c-7947-4fba-b55d-d5d1a7a612c6",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "40f59472-be1d-46cd-9e0f-b7c24443f1b9",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLookXY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56f32d29-ff80-4f59-8073-9df378312d3e",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseZoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

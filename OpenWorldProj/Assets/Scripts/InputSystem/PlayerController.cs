@@ -37,15 +37,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""6319d319-fe7d-411a-a5d3-c1a610ef68d5"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""NormalizeVector2"",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Run"",
                     ""type"": ""Button"",
                     ""id"": ""a0b77493-a9a1-4571-b2e4-920eebb9aad5"",
@@ -133,28 +124,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e90f5b47-19e5-4a69-9f15-26338c680ebe"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8a327d0a-2bff-4f45-81b9-6c374862ec37"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0878954a-1220-4188-a8f7-4a33005c0dea"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
@@ -187,6 +156,54 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""FreeLookCamera"",
+            ""id"": ""f9ce7e66-9a79-4b4a-a6b3-158700e2c77f"",
+            ""actions"": [
+                {
+                    ""name"": ""MouseLookXY"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""a29f86e8-6696-4d4b-8e31-b4716a2c2eb6"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseZoom"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""50f0520c-7947-4fba-b55d-d5d1a7a612c6"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""40f59472-be1d-46cd-9e0f-b7c24443f1b9"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseLookXY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56f32d29-ff80-4f59-8073-9df378312d3e"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -194,9 +211,12 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
-        m_Movement_Look = m_Movement.FindAction("Look", throwIfNotFound: true);
         m_Movement_Run = m_Movement.FindAction("Run", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
+        // FreeLookCamera
+        m_FreeLookCamera = asset.FindActionMap("FreeLookCamera", throwIfNotFound: true);
+        m_FreeLookCamera_MouseLookXY = m_FreeLookCamera.FindAction("MouseLookXY", throwIfNotFound: true);
+        m_FreeLookCamera_MouseZoom = m_FreeLookCamera.FindAction("MouseZoom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -257,7 +277,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Movement;
     private IMovementActions m_MovementActionsCallbackInterface;
     private readonly InputAction m_Movement_Move;
-    private readonly InputAction m_Movement_Look;
     private readonly InputAction m_Movement_Run;
     private readonly InputAction m_Movement_Jump;
     public struct MovementActions
@@ -265,7 +284,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         private @PlayerController m_Wrapper;
         public MovementActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Movement_Move;
-        public InputAction @Look => m_Wrapper.m_Movement_Look;
         public InputAction @Run => m_Wrapper.m_Movement_Run;
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
@@ -280,9 +298,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
-                @Look.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnLook;
                 @Run.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnRun;
@@ -296,9 +311,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
@@ -309,11 +321,56 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+
+    // FreeLookCamera
+    private readonly InputActionMap m_FreeLookCamera;
+    private IFreeLookCameraActions m_FreeLookCameraActionsCallbackInterface;
+    private readonly InputAction m_FreeLookCamera_MouseLookXY;
+    private readonly InputAction m_FreeLookCamera_MouseZoom;
+    public struct FreeLookCameraActions
+    {
+        private @PlayerController m_Wrapper;
+        public FreeLookCameraActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MouseLookXY => m_Wrapper.m_FreeLookCamera_MouseLookXY;
+        public InputAction @MouseZoom => m_Wrapper.m_FreeLookCamera_MouseZoom;
+        public InputActionMap Get() { return m_Wrapper.m_FreeLookCamera; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(FreeLookCameraActions set) { return set.Get(); }
+        public void SetCallbacks(IFreeLookCameraActions instance)
+        {
+            if (m_Wrapper.m_FreeLookCameraActionsCallbackInterface != null)
+            {
+                @MouseLookXY.started -= m_Wrapper.m_FreeLookCameraActionsCallbackInterface.OnMouseLookXY;
+                @MouseLookXY.performed -= m_Wrapper.m_FreeLookCameraActionsCallbackInterface.OnMouseLookXY;
+                @MouseLookXY.canceled -= m_Wrapper.m_FreeLookCameraActionsCallbackInterface.OnMouseLookXY;
+                @MouseZoom.started -= m_Wrapper.m_FreeLookCameraActionsCallbackInterface.OnMouseZoom;
+                @MouseZoom.performed -= m_Wrapper.m_FreeLookCameraActionsCallbackInterface.OnMouseZoom;
+                @MouseZoom.canceled -= m_Wrapper.m_FreeLookCameraActionsCallbackInterface.OnMouseZoom;
+            }
+            m_Wrapper.m_FreeLookCameraActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MouseLookXY.started += instance.OnMouseLookXY;
+                @MouseLookXY.performed += instance.OnMouseLookXY;
+                @MouseLookXY.canceled += instance.OnMouseLookXY;
+                @MouseZoom.started += instance.OnMouseZoom;
+                @MouseZoom.performed += instance.OnMouseZoom;
+                @MouseZoom.canceled += instance.OnMouseZoom;
+            }
+        }
+    }
+    public FreeLookCameraActions @FreeLookCamera => new FreeLookCameraActions(this);
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IFreeLookCameraActions
+    {
+        void OnMouseLookXY(InputAction.CallbackContext context);
+        void OnMouseZoom(InputAction.CallbackContext context);
     }
 }
