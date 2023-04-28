@@ -161,17 +161,6 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "40f59472-be1d-46cd-9e0f-b7c24443f1b9",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseLookXY",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "56f32d29-ff80-4f59-8073-9df378312d3e",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
@@ -180,6 +169,61 @@
                     "action": "MouseZoom",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "32025343-cf36-44b1-b9f6-6f74a1578be0",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLookXY",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "7e06b62f-c670-4d21-b372-acfbc7d36d54",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLookXY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "43c20532-012b-4b10-a3e6-a2cce450f044",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLookXY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "193800af-e8ce-48d8-99d8-cc2df7c7cc01",
+                    "path": "<Mouse>/delta/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLookXY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "93bad1d1-b95e-4042-a09e-2d27f002e91c",
+                    "path": "<Mouse>/delta/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLookXY",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
