@@ -49,6 +49,12 @@ public class PlayerMovement : MonoBehaviour
     Vector3 right;
     Vector3 cameraRelativeMovement;
 
+    // Aiming
+    bool isAimingPressed = false;
+    bool isAiming = false;
+    int isAimingHash;
+
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -59,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         isRunningHash = Animator.StringToHash("isRunning");
         isJumpingHash = Animator.StringToHash("isJumping");
         jumpCountHash = Animator.StringToHash("jumpCount");
+        isAimingHash = Animator.StringToHash("isAiming");
 
         inputActions.Movement.Move.started += OnMovement;
         inputActions.Movement.Move.canceled += OnMovement;
@@ -67,6 +74,9 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Movement.Run.canceled += OnRun;
         inputActions.Movement.Jump.started += OnJump;
         inputActions.Movement.Jump.canceled += OnJump;
+        inputActions.Movement.Aim.started += OnAim;
+        inputActions.Movement.Aim.canceled += OnAim;
+
 
         SetUpJumpVariables();
     }
@@ -90,6 +100,11 @@ public class PlayerMovement : MonoBehaviour
     void OnJump(InputAction.CallbackContext context)
     {
         isJumpedPressed = context.ReadValueAsButton();
+    }
+
+    void OnAim(InputAction.CallbackContext context)
+    {
+        isAimingPressed = context.ReadValueAsButton();
     }
 
     void SetUpJumpVariables()
@@ -218,6 +233,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void HandleAim()
+    {
+        if(isAimingPressed && _characterController.isGrounded && !isRunningPressed)
+        {
+            isAiming = true;
+            _anim.SetBool(isAimingHash, true);
+        }
+        else
+        {
+            isAiming = false;
+            _anim.SetBool(isAimingHash, false);
+        }
+    }
+
     IEnumerator JumpResetRoutine()
     {
         yield return new WaitForSeconds(0.5f);
@@ -269,6 +298,7 @@ public class PlayerMovement : MonoBehaviour
         HandleRotation();
         HandleGravity();
         HandleJump();
+        HandleAim();
     }
 
     private void OnApplicationFocus(bool focus)
