@@ -49,10 +49,20 @@ public class PlayerMovement : MonoBehaviour
     Vector3 right;
     Vector3 cameraRelativeMovement;
 
+    // Attacking
+    int isShootingHash;
+    bool isAttackPressed = false;
+    bool isAttackPerforming = false;
+    bool canAttack = true;
+
     // Aiming
+    int isAimingHash;
     bool isAimingPressed = false;
     bool isAiming = false;
-    int isAimingHash;
+
+    // Arrow - To remove later
+    public GameObject arrowPrefab;
+    public Transform spawnPoint;
 
 
     private void Awake()
@@ -66,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         isJumpingHash = Animator.StringToHash("isJumping");
         jumpCountHash = Animator.StringToHash("jumpCount");
         isAimingHash = Animator.StringToHash("isAiming");
+        isShootingHash = Animator.StringToHash("isShooting");
 
         inputActions.Movement.Move.started += OnMovement;
         inputActions.Movement.Move.canceled += OnMovement;
@@ -74,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Movement.Run.canceled += OnRun;
         inputActions.Movement.Jump.started += OnJump;
         inputActions.Movement.Jump.canceled += OnJump;
+        inputActions.Movement.Attack.started += OnAttack;
+        inputActions.Movement.Attack.canceled += OnAttack;
         inputActions.Movement.Aim.started += OnAim;
         inputActions.Movement.Aim.canceled += OnAim;
 
@@ -100,6 +113,11 @@ public class PlayerMovement : MonoBehaviour
     void OnJump(InputAction.CallbackContext context)
     {
         isJumpedPressed = context.ReadValueAsButton();
+    }
+
+    void OnAttack(InputAction.CallbackContext context)
+    {
+        isAttackPressed = context.ReadValueAsButton();
     }
 
     void OnAim(InputAction.CallbackContext context)
@@ -233,10 +251,29 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void HandleAttack()
+    {
+        if(isAttackPressed)
+        {
+            if(isAiming)
+            {
+                _anim.SetBool(isShootingHash, true);
+                return;
+            }
+            else
+            {
+                Debug.Log("MeleeAttack");
+            }
+            
+        }
+        
+    }
+
     void HandleAim()
     {
         if(isAimingPressed && _characterController.isGrounded && !isRunningPressed)
         {
+            
             isAiming = true;
             _anim.SetBool(isAimingHash, true);
         }
@@ -244,13 +281,32 @@ public class PlayerMovement : MonoBehaviour
         {
             isAiming = false;
             _anim.SetBool(isAimingHash, false);
+            _anim.SetBool(isShootingHash, false);
         }
     }
+
+    public void Shoot()
+    {
+        GameObject arrow = Instantiate(arrowPrefab, spawnPoint.position, Quaternion.identity);
+        arrow.GetComponent<Rigidbody>().AddForce(transform.forward * 25f, ForceMode.Impulse);
+        canAttack = false;
+        _anim.SetBool(isShootingHash, false);
+        StartCoroutine(AttackCooldown());
+        Debug.Log("Shoot");
+    }
+
+
 
     IEnumerator JumpResetRoutine()
     {
         yield return new WaitForSeconds(0.5f);
         jumpCount = 0;
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canAttack = true;
     }
     private void OnEnable()
     {
@@ -299,6 +355,7 @@ public class PlayerMovement : MonoBehaviour
         HandleGravity();
         HandleJump();
         HandleAim();
+        HandleAttack();
     }
 
     private void OnApplicationFocus(bool focus)

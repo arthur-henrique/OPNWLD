@@ -62,6 +62,15 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""d89fc0c0-8bde-4bdc-9b79-978d0ba16117"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,17 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28d969a5-9f86-467a-99ee-5fb808d70def"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -278,6 +298,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         m_Movement_Run = m_Movement.FindAction("Run", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Aim = m_Movement.FindAction("Aim", throwIfNotFound: true);
+        m_Movement_Attack = m_Movement.FindAction("Attack", throwIfNotFound: true);
         // FreeLookCamera
         m_FreeLookCamera = asset.FindActionMap("FreeLookCamera", throwIfNotFound: true);
         m_FreeLookCamera_MouseLookXY = m_FreeLookCamera.FindAction("MouseLookXY", throwIfNotFound: true);
@@ -345,6 +366,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Run;
     private readonly InputAction m_Movement_Jump;
     private readonly InputAction m_Movement_Aim;
+    private readonly InputAction m_Movement_Attack;
     public struct MovementActions
     {
         private @PlayerController m_Wrapper;
@@ -353,6 +375,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         public InputAction @Run => m_Wrapper.m_Movement_Run;
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
         public InputAction @Aim => m_Wrapper.m_Movement_Aim;
+        public InputAction @Attack => m_Wrapper.m_Movement_Attack;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -374,6 +397,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Aim.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnAim;
+                @Attack.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnAttack;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -390,6 +416,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
             }
         }
     }
@@ -441,6 +470,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
     public interface IFreeLookCameraActions
     {
