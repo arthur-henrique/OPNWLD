@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 635066618}
   - component: {fileID: 635066617}
   m_Layer: 0
-  m_Name: Teste terreno
+  m_Name: TerrenoPrincipal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1880,7 +1880,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065033124}
-  m_LocalRotation: {x: 0.0024444717, y: -0.00000001746615, z: 4.2695632e-11, w: 0.999997}
+  m_LocalRotation: {x: 0.002444474, y: -0.000000017311372, z: 4.2317323e-11, w: 0.999997}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
