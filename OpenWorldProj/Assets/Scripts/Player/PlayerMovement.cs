@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     //Constants
     float rotationFactorPerFrame = 15f;
     public float runFactor;
+    public float walkFactor;
     int zero = 0;
     float gravity = -9.81f;
     float groundedGravity = -0.5f;
@@ -97,8 +98,8 @@ public class PlayerMovement : MonoBehaviour
     void OnMovement(InputAction.CallbackContext context)
     {
         currentMovementInput = context.ReadValue<Vector2>();
-        currentMovement.x = currentMovementInput.x * 2;
-        currentMovement.z = currentMovementInput.y * 2;
+        currentMovement.x = currentMovementInput.x * walkFactor;
+        currentMovement.z = currentMovementInput.y * walkFactor;
         currentRunMovement.x = currentMovementInput.x * runFactor;
         currentRunMovement.z = currentMovementInput.y * runFactor;
         isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
