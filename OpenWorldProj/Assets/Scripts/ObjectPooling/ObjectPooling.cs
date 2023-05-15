@@ -50,7 +50,7 @@ public class ObjectPooling : MonoBehaviour
         }
     }
 
-    public GameObject spawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject spawnFromPool(string tag, Vector3 position, Vector3 forward, bool hasHit, Quaternion rotation)
     {
         // Se não existe uma fila com a tag dada, retorna null
         if (!poolDictionary.ContainsKey(tag))
@@ -66,14 +66,14 @@ public class ObjectPooling : MonoBehaviour
         objectToSpawn.SetActive(true);
 
         // Define a posição e a rotação do objeto
-        objectToSpawn.transform.position = new Vector3(position.x, position.y, 0);
+        objectToSpawn.transform.position = new Vector3(position.x, position.y, position.z);
         objectToSpawn.transform.rotation = rotation;
 
         // Verifica se o objeto implementa a interface IPooledObject e chama seu método OnObjectSpawn
         IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
         if (pooledObj != null)
         {
-            pooledObj.OnObjectSpawn();
+            pooledObj.OnObjectSpawn(forward, hasHit);
         }
 
         // Adiciona o objeto de volta na fila

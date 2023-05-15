@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] CharacterController _characterController;
-    PlayerController inputActions;
-    Animator _anim;
+    // Components
+    [SerializeField]CharacterController _characterController;
+    [SerializeField]PlayerController inputActions;
+    [SerializeField]Animator _anim;
+    [SerializeField]ObjectGen objectGen;
+    public CinemachineVirtualCamera followCam, aimCam;
 
+    // Animation Hashes
     int isWalkingHash;
     int isRunningHash;
+    int isJumpingHash;
+    int jumpCountHash;
+    int isShootingHash;
+    int isAimingHash;
 
-    float _horizontalInput, _verticalInput;
-    Vector3 _playerInput;
+    // Movement Variables
     Vector2 currentMovementInput;
     Vector3 currentMovement;
     Vector3 currentRunMovement;
@@ -21,11 +29,10 @@ public class PlayerMovement : MonoBehaviour
     bool isMovementPressed;
     bool isRunningPressed;
 
-
-    //Constants
+    // Constants
     float rotationFactorPerFrame = 15f;
-    public float runFactor;
-    public float walkFactor;
+    public float runFactor; // Multiplier for running speed
+    public float walkFactor; // Multiplier for walking speed
     int zero = 0;
     float gravity = -9.81f;
     float groundedGravity = -0.5f;
@@ -36,28 +43,24 @@ public class PlayerMovement : MonoBehaviour
     public float maxJumpHeight = 4f;
     public float maxJumpTime = 0.75f;
     bool isJumping = false;
-    int isJumpingHash;
-    int jumpCountHash;
     bool isJumpAnimPlaying = false;
     int jumpCount = 0;
-    Dictionary<int, float> initialJumpVelocities = new Dictionary<int, float>();
-    Dictionary<int, float> jumpGravities = new Dictionary<int, float>();
+    Dictionary<int, float> initialJumpVelocities = new Dictionary<int, float>(); // Initial jump velocities for double jump
+    Dictionary<int, float> jumpGravities = new Dictionary<int, float>(); // Gravities for double jump
     Coroutine currentJumpResetRoutine = null;
 
-
     // Camera Relative Movement
+    private Transform cameraTransform;
     Vector3 forward;
     Vector3 right;
     Vector3 cameraRelativeMovement;
 
     // Attacking
-    int isShootingHash;
     bool isAttackPressed = false;
     bool isAttackPerforming = false;
     bool canAttack = true;
 
     // Aiming
-    int isAimingHash;
     bool isAimingPressed = false;
     bool isAiming = false;
 
@@ -71,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _anim = GetComponent<Animator>();
         inputActions = new PlayerController();
+        cameraTransform = Camera.main.transform;
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
@@ -152,32 +156,35 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void HandleAnimation()
+    void HandleWalkRunAnimation()
     {
-        bool isWalking = _anim.GetBool("isWalking");
-        bool isRunning = _anim.GetBool("isRunning");
+        bool isWalking = _anim.GetBool(isWalkingHash);
+        bool isRunning = _anim.GetBool(isRunningHash);
 
         if(isMovementPressed && !isWalking)
         {
-            _anim.SetBool("isWalking", true);
+            _anim.SetBool(isWalkingHash, true);
         }
-
         else if (!isMovementPressed && isWalking)
         {
-            _anim.SetBool("isWalking", false);
+            _anim.SetBool(isWalkingHash, false);
         }
 
         if((isMovementPressed && isRunningPressed) && !isRunning)
         {
-            _anim.SetBool("isRunning", true);
+            _anim.SetBool(isRunningHash, true);
         }
         else if ((isMovementPressed && !isRunningPressed) && isRunning)
         {
-            _anim.SetBool("isRunning", false);
+            _anim.SetBool(isRunningHash, false);
         }
         else if((!isMovementPressed && isRunningPressed) && isRunning)
         {
-            _anim.SetBool("isRunning", false);
+            _anim.SetBool(isRunningHash, false);
+        }
+        else if((!isMovementPressed && !isRunningPressed) && isRunning)
+        {
+            _anim.SetBool(isRunningHash, false);
         }
     }
 
@@ -188,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
         positionToLookAt.y = zero;
         positionToLookAt.z = cameraRelativeMovement.z;
         Quaternion currentRotation = transform.rotation;
-        if(isMovementPressed)
+        if(isMovementPressed && !isAiming)
         {
             Quaternion targetRotation = Quaternion.LookRotation(positionToLookAt);
             transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationFactorPerFrame * Time.deltaTime);
@@ -277,19 +284,34 @@ public class PlayerMovement : MonoBehaviour
             
             isAiming = true;
             _anim.SetBool(isAimingHash, true);
+            followCam.gameObject.SetActive(false);
+            aimCam.gameObject.SetActive(true);
+            Quaternion targetRotation = Quaternion.LookRotation(cameraTransform.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationFactorPerFrame/2 * Time.deltaTime);
         }
         else
         {
             isAiming = false;
             _anim.SetBool(isAimingHash, false);
             _anim.SetBool(isShootingHash, false);
+            followCam.gameObject.SetActive(true);
+            aimCam.gameObject.SetActive(false);
         }
     }
 
     public void Shoot()
     {
-        GameObject arrow = Instantiate(arrowPrefab, spawnPoint.position, Quaternion.identity);
-        arrow.GetComponent<Rigidbody>().AddForce(transform.forward * 25f, ForceMode.Impulse);
+        //GameObject arrow = Instantiate(arrowPrefab, spawnPoint.position, Quaternion.identity);
+        //arrow.GetComponent<Rigidbody>().AddForce(transform.forward * 25f, ForceMode.Impulse);
+        RaycastHit hit;
+        if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity ))
+        {
+            objectGen.OnShoot(spawnPoint.position, hit.point, true);
+        }
+        else
+        {
+            objectGen.OnShoot(spawnPoint.position, (cameraTransform.position + cameraTransform.forward * 100f), false);
+        }
         canAttack = false;
         _anim.SetBool(isShootingHash, false);
         StartCoroutine(AttackCooldown());
@@ -351,7 +373,7 @@ public class PlayerMovement : MonoBehaviour
         }
         HandleCameraRelativeMovement(appliedMovement);
         //transform.forward = new Vector3(cameraRelativeMovement.x, 0f, cameraRelativeMovement.z);
-        HandleAnimation();
+        HandleWalkRunAnimation();
         HandleRotation();
         HandleGravity();
         HandleJump();

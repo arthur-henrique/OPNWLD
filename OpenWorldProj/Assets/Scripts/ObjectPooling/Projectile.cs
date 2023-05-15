@@ -1,21 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour, IPooledObject
 {
-    public float damage;
-
-    public float force = 2f;
-    public float DealPain()
+    [SerializeField]
+    private float projectileSpeed = 25f;
+    private float timeToDeactivate = 5f;
+    public Vector3 target { get;  set; }
+    public bool hit { get; set; }
+    public void OnObjectSpawn(Vector3 forward, bool hasHit)
     {
-        gameObject.SetActive(false);
-        return damage;
+        //GetComponent<Rigidbody>().AddForce(forward * projectileSpeed, ForceMode.Impulse);
+        target = forward;
+        hit = hasHit;
+        StartCoroutine(Deactivate());
+    }
+    void Update()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, target, projectileSpeed * Time.deltaTime);
+        if(!hit && Vector3.Distance(transform.position, target) < 0.1f)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        //gameObject.SetActive(false);
     }
 
-    public void OnObjectSpawn()
+    IEnumerator Deactivate()
     {
-        Vector3 forceToApply = new Vector3(0, 0, force);
-        GetComponent<Rigidbody>().velocity = forceToApply;
+        yield return new WaitForSeconds(timeToDeactivate );
+        gameObject.SetActive(false);
     }
 }
