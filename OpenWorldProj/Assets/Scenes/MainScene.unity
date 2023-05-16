@@ -1121,8 +1121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresDepthTextureOption: 1
+  m_RequiresOpaqueTextureOption: 1
   m_CameraType: 0
   m_Cameras: []
   m_RendererIndex: -1
@@ -1200,7 +1200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127579635}
   m_LocalRotation: {x: 0.06272337, y: -0.04614351, z: 0.0029031031, w: 0.99695945}
-  m_LocalPosition: {x: 169.66695, y: 48.08562, z: 318.04086}
+  m_LocalPosition: {x: 169.64223, y: 48.08562, z: 318.03857}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1396,7 +1396,7 @@ PrefabInstance:
     - target: {fileID: 6789542129566414776, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 169.21597
+      value: 169.1952
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129566414776, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -1406,7 +1406,7 @@ PrefabInstance:
     - target: {fileID: 6789542129566414776, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 319.87485
+      value: 319.8736
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129566414783, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -1431,7 +1431,7 @@ PrefabInstance:
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 169.66695
+      value: 169.64223
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -1441,7 +1441,7 @@ PrefabInstance:
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 318.04086
+      value: 318.03857
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
