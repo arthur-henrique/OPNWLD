@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour, IObserver
 {
-    public void OnNotifyDamage()
+    public void OnNotifyDamage(float damage)
     {
         throw new System.NotImplementedException();
     }

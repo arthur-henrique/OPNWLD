@@ -1,5 +1,4 @@
  public interface IObserver
 {
-    public void OnNotifyDamage();
-    public void OnNotifyDeath();
+    public void OnNotifyDamage(float damage);
 }

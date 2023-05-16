@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour, IPooledObject
+public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
 {
     [SerializeField]
     private float projectileSpeed = 25f;
     private float timeToDeactivate = 5f;
     public Vector3 target { get;  set; }
     public bool hit { get; set; }
+
+    [SerializeField]
+    private float damage;
     public void OnObjectSpawn(Vector3 forward, bool hasHit)
     {
         //GetComponent<Rigidbody>().AddForce(forward * projectileSpeed, ForceMode.Impulse);
@@ -25,14 +28,16 @@ public class Projectile : MonoBehaviour, IPooledObject
             gameObject.SetActive(false);
         }
     }
-    void OnCollisionEnter(Collision other)
-    {
-        //gameObject.SetActive(false);
-    }
 
     IEnumerator Deactivate()
     {
         yield return new WaitForSeconds(timeToDeactivate );
         gameObject.SetActive(false);
+    }
+
+    public float DealDamage()
+    {
+        gameObject.SetActive(false);
+        return damage;
     }
 }

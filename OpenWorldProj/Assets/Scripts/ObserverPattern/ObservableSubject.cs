@@ -3,27 +3,49 @@ using UnityEngine;
 
 public abstract class ObservableSubject : MonoBehaviour
 {
-    // a collection of all the observers of this subject
-    private List<IObserver> _observers = new List<IObserver>();
+    private List<IObserver> _damageObservers = new List<IObserver>();
+    private List<IDeathObserver> _deathObservers = new List<IDeathObserver>();
 
-    public void AddObserver(IObserver observer)
+
+    // Add the observer to the subject's collection
+    public void AddDamageObserver(IObserver observer)
     {
-        _observers.Add(observer);
+        _damageObservers.Add(observer);
     }
 
-    public void RemoveObserver(IObserver observer)
+    // Remove the observer to the subject's collection
+
+    public void RemoveDamageObserver(IObserver observer)
     {
-        _observers.Remove(observer);
+        _damageObservers.Remove(observer);
     }
 
-    protected void NotifyDamage()
+    public void AddDeathObserver(IDeathObserver observer)
     {
-        _observers.ForEach((_observer) => { _observer.OnNotifyDamage(); });
+        _deathObservers.Add(observer);
+    }
+
+    // Remove the observer to the subject's collection
+
+    public void RemoveDeathObserver(IDeathObserver observer)
+    {
+        _deathObservers.Remove(observer);
+    }
+
+    // Notify each observer that an event has occurred
+    protected void NotifyDamage(float damageToNotify)
+    {
+        _damageObservers.ForEach((_observer) =>
+        {
+            _observer.OnNotifyDamage(damageToNotify);
+        });
     }
 
     protected void NotifyDeath()
     {
-        _observers.ForEach((_observer) => { _observer.OnNotifyDeath(); });
+        _deathObservers.ForEach((_observer) =>
+        {
+            _observer.OnNotifyDeath();
+        });
     }
-
 }
