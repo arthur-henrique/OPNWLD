@@ -1879,9 +1879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866ab3685f6060b499a455905b73f9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
   animator: {fileID: 0}
-  chaseDistance: 0
 --- !u!54 &701876197
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1914,6 +1912,12 @@ MonoBehaviour:
 --- !u!4 &701876200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458774, guid: 8252519d2c6fd014bb5f75765a8c4fda,
+    type: 3}
+  m_PrefabInstance: {fileID: 117783445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &701876201 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9545436, guid: 8252519d2c6fd014bb5f75765a8c4fda,
     type: 3}
   m_PrefabInstance: {fileID: 117783445}
   m_PrefabAsset: {fileID: 0}
@@ -4264,6 +4268,7 @@ GameObject:
   - component: {fileID: 1656262082}
   - component: {fileID: 1656262081}
   - component: {fileID: 1656262080}
+  - component: {fileID: 1656262083}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4331,7 +4336,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1656262082
 Canvas:
   m_ObjectHideFlags: 0
@@ -4353,6 +4358,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1656262083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656262078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34bf14aa38f1454bbd50043a62354cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agentHealth: {fileID: 701876198}
+  healthSlider: {fileID: 675858876}
+  anim: {fileID: 701876201}
 --- !u!1 &1662556188 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: db03c186d64809a47bc791cb879f593d,
