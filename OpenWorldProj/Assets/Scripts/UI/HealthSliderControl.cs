@@ -13,7 +13,7 @@ public class HealthSliderControl : MonoBehaviour, IObserver, IDeathObserver
         healthSlider.value = healthSlider.maxValue;
         ObserveSubject();
     }
-    public void OnNotify(float damage)
+    public void OnNotifyDamage(float damage)
     {
         healthSlider.value -= damage;
     }
@@ -29,4 +29,6 @@ public class HealthSliderControl : MonoBehaviour, IObserver, IDeathObserver
         healthSlider.value = 0f;
         //gameOverPanel.SetActive(true);
     }
+
+    
 }
