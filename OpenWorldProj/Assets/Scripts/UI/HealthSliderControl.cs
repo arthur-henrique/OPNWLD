@@ -7,6 +7,7 @@ public class HealthSliderControl : MonoBehaviour, IObserver, IDeathObserver
 {
     public HealthControl _agentHealth;
     public Slider healthSlider;
+    public Animator anim;
 
     void Start()
     {
@@ -16,6 +17,8 @@ public class HealthSliderControl : MonoBehaviour, IObserver, IDeathObserver
     public void OnNotifyDamage(float damage)
     {
         healthSlider.value -= damage;
+        anim.SetTrigger("Damage");
+
     }
 
     void ObserveSubject()
@@ -27,8 +30,10 @@ public class HealthSliderControl : MonoBehaviour, IObserver, IDeathObserver
     public void OnNotifyDeath()
     {
         healthSlider.value = 0f;
+        anim.SetTrigger("Die");
+
         //gameOverPanel.SetActive(true);
     }
 
-    
+
 }

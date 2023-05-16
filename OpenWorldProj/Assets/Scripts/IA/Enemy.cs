@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int HP = 100;
+    
     public Animator animator;
-    public float chaseDistance;
-  
-    public void TakeDamage(int damageAmount)
+   
+
+    public void Die()
     {
-        HP -= damageAmount;
-        if(HP<= 0)
-        {
-            animator.SetTrigger("Die");
-            GetComponent<Collider>().enabled = false;
-        }
-        else
-        {
-            animator.SetTrigger("Damage");
-        }
+
+        GetComponent<Collider>().enabled = false;
+        
+
     }
   
 }
