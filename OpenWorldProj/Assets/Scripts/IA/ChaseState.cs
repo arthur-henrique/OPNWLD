@@ -7,14 +7,16 @@ public class ChaseState : StateMachineBehaviour
 {
     NavMeshAgent agent;
     Transform player;
-    public float chaseDistance;
+    public float chaseRange;
+    Vector3 currentPosition;
     
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponent<NavMeshAgent>();
+        currentPosition = animator.GetComponent<Transform>().position;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        agent.speed = 3.5f;
+        agent.speed = 5f;
         
     }
 
@@ -23,7 +25,7 @@ public class ChaseState : StateMachineBehaviour
     {
         agent.SetDestination(player.position);
         float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance < 55)
+        if (distance < chaseRange)
         {
             animator.SetBool("isChasing", false);
         }
@@ -38,6 +40,12 @@ public class ChaseState : StateMachineBehaviour
     {
         agent.SetDestination(animator.transform.position);
     }
+    void OnDrawGizmos()
+    {
+        
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawSphere( currentPosition, chaseRange);
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -50,5 +58,5 @@ public class ChaseState : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
-   
+
 }

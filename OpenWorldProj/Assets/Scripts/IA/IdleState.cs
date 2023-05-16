@@ -7,11 +7,13 @@ public class IdleState : StateMachineBehaviour
     float timer;
     Transform player;
     public float chaseRange = 8;
+    Vector3 currentPosition;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        timer = 0; 
+        timer = 0;
+        currentPosition = animator.GetComponent<Transform>().position;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -29,6 +31,12 @@ public class IdleState : StateMachineBehaviour
         }
 
         
+    }
+    void OnDrawGizmos()
+    {
+
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawSphere(currentPosition, chaseRange);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
