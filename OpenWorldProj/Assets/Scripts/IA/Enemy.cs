@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public int HP = 100;
     public Animator animator;
+    public float chaseDistance;
   
     public void TakeDamage(int damageAmount)
     {
@@ -20,4 +21,5 @@ public class Enemy : MonoBehaviour
             animator.SetTrigger("Damage");
         }
     }
+  
 }

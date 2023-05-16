@@ -14,7 +14,7 @@ public class AttackState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.LookAt(player);
+        //animator.transform.LookAt(player);
         float distance = Vector3.Distance(player.position, animator.transform.position);
         if (distance > 3.5)
         {
