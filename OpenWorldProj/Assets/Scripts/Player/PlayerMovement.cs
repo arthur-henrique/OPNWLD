@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 appliedMovement;
     bool isMovementPressed;
     bool isRunningPressed;
+    bool runToggle;
 
     // Constants
     float rotationFactorPerFrame = 15f;
@@ -113,6 +114,10 @@ public class PlayerMovement : MonoBehaviour
     void OnRun(InputAction.CallbackContext context)
     {
         isRunningPressed = context.ReadValueAsButton();
+        if(isRunningPressed)
+        {
+            runToggle = !runToggle;
+        }
     }
 
     void OnJump(InputAction.CallbackContext context)
@@ -168,24 +173,34 @@ public class PlayerMovement : MonoBehaviour
         else if (!isMovementPressed && isWalking)
         {
             _anim.SetBool(isWalkingHash, false);
+            _anim.SetBool(isRunningHash, false);
+            runToggle = false;
         }
 
-        if((isMovementPressed && isRunningPressed) && !isRunning)
+        if(isMovementPressed && runToggle)
         {
             _anim.SetBool(isRunningHash, true);
         }
-        else if ((isMovementPressed && !isRunningPressed) && isRunning)
+        else if((!isMovementPressed && runToggle) || (isMovementPressed && !runToggle))
         {
             _anim.SetBool(isRunningHash, false);
+            runToggle = false;
         }
-        else if((!isMovementPressed && isRunningPressed) && isRunning)
-        {
-            _anim.SetBool(isRunningHash, false);
-        }
-        else if((!isMovementPressed && !isRunningPressed) && isRunning)
-        {
-            _anim.SetBool(isRunningHash, false);
-        }
+        //if ((isMovementPressed && isRunningPressed) && !isRunning)
+        //{
+        //}
+        //else if ((isMovementPressed && !isRunningPressed) && isRunning)
+        //{
+        //    _anim.SetBool(isRunningHash, false);
+        //}
+        //else if((!isMovementPressed && isRunningPressed) && isRunning)
+        //{
+        //    _anim.SetBool(isRunningHash, false);
+        //}
+        //else if((!isMovementPressed && !isRunningPressed) && isRunning)
+        //{
+        //    _anim.SetBool(isRunningHash, false);
+        //}
     }
 
     void HandleRotation()
@@ -279,7 +294,7 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleAim()
     {
-        if(isAimingPressed && _characterController.isGrounded && !isRunningPressed)
+        if(isAimingPressed && _characterController.isGrounded && !runToggle)
         {
             
             isAiming = true;
@@ -366,7 +381,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (isRunningPressed)
+        if (runToggle)
         {
             appliedMovement.x = currentRunMovement.x;
             appliedMovement.z = currentRunMovement.z;
