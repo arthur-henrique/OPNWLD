@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 appliedMovement;
     bool isMovementPressed;
     bool isRunningPressed;
+    bool isRunning;
+
 
     // Constants
     float rotationFactorPerFrame = 15f;
@@ -112,7 +114,10 @@ public class PlayerMovement : MonoBehaviour
 
     void OnRun(InputAction.CallbackContext context)
     {
-        isRunningPressed = context.ReadValueAsButton();
+        if (context.started)
+        {
+            isRunning = !isRunning; // Toggle the isRunning flag
+        }
     }
 
     void OnJump(InputAction.CallbackContext context)
@@ -159,32 +164,27 @@ public class PlayerMovement : MonoBehaviour
     void HandleWalkRunAnimation()
     {
         bool isWalking = _anim.GetBool(isWalkingHash);
-        bool isRunning = _anim.GetBool(isRunningHash);
+        bool currentIsRunning = _anim.GetBool(isRunningHash);
 
-        if(isMovementPressed && !isWalking)
+        if (isMovementPressed && !isWalking)
         {
             _anim.SetBool(isWalkingHash, true);
         }
         else if (!isMovementPressed && isWalking)
         {
             _anim.SetBool(isWalkingHash, false);
+            _anim.SetBool(isRunningHash, false);
+
         }
 
-        if((isMovementPressed && isRunningPressed) && !isRunning)
+        if (isMovementPressed && (isRunning || currentIsRunning))
         {
             _anim.SetBool(isRunningHash, true);
         }
-        else if ((isMovementPressed && !isRunningPressed) && isRunning)
+        else if (!isMovementPressed && (isRunning || currentIsRunning))
         {
             _anim.SetBool(isRunningHash, false);
-        }
-        else if((!isMovementPressed && isRunningPressed) && isRunning)
-        {
-            _anim.SetBool(isRunningHash, false);
-        }
-        else if((!isMovementPressed && !isRunningPressed) && isRunning)
-        {
-            _anim.SetBool(isRunningHash, false);
+            isRunning = false;
         }
     }
 
