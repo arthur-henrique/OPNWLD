@@ -25,7 +25,7 @@ public class ChaseState : StateMachineBehaviour
     {
         agent.SetDestination(player.position);
         float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance > chaseRange)
+        if (distance < chaseRange)
         {
             animator.SetBool("isChasing", false);
         }
@@ -40,7 +40,13 @@ public class ChaseState : StateMachineBehaviour
     {
         agent.SetDestination(animator.transform.position);
     }
-    
+    void OnDrawGizmos()
+    {
+        
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawSphere( currentPosition, chaseRange);
+    }
+
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
