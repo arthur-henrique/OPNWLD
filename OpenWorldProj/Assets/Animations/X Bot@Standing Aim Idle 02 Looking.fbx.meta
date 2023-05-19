@@ -36,7 +36,7 @@ ModelImporter:
       name: Standing Aim Idle 02 Looking
       takeName: mixamo.com
       internalID: -203655887218126122
-      firstFrame: 100
+      firstFrame: 110
       lastFrame: 130
       wrapMode: 0
       orientationOffsetY: 0

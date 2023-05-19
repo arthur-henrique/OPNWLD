@@ -287,10 +287,18 @@ public class PlayerMovement : MonoBehaviour
             followCam.gameObject.SetActive(false);
             aimCam.gameObject.SetActive(true);
             Quaternion targetRotation = Quaternion.LookRotation(cameraTransform.forward);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationFactorPerFrame/2 * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationFactorPerFrame * Time.deltaTime);
+            print("MirandoRotation");
         }
         else
         {
+            if(isAiming)
+            {
+                transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
+                print(transform.rotation);
+
+            }
+
             isAiming = false;
             _anim.SetBool(isAimingHash, false);
             _anim.SetBool(isShootingHash, false);
