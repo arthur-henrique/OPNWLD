@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7682206808127674864}
   - component: {fileID: -2979581762149669284}
   - component: {fileID: -5591399818510402896}
-  m_Layer: 0
-  m_Name: Projectile
+  m_Layer: 10
+  m_Name: Player Projectile
   m_TagString: PlayerArrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 25
+  timeToDeactivate: 5
   damage: 5
 --- !u!54 &-5591399818510402896
 Rigidbody:

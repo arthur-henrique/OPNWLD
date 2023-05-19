@@ -4,21 +4,43 @@ using UnityEngine;
 
 public class HealthControl : ObservableSubject
 {
+    [SerializeField] private bool isPlayer = false;
     public float health = 100f;
+    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.TryGetComponent(out IDealDamage damageDealer))
         {
-            Debug.LogWarning("Shot");
-            float damage = damageDealer.DealDamage();
-            health -= damage;
-            if (health > 0)
+            if(!isPlayer && other.gameObject.layer == 9)
             {
-                NotifyDamage(damage);
+                Debug.LogWarning("EnemyShot");
+                float damage = damageDealer.DealDamage();
+                health -= damage;
+                if (health > 0)
+                {
+                    NotifyDamage(damage);
+                }
+                else if (health <= 0f)
+                    NotifyDeath();
             }
-            else if (health <= 0f)
-                NotifyDeath();
+            else if (isPlayer && other.gameObject.layer == 10)
+            {
+                Debug.LogWarning("PlayerShot");
+                //float damage = damageDealer.DealDamage();
+                //health -= damage;
+                //if (health > 0)
+                //{
+                //    NotifyDamage(damage);
+                //}
+                //else if (health <= 0f)
+                //    NotifyDeath();
+            }
+            else
+            {
+                other.gameObject.SetActive(false);
+            }
         }
+
     }
 }

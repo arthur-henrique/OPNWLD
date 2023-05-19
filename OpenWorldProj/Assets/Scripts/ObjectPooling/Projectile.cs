@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
 {
     [SerializeField]
     private float projectileSpeed = 25f;
+    [SerializeField]
     private float timeToDeactivate = 5f;
     public Vector3 target { get;  set; }
     public bool hit { get; set; }
