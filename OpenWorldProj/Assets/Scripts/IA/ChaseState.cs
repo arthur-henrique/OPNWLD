@@ -8,11 +8,13 @@ public class ChaseState : StateMachineBehaviour
     NavMeshAgent agent;
     Transform player;
     public float chaseRange;
+    Animator anim;
     Vector3 currentPosition;
     
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         agent = animator.GetComponent<NavMeshAgent>();
         currentPosition = animator.GetComponent<Transform>().position;
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -23,11 +25,12 @@ public class ChaseState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        anim = animator;
         agent.SetDestination(player.position);
         float distance = Vector3.Distance(player.position, animator.transform.position);
         if (distance < chaseRange)
         {
-            animator.SetBool("isChasing", false);
+            anim.SetBool("isChasing", false);
         }
         if (distance < 3.5)
         {
@@ -35,17 +38,15 @@ public class ChaseState : StateMachineBehaviour
         }
     }
 
-     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    
+
+
+   //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+   override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent.SetDestination(animator.transform.position);
     }
-    void OnDrawGizmos()
-    {
-        
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawSphere( currentPosition, chaseRange);
-    }
+    
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

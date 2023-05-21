@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 1767568348347198485}
   - component: {fileID: 1767568348347198487}
   m_Layer: 0
-  m_Name: Urso
+  m_Name: Territorialista
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
