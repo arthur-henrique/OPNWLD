@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]PlayerController inputActions;
     [SerializeField]Animator _anim;
     [SerializeField]ObjectGen objectGen;
+    [SerializeField] PlayerCombat combat;
     public CinemachineVirtualCamera followCam, aimCam;
 
     // Animation Hashes
@@ -278,6 +279,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isAttackPressed)
         {
+            isAttackPressed = false;
             if(isAiming)
             {
                 _anim.SetBool(isShootingHash, true);
@@ -285,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("MeleeAttack");
+                combat.Attack();
             }
             
         }
