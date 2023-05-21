@@ -9,7 +9,7 @@ AnimatorOverrideController:
   m_Name: AttackTwo
   m_Controller: {fileID: 9100000, guid: a5f9b6ea8f8105b4c9c3cc943a025fd7, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: -203655887218126122, guid: e42c413db4f12674481e51cf1f7f1cfd,
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 71c6886724dc0ac45a32468e59e1f181,
       type: 3}
     m_OverrideClip: {fileID: -203655887218126122, guid: be6eab47ce8dce24981110177f74ea29,
       type: 3}
