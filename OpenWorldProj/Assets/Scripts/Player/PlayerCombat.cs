@@ -25,7 +25,7 @@ public class PlayerCombat : MonoBehaviour
         if(Time.time - lastComboEnd > 0.5f && comboCounter <= combo.Count)
         {
             CancelInvoke("EndCombo");
-            if(Time.time - lastClickedTime >= 0.3f)
+            if(Time.time - lastClickedTime >= combo[comboCounter].minTime)
             {
                 anim.runtimeAnimatorController = combo[comboCounter].animOC;
                 anim.Play("Attack", 0, 0);

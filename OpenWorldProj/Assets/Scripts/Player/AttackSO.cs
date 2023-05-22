@@ -7,4 +7,5 @@ public class AttackSO : ScriptableObject
 {
     public AnimatorOverrideController animOC;
     public float damage;
+    public float minTime;
 }
