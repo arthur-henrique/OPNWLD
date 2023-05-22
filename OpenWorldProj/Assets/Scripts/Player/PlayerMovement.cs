@@ -296,10 +296,12 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleAim()
     {
-        if(isAimingPressed && _characterController.isGrounded && !runToggle)
+        if(isAimingPressed && _characterController.isGrounded)
         {
             
             isAiming = true;
+            runToggle = false;
+            _anim.SetBool(isRunningHash, false);
             _anim.SetBool(isAimingHash, true);
             followCam.gameObject.SetActive(false);
             aimCam.gameObject.SetActive(true);

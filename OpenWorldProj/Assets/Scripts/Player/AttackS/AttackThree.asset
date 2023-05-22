@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animOC: {fileID: 22100000, guid: aa69c37b4d2b56c45a9f58cb04c58b2b, type: 2}
   damage: 8
+  minTime: 0.7
