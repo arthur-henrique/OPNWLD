@@ -5,52 +5,152 @@ using UnityEngine.AI;
 
 public class SpawnerAI : MonoBehaviour
 {
+    public enum States
+    {
+        idle,
+        patrol,
+        walk,
+        attack
+    }
+    [SerializeField]
+    private States states = States.idle;
+
+    //geral
+    public Animator animator;
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public Transform firePoint;
 
+    public float timeBetweenAttacks;
+    public GameObject projectile;
+
+
     //Patroling
     public Vector3 walkpoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    public bool walkPointSet;
 
-    //Attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-    public GameObject projectile;
 
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-    private void Awake()
+    private bool alreadyAttacked;
+    public float walkPointRange;
+ 
+
+    private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(Idle());
+    }
+    private void StatesControl()
+    {
+        StopAllCoroutines();
+        if (playerInSightRange && !playerInAttackRange)
+        {
+            animator.SetBool("isPatrolling", false);
+            ChangeState(States.walk);
+        }
+
+        if (playerInSightRange && playerInAttackRange)
+        {
+            ChangeState(States.attack);
+        }
+
+        if (!playerInSightRange && !playerInAttackRange)
+        {
+            animator.SetBool("isChasing", false);
+            ChangeState(States.idle);
+        }
+
     }
     private void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInAttackRange && !playerInSightRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) Chasing();
-        if (playerInAttackRange && playerInSightRange) Attacking();
     }
-    private void Patroling()
+
+
+
+    public void ChangeState(States state)
     {
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
+        states = state;
+        StopAllCoroutines(); // Interrompe a co-rotina atual (estado atual).
+        switch (states)
         {
-            agent.SetDestination(walkpoint);
+            case States.idle:
+                StartCoroutine(Idle());
+                break;
 
+
+            case States.patrol:
+                StartCoroutine(Patroling());
+                break;
+
+
+
+            case States.walk:
+                StartCoroutine(Chase());
+                break;
+
+
+
+            case States.attack:
+                StartCoroutine(Attack());
+                break;
         }
 
-        Vector3 distanceToWalkPoint = transform.position - walkpoint;
-        if (distanceToWalkPoint.magnitude < 1f)
+    }
+
+    IEnumerator Idle()
+    {
+        while (true)
         {
-            walkPointSet = false;
+            animator.SetBool("isPatrolling", false);
+            yield return new WaitForEndOfFrame();
+            ChangeState(States.patrol);
+
         }
+      
+
+
+    }
+
+    IEnumerator Patroling()
+    {
+
+        while (true)
+        {
+
+             if (!walkPointSet) SearchWalkPoint();
+
+            animator.SetBool("isPatrolling", true);
+            if (walkPointSet)
+            {
+                agent.SetDestination(walkpoint);
+            }
+
+            Vector3 distanceToWalkPoint = transform.position - walkpoint;
+            if (distanceToWalkPoint.magnitude < 1f)
+            {
+                 walkPointSet = false;
+            }
+        
+
+
+            yield return new WaitForSeconds(5f);
+            StatesControl();
+            animator.SetBool("isPatrolling", false);
+
+
+        }
+       
+
+
+
+
+
 
     }
 
@@ -65,33 +165,62 @@ public class SpawnerAI : MonoBehaviour
             walkPointSet = true;
         }
     }
-    private void Chasing()
+
+    IEnumerator Chase()
     {
-        agent.SetDestination(player.position);
-    }
-    private void Attacking()
-    {
-
-
-        agent.SetDestination(transform.position);
-        transform.LookAt(player);
-
-        if (!alreadyAttacked)
+        while (true)
         {
-            Rigidbody rb = Instantiate(projectile, firePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+           
+            animator.SetBool("isChasing", true);
+            agent.SetDestination(player.position);
+            yield return new WaitForEndOfFrame();
+            StatesControl();
+            
 
-            alreadyAttacked = true;
-            StartCoroutine(ResetAttack());
+
         }
+    }
+
+
+
+
+
+
+    IEnumerator Attack()
+    {
+
+
+        while (true)
+        {
+            agent.SetDestination(transform.position);
+            transform.LookAt(player);
+
+            if (!alreadyAttacked)
+            {
+                animator.SetBool("isAttacking", true);
+                Rigidbody rb = Instantiate(projectile, firePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+                alreadyAttacked = true;
+                StartCoroutine(ResetAttack());
+                
+
+            }
+
+
+            yield return new WaitForEndOfFrame();
+            StatesControl();
+        }
+
+
     }
     IEnumerator ResetAttack()
     {
+        animator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(timeBetweenAttacks);
         alreadyAttacked = false;
-
     }
+
+      
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class GoblinAI : MonoBehaviour
 {
     public enum States
     {
-        idle,
+        
         patrol,
         walk,
         attack
     }
     [SerializeField]
-    private States states = States.idle;
+    private States states = States.patrol;
 
     //geral
     public Animator animator;
@@ -28,26 +28,27 @@ public class EnemyAI : MonoBehaviour
 
     //Patroling
     public Vector3 walkpoint;
-    bool walkPointSet;
+    public bool walkPointSet;
 
 
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     private bool alreadyAttacked;
     public float walkPointRange;
-    float randomNumber; 
+
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(Idle());
+        StartCoroutine(Patroling());
     }
     private void StatesControl()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        StopAllCoroutines();
         if (playerInSightRange && !playerInAttackRange)
         {
+            //animator.SetBool("isPatrolling", false);
             ChangeState(States.walk);
         }
 
@@ -58,8 +59,8 @@ public class EnemyAI : MonoBehaviour
 
         if (!playerInSightRange && !playerInAttackRange)
         {
-            
-            ChangeState(States.idle);
+            //animator.SetBool("isChasing", false);
+            ChangeState(States.patrol);
         }
 
     }
@@ -78,10 +79,8 @@ public class EnemyAI : MonoBehaviour
         StopAllCoroutines(); // Interrompe a co-rotina atual (estado atual).
         switch (states)
         {
-            case States.idle:
-                StartCoroutine(Idle());
-                break;
-               
+           
+
 
             case States.patrol:
                 StartCoroutine(Patroling());
@@ -99,31 +98,20 @@ public class EnemyAI : MonoBehaviour
                 StartCoroutine(Attack());
                 break;
         }
-          
+
     }
 
-    IEnumerator Idle()
-    {
-        while (true)
-        {
-
-             //animator.SetFloat("Velocidade", 0);
-            yield return new WaitForEndOfFrame();
-            ChangeState(States.patrol);
-
-        }
-            
-        
-    }
+   
 
     IEnumerator Patroling()
     {
-        
-        
-            
 
-            if (!walkPointSet) SearchWalkPoint();
+        while (true)
+        {
 
+            if (!walkPointSet) StartCoroutine(SearchWalkPoint());
+
+            //animator.SetBool("isPatrolling", true);
             if (walkPointSet)
             {
                 agent.SetDestination(walkpoint);
@@ -134,11 +122,16 @@ public class EnemyAI : MonoBehaviour
             {
                 walkPointSet = false;
             }
-          
-            
-            
-            yield return new WaitForSeconds(3f);
+
+
+
+            yield return new WaitForSeconds(5f);
             StatesControl();
+            //animator.SetBool("isPatrolling", false);
+
+
+        }
+
 
 
 
@@ -147,12 +140,12 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    private void SearchWalkPoint()
+    IEnumerator SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
         walkpoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
+        yield return new WaitForEndOfFrame();
         if (Physics.Raycast(walkpoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
@@ -163,20 +156,13 @@ public class EnemyAI : MonoBehaviour
     {
         while (true)
         {
-            //animator.SetFloat("Velocidade", 1);
+
+            //animator.SetBool("isChasing", true);
             agent.SetDestination(player.position);
-
-            if (playerInAttackRange)
-            {
-                ChangeState(States.attack);
-            }
-
-            if (!playerInSightRange)
-            {
-                ChangeState(States.idle);
-            }
-
             yield return new WaitForEndOfFrame();
+            StatesControl();
+
+
 
         }
     }
@@ -189,40 +175,37 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Attack()
     {
 
-            
-         while (true)
-         {
+
+        while (true)
+        {
             agent.SetDestination(transform.position);
             transform.LookAt(player);
 
             if (!alreadyAttacked)
             {
-                Rigidbody rb = Instantiate(projectile, firePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-                rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-                rb.AddForce(transform.up * -1f, ForceMode.Impulse);
-
-                alreadyAttacked = true;
+                animator.SetBool("isAttacking", true);
                 StartCoroutine(ResetAttack());
+
+
+
             }
 
 
             yield return new WaitForEndOfFrame();
-
-         }
+            StatesControl();
+        }
 
 
     }
-   IEnumerator ResetAttack()
-   {
-     yield return new WaitForSeconds(timeBetweenAttacks);
-     alreadyAttacked = false;
-
-    if (!playerInAttackRange)
+    IEnumerator ResetAttack()
     {
-         ChangeState(States.walk);
+        yield return new WaitForSeconds(timeBetweenAttacks);
+        animator.SetBool("isAttacking", false);
+        alreadyAttacked = false;
     }
 
-   }
+
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -232,25 +215,3 @@ public class EnemyAI : MonoBehaviour
 
     }
 }
-
-
-       
-
-
-
-    
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
