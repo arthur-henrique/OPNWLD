@@ -48,7 +48,7 @@ public class SpawnerAI : MonoBehaviour
         StopAllCoroutines();
         if (playerInSightRange && !playerInAttackRange)
         {
-            animator.SetBool("isPatrolling", false);
+            //animator.SetBool("isPatrolling", false);
             ChangeState(States.walk);
         }
 
@@ -59,7 +59,7 @@ public class SpawnerAI : MonoBehaviour
 
         if (!playerInSightRange && !playerInAttackRange)
         {
-            animator.SetBool("isChasing", false);
+            //animator.SetBool("isChasing", false);
             ChangeState(States.idle);
         }
 
@@ -107,7 +107,7 @@ public class SpawnerAI : MonoBehaviour
     {
         while (true)
         {
-            animator.SetBool("isPatrolling", false);
+            //animator.SetBool("isPatrolling", false);
             yield return new WaitForEndOfFrame();
             ChangeState(States.patrol);
 
@@ -120,12 +120,12 @@ public class SpawnerAI : MonoBehaviour
     IEnumerator Patroling()
     {
 
-        while (true)
-        {
+        
 
              if (!walkPointSet) SearchWalkPoint();
-
-            animator.SetBool("isPatrolling", true);
+            Debug.Log(walkPointSet);
+            Debug.Log(walkpoint);
+            //animator.SetBool("isPatrolling", true);
             if (walkPointSet)
             {
                 agent.SetDestination(walkpoint);
@@ -138,13 +138,13 @@ public class SpawnerAI : MonoBehaviour
             }
         
 
+            StatesControl();
 
             yield return new WaitForSeconds(5f);
-            StatesControl();
-            animator.SetBool("isPatrolling", false);
+            //animator.SetBool("isPatrolling", false);
 
 
-        }
+        
        
 
 
@@ -171,7 +171,7 @@ public class SpawnerAI : MonoBehaviour
         while (true)
         {
            
-            animator.SetBool("isChasing", true);
+            //animator.SetBool("isChasing", true);
             agent.SetDestination(player.position);
             yield return new WaitForEndOfFrame();
             StatesControl();
@@ -197,7 +197,7 @@ public class SpawnerAI : MonoBehaviour
 
             if (!alreadyAttacked)
             {
-                animator.SetBool("isAttacking", true);
+                //animator.SetBool("isAttacking", true);
                 Rigidbody rb = Instantiate(projectile, firePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
                 alreadyAttacked = true;
                 StartCoroutine(ResetAttack());
@@ -214,7 +214,7 @@ public class SpawnerAI : MonoBehaviour
     }
     IEnumerator ResetAttack()
     {
-        animator.SetBool("isAttacking", false);
+        //animator.SetBool("isAttacking", false);
         yield return new WaitForSeconds(timeBetweenAttacks);
         alreadyAttacked = false;
     }
@@ -227,6 +227,7 @@ public class SpawnerAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
-
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, walkPointRange);
     }
 }

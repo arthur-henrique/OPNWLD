@@ -28,7 +28,7 @@ public class ChaseState : StateMachineBehaviour
         anim = animator;
         agent.SetDestination(player.position);
         float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance < chaseRange)
+        if (distance > chaseRange)
         {
             anim.SetBool("isChasing", false);
         }
