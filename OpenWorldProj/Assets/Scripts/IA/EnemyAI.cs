@@ -35,6 +35,8 @@ public class EnemyAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     private bool alreadyAttacked;
     public float walkPointRange;
+    [SerializeField]
+    bool podePatrulhar;
 
 
     private void Start()
@@ -60,7 +62,7 @@ public class EnemyAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange)
         {
             //animator.SetBool("isChasing", false);
-            ChangeState(States.idle);
+            ChangeState(States.patrol);
         }
 
     }
@@ -122,7 +124,7 @@ public class EnemyAI : MonoBehaviour
 
 
 
-        if (!walkPointSet) SearchWalkPoint();
+        if (!walkPointSet && podePatrulhar) SearchWalkPoint();
         Debug.Log(walkPointSet);
         Debug.Log(walkpoint);
         //animator.SetBool("isPatrolling", true);
@@ -136,11 +138,17 @@ public class EnemyAI : MonoBehaviour
         {
             walkPointSet = false;
         }
+        if (!podePatrulhar)
+        {
+            yield return new WaitForSeconds(3f);
+            podePatrulhar = true;
+        }
+            
 
 
+
+        yield return new WaitForEndOfFrame();
         StatesControl();
-
-        yield return new WaitForSeconds(5f);
         //animator.SetBool("isPatrolling", false);
 
 
@@ -163,6 +171,7 @@ public class EnemyAI : MonoBehaviour
         if (Physics.Raycast(walkpoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
+            podePatrulhar = false;
         }
     }
 
@@ -190,34 +199,36 @@ public class EnemyAI : MonoBehaviour
     {
 
 
-        while (true)
-        {
+        
             agent.SetDestination(transform.position);
             transform.LookAt(player);
-
+        Debug.Log(alreadyAttacked);
             if (!alreadyAttacked)
             {
                 //animator.SetBool("isAttacking", true);
                 Rigidbody rb = Instantiate(projectile, firePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
                 alreadyAttacked = true;
-                StartCoroutine(ResetAttack());
+                rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+                rb.AddForce(transform.up * -1f, ForceMode.Impulse);
+               
 
 
             }
 
-
-            yield return new WaitForEndOfFrame();
-            StatesControl();
+        if (alreadyAttacked)
+        {
+            yield return new WaitForSeconds(timeBetweenAttacks);
+            alreadyAttacked = false;
         }
 
 
+            yield return new WaitForEndOfFrame();
+            StatesControl();
+        
+
+
     }
-    IEnumerator ResetAttack()
-    {
-        //animator.SetBool("isAttacking", false);
-        yield return new WaitForSeconds(timeBetweenAttacks);
-        alreadyAttacked = false;
-    }
+   
 
 
 

@@ -757,7 +757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.06272329, y: -0.046143617, z: 0.0029031062, w: 0.99695945}
-  m_LocalPosition: {x: 1.6674173, y: 2.0382514, z: -3.9590933}
+  m_LocalPosition: {x: 1.6660042, y: 2.0382514, z: -3.9592245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3689,6 +3689,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1634927679 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4530921638607934061, guid: 46b3ed65a54756e48bb924c0ef73220b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4530921637038089645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1654160399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5002,6 +5008,16 @@ PrefabInstance:
       objectReference: {fileID: 541160661}
     - target: {fileID: 4530921638557638422, guid: 46b3ed65a54756e48bb924c0ef73220b,
         type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1634927679}
+    - target: {fileID: 4530921638557638422, guid: 46b3ed65a54756e48bb924c0ef73220b,
+        type: 3}
+      propertyPath: attackRange
+      value: 15.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530921638557638422, guid: 46b3ed65a54756e48bb924c0ef73220b,
+        type: 3}
       propertyPath: walkPointRange
       value: 10
       objectReference: {fileID: 0}
@@ -5178,7 +5194,7 @@ PrefabInstance:
     - target: {fileID: 6789542129566414776, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9274435
+      value: 0.9262557
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129566414776, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -5188,12 +5204,12 @@ PrefabInstance:
     - target: {fileID: 6789542129566414776, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.150007
+      value: -6.150079
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3784962
+      value: 1.3770831
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -5203,7 +5219,7 @@ PrefabInstance:
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.983964
+      value: -7.9840946
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7, type: 3}
@@ -5497,6 +5513,11 @@ PrefabInstance:
     - target: {fileID: 8956211728459338406, guid: 899c90adaeb4a8745941a6796d0a6c70,
         type: 3}
       propertyPath: walkPointRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956211728459338406, guid: 899c90adaeb4a8745941a6796d0a6c70,
+        type: 3}
+      propertyPath: timeBetweenAttacks
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []

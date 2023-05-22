@@ -35,7 +35,9 @@ public class SpawnerAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     private bool alreadyAttacked;
     public float walkPointRange;
- 
+    bool podePatrulhar;
+
+
 
     private void Start()
     {
@@ -60,7 +62,7 @@ public class SpawnerAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange)
         {
             //animator.SetBool("isChasing", false);
-            ChangeState(States.idle);
+            ChangeState(States.patrol);
         }
 
     }
@@ -119,40 +121,46 @@ public class SpawnerAI : MonoBehaviour
 
     IEnumerator Patroling()
     {
+        if (!walkPointSet && podePatrulhar) SearchWalkPoint();
+        Debug.Log(walkPointSet);
+        Debug.Log(walkpoint);
+        //animator.SetBool("isPatrolling", true);
+        if (walkPointSet)
+        {
+            agent.SetDestination(walkpoint);
+        }
 
-        
+        Vector3 distanceToWalkPoint = transform.position - walkpoint;
+        if (distanceToWalkPoint.magnitude < 1f)
+        {
+            walkPointSet = false;
+        }
+        if (!podePatrulhar)
+        {
+            yield return new WaitForSeconds(3f);
+            podePatrulhar = true;
+        }
 
-             if (!walkPointSet) SearchWalkPoint();
-            Debug.Log(walkPointSet);
-            Debug.Log(walkpoint);
-            //animator.SetBool("isPatrolling", true);
-            if (walkPointSet)
-            {
-                agent.SetDestination(walkpoint);
-            }
-
-            Vector3 distanceToWalkPoint = transform.position - walkpoint;
-            if (distanceToWalkPoint.magnitude < 1f)
-            {
-                 walkPointSet = false;
-            }
-        
-
-            StatesControl();
-
-            yield return new WaitForSeconds(5f);
-            //animator.SetBool("isPatrolling", false);
-
-
-        
-       
-
-
-
-
-
-
+        yield return new WaitForEndOfFrame();
+        StatesControl();
+        //animator.SetBool("isPatrolling", false);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void SearchWalkPoint()
     {
@@ -163,6 +171,7 @@ public class SpawnerAI : MonoBehaviour
         if (Physics.Raycast(walkpoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
+            podePatrulhar = false;
         }
     }
 
@@ -186,38 +195,38 @@ public class SpawnerAI : MonoBehaviour
 
 
 
-    IEnumerator Attack()
-    {
+   IEnumerator Attack()
+   {
 
 
-        while (true)
-        {
+        
             agent.SetDestination(transform.position);
             transform.LookAt(player);
-
+            Debug.Log(alreadyAttacked);
             if (!alreadyAttacked)
             {
                 //animator.SetBool("isAttacking", true);
-                Rigidbody rb = Instantiate(projectile, firePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+                Instantiate(projectile, firePoint.position, Quaternion.identity);
                 alreadyAttacked = true;
-                StartCoroutine(ResetAttack());
-                
+               
+               
+
 
             }
+
+        if (alreadyAttacked)
+        {
+            yield return new WaitForSeconds(timeBetweenAttacks);
+            alreadyAttacked = false;
+        }
 
 
             yield return new WaitForEndOfFrame();
             StatesControl();
-        }
+        
 
 
-    }
-    IEnumerator ResetAttack()
-    {
-        //animator.SetBool("isAttacking", false);
-        yield return new WaitForSeconds(timeBetweenAttacks);
-        alreadyAttacked = false;
-    }
+   }
 
       
 
