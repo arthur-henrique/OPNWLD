@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Components
     [SerializeField]CharacterController _characterController;
-    [SerializeField]PlayerController inputActions;
+    [SerializeField] public PlayerController inputActions;
     [SerializeField]Animator _anim;
     [SerializeField]ObjectGen objectGen;
     [SerializeField] PlayerCombat combat;
@@ -334,7 +334,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            objectGen.OnShoot(spawnPoint.position, (cameraTransform.position + cameraTransform.forward * 100f), false);
+            objectGen.OnShoot(spawnPoint.position, (aimCam.transform.forward * 100f), false);
         }
         canAttack = false;
         _anim.SetBool(isShootingHash, false);
