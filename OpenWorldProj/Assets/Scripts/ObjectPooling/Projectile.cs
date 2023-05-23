@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
     [SerializeField]
     private float timeToDeactivate = 5f;
     private Animator projectileAnim;
+    private SphereCollider collider;
     public Vector3 target { get;  set; }
     public bool hit { get; set; }
 
@@ -19,6 +20,7 @@ public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
     void Start()
     {
         projectileAnim = GetComponent<Animator>();
+        collider = GetComponent<SphereCollider>();
     }
     public void OnObjectSpawn(Vector3 forward, bool hasHit)
     {
@@ -36,6 +38,7 @@ public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
         if(!hit)
         {
             //projectileAnim.SetBool("shrink", true);
+            collider.isTrigger = false;
             if(Vector3.Distance(transform.position, target) < 0.1f)
             gameObject.SetActive(false);
         }

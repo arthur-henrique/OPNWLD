@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Components
     [SerializeField]CharacterController _characterController;
-    [SerializeField]PlayerController inputActions;
+    [SerializeField] public PlayerController inputActions;
     [SerializeField]Animator _anim;
     [SerializeField]ObjectGen objectGen;
     [SerializeField] PlayerCombat combat;
