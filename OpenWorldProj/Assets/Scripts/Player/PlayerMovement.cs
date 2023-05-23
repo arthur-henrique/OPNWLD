@@ -70,7 +70,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject arrowPrefab;
     public Transform spawnPoint;
 
-
+    // 3D Models
+    public GameObject weapon, sling, weaponDes, slingDes;
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -301,6 +302,11 @@ public class PlayerMovement : MonoBehaviour
             
             isAiming = true;
             runToggle = false;
+            sling.SetActive(true);
+            //slingDes.SetActive(false);
+            weapon.SetActive(false);
+            weaponDes.SetActive(true);
+
             _anim.SetBool(isRunningHash, false);
             _anim.SetBool(isAimingHash, true);
             followCam.gameObject.SetActive(false);
@@ -314,7 +320,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
             }
-
+            sling.SetActive(false);
+            //slingDes.SetActive(true);
+            weapon.SetActive(true);
+            weaponDes.SetActive(false);
             isAiming = false;
             _anim.SetBool(isAimingHash, false);
             _anim.SetBool(isShootingHash, false);
@@ -381,6 +390,12 @@ public class PlayerMovement : MonoBehaviour
         
         cameraRelativeMovement.y = moveVector.y;
         _characterController.Move(cameraRelativeMovement * Time.deltaTime);
+    }
+
+    private void Start()
+    {
+        weaponDes.SetActive(false);
+        sling.SetActive(false);
     }
 
     private void Update()
