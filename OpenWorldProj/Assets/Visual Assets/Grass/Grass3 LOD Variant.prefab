@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 783972304275836786, guid: 1fc0a205dc2ecd74aade8814e93ac46a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6c1e09928e870e747a0066120dddca61, type: 2}
     - target: {fileID: 3946806689439392631, guid: 1fc0a205dc2ecd74aade8814e93ac46a,
         type: 3}
       propertyPath: m_RootOrder
@@ -30,12 +35,12 @@ PrefabInstance:
     - target: {fileID: 3946806689439392631, guid: 1fc0a205dc2ecd74aade8814e93ac46a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3946806689439392631, guid: 1fc0a205dc2ecd74aade8814e93ac46a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3946806689439392631, guid: 1fc0a205dc2ecd74aade8814e93ac46a,
         type: 3}
@@ -45,7 +50,7 @@ PrefabInstance:
     - target: {fileID: 3946806689439392631, guid: 1fc0a205dc2ecd74aade8814e93ac46a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3946806689439392631, guid: 1fc0a205dc2ecd74aade8814e93ac46a,
         type: 3}
@@ -65,7 +70,12 @@ PrefabInstance:
     - target: {fileID: 4435499628726319565, guid: 1fc0a205dc2ecd74aade8814e93ac46a,
         type: 3}
       propertyPath: m_Name
-      value: Grass1 LOD Variant
+      value: Grass3 LOD Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5287016268630257139, guid: 1fc0a205dc2ecd74aade8814e93ac46a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 348c5e8db3da3914ebbffeeb4c9b9ae9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fc0a205dc2ecd74aade8814e93ac46a, type: 3}
