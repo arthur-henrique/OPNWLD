@@ -146,9 +146,9 @@ public class EnemyAI : MonoBehaviour
             
 
 
+        StatesControl();
 
         yield return new WaitForEndOfFrame();
-        StatesControl();
         //animator.SetBool("isPatrolling", false);
 
 

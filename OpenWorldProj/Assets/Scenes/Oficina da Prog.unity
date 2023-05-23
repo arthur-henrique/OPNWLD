@@ -5355,6 +5355,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7603226383634724406, guid: 0452cc0645a447a46b7a84f061c431cb,
+        type: 3}
+      propertyPath: walkPointRange
+      value: 10.03
+      objectReference: {fileID: 0}
     - target: {fileID: 7603226383997277393, guid: 0452cc0645a447a46b7a84f061c431cb,
         type: 3}
       propertyPath: m_Name
@@ -5508,7 +5513,7 @@ PrefabInstance:
     - target: {fileID: 8956211728389245368, guid: 899c90adaeb4a8745941a6796d0a6c70,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8956211728459338406, guid: 899c90adaeb4a8745941a6796d0a6c70,
         type: 3}

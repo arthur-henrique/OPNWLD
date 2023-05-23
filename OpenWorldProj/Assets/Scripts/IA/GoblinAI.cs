@@ -7,13 +7,13 @@ public class GoblinAI : MonoBehaviour
 {
     public enum States
     {
-        
+        idle,
         patrol,
         walk,
         attack
     }
     [SerializeField]
-    private States states = States.patrol;
+    private States states = States.idle;
 
     //geral
     public Animator animator;
@@ -35,13 +35,15 @@ public class GoblinAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     private bool alreadyAttacked;
     public float walkPointRange;
+    [SerializeField]
+    bool podePatrulhar;
 
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(Patroling());
+        StartCoroutine(Idle());
     }
     private void StatesControl()
     {
@@ -79,7 +81,9 @@ public class GoblinAI : MonoBehaviour
         StopAllCoroutines(); // Interrompe a co-rotina atual (estado atual).
         switch (states)
         {
-           
+            case States.idle:
+                StartCoroutine(Idle());
+                break;
 
 
             case States.patrol:
@@ -101,36 +105,54 @@ public class GoblinAI : MonoBehaviour
 
     }
 
-   
+    IEnumerator Idle()
+    {
+        while (true)
+        {
+            //animator.SetBool("isPatrolling", false);
+            yield return new WaitForEndOfFrame();
+            ChangeState(States.patrol);
+
+        }
+
+
+
+    }
 
     IEnumerator Patroling()
     {
 
-        while (true)
+
+
+        if (!walkPointSet && podePatrulhar) SearchWalkPoint();
+        Debug.Log(walkPointSet);
+        Debug.Log(walkpoint);
+        //animator.SetBool("isPatrolling", true);
+        if (walkPointSet)
         {
-
-            if (!walkPointSet) StartCoroutine(SearchWalkPoint());
-
-            //animator.SetBool("isPatrolling", true);
-            if (walkPointSet)
-            {
-                agent.SetDestination(walkpoint);
-            }
-
-            Vector3 distanceToWalkPoint = transform.position - walkpoint;
-            if (distanceToWalkPoint.magnitude < 1f)
-            {
-                walkPointSet = false;
-            }
-
-
-
-            yield return new WaitForSeconds(5f);
-            StatesControl();
-            //animator.SetBool("isPatrolling", false);
-
-
+            agent.SetDestination(walkpoint);
         }
+
+        Vector3 distanceToWalkPoint = transform.position - walkpoint;
+        if (distanceToWalkPoint.magnitude < 1f)
+        {
+            walkPointSet = false;
+        }
+        if (!podePatrulhar)
+        {
+            yield return new WaitForSeconds(3f);
+            podePatrulhar = true;
+        }
+
+
+
+        StatesControl();
+
+        yield return new WaitForEndOfFrame();
+        //animator.SetBool("isPatrolling", false);
+
+
+
 
 
 
@@ -140,15 +162,16 @@ public class GoblinAI : MonoBehaviour
 
     }
 
-    IEnumerator SearchWalkPoint()
+    private void SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
         walkpoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        yield return new WaitForEndOfFrame();
+
         if (Physics.Raycast(walkpoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
+            podePatrulhar = false;
         }
     }
 
@@ -176,33 +199,32 @@ public class GoblinAI : MonoBehaviour
     {
 
 
-        while (true)
+
+        agent.SetDestination(transform.position);
+        transform.LookAt(player);
+        Debug.Log(alreadyAttacked);
+        if (!alreadyAttacked)
         {
-            agent.SetDestination(transform.position);
-            transform.LookAt(player);
+            animator.SetBool("isAttacking", true);
 
-            if (!alreadyAttacked)
-            {
-                animator.SetBool("isAttacking", true);
-                StartCoroutine(ResetAttack());
+        }
+          
 
 
-
-            }
-
-
-            yield return new WaitForEndOfFrame();
-            StatesControl();
+        if (alreadyAttacked)
+        {
+            yield return new WaitForSeconds(timeBetweenAttacks);
+            alreadyAttacked = false;
         }
 
 
+        yield return new WaitForEndOfFrame();
+        StatesControl();
+
+
+
     }
-    IEnumerator ResetAttack()
-    {
-        yield return new WaitForSeconds(timeBetweenAttacks);
-        animator.SetBool("isAttacking", false);
-        alreadyAttacked = false;
-    }
+
 
 
 
@@ -212,6 +234,7 @@ public class GoblinAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
-
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, walkPointRange);
     }
 }
