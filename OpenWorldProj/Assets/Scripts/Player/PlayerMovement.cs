@@ -334,7 +334,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            objectGen.OnShoot(spawnPoint.position, (cameraTransform.position + cameraTransform.forward * 100f), false);
+            objectGen.OnShoot(spawnPoint.position, (aimCam.transform.forward * 100f), false);
         }
         canAttack = false;
         _anim.SetBool(isShootingHash, false);
