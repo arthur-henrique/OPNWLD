@@ -73,7 +73,7 @@ Material:
     - _RefractionSpeed: 0.04
     - _RefractionStrenght: 4.07
     m_Colors:
-    - _BottomColor: {r: 0, g: 0.681818, b: 1, a: 0.39607844}
+    - _BottomColor: {r: 0, g: 0.76293606, b: 1, a: 0.53333336}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 0.7686275}
     - _TopColor: {r: 0.99215686, g: 0, b: 0.009525813, a: 1}
   m_BuildTextureStacks: []
