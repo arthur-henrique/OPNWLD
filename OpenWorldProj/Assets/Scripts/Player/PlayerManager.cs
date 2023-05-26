@@ -6,25 +6,44 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : ObservableSubject
 {
     [SerializeField] PlayerMovement player;
+    [SerializeField] private Transform whereToSpawnAtOverworld;
+    [SerializeField] GameManager gameManager;
+    [SerializeField] GameObject playerObj;
     private Transform playerOverWorldTransform;
-    private Transform whereToSpawnAtOverworld;
+    public Vector3 pos;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
+        pos = transform.position;
     }
-
-    public void SetReturnCoordinates()
+    
+    public void SetReturnCoordinates(Transform safePos)
     {
-        whereToSpawnAtOverworld = playerOverWorldTransform;
+        whereToSpawnAtOverworld = safePos;
+        pos = whereToSpawnAtOverworld.position;
+    }
+    public void SetTempleCoordinates()
+    {
+        transform.position = Vector3.zero;
+        player.DisableController();
+        playerObj.transform.position = transform.position;
+        player.EnableController();
     }
     public void ReturnToOverworld()
     {
-        player.transform.position = whereToSpawnAtOverworld.position;
+        transform.position = pos;
+        player.DisableController();
+        playerObj.transform.position = transform.position;
+        player.EnableController();
+
     }
+
     private void OnLevelWasLoaded(int level)
     {
-        if (SceneManager.GetActiveScene().name != "1MainScene")
-            player.gameObject.transform.position = Vector3.zero;
+        if (SceneManager.GetActiveScene().name == "1MainScene")
+        {
+            ReturnToOverworld();
+        }
     }
 }

@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class SceneController : MonoBehaviour
 {
+    [SerializeField]
     private GameManager gameManager;
+    [SerializeField]
+    private PlayerManager playerManager;
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        playerManager = gameManager.gameObject.GetComponent<PlayerManager>();
+        StartCoroutine(SetPos());
     }
 
     
@@ -16,5 +21,12 @@ public class SceneController : MonoBehaviour
     {
         gameManager.GotSword();
         // Move the objects as to open a way into the dungeon;
+    }
+    IEnumerator SetPos()
+    {
+        yield return new WaitForSeconds(0.1f);
+        print("Control");
+        playerManager.SetTempleCoordinates();
+        gameManager.EnableControl();
     }
 }

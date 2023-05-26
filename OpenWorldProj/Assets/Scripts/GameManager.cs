@@ -40,6 +40,14 @@ public class GameManager : MonoBehaviour, IObserver
         sideSlingModel.SetActive(true);
 
     }
+    public void DisableControl()
+    {
+        playerC.Disable();
+    }
+    public void EnableControl()
+    {
+        playerC.Enable();
+    }
     public void OnNotifyDamage(float damage)
     {
         throw new System.NotImplementedException();

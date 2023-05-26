@@ -426,6 +426,15 @@ public class PlayerMovement : MonoBehaviour
         HandleAttack();
     }
 
+    public void DisableController()
+    {
+        _characterController.enabled = false;
+    }
+    public void EnableController()
+    {
+        _characterController.enabled = true;
+
+    }
     private void OnApplicationFocus(bool focus)
     {
         if(focus)

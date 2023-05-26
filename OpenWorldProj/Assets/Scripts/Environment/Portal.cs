@@ -6,12 +6,21 @@ using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
     [SerializeField] string sceneToLoad;
+    [SerializeField] Transform safePos;
+    public bool isPortalToMainScene;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            other.transform.position = Vector3.zero;
+            other.GetComponent<PlayerMovement>().DisableController();
+            if(isPortalToMainScene)
+            {
+                other.GetComponentInParent<GameManager>().DisableControl();
+
+                other.GetComponentInParent<PlayerManager>().SetReturnCoordinates(safePos);
+                print("HasSet");
+            }
             SceneManager.LoadScene(sceneToLoad);
         }
     }
