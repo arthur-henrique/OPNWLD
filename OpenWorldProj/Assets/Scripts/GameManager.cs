@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour, IObserver
     private PlayerController playerC;
 
     public bool hasSword, hasSling;
+    public GameObject swordModel, sideSlingModel;
 
     void Start()
     {
@@ -17,22 +18,26 @@ public class GameManager : MonoBehaviour, IObserver
         if(!hasSword)
         {
             playerC.Movement.Attack.Disable();
+            swordModel.SetActive(false);
         }
         if(!hasSling)
         {
             playerC.Movement.Aim.Disable();
+            sideSlingModel.SetActive(false);
         }
     }
 
     public void GotSword()
     {
+        hasSword = true;
         playerC.Movement.Attack.Enable();
-        // Enables the sword model
+        swordModel.SetActive(true);
     }
     public void GotSling()
     {
+        hasSling = true;
         playerC.Movement.Aim.Enable();
-        // Enables the sling model
+        sideSlingModel.SetActive(true);
 
     }
     public void OnNotifyDamage(float damage)

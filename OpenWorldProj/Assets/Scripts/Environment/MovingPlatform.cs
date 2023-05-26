@@ -1,38 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 
-public class MovingPlataform : MonoBehaviour
+public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] private WaypointPath _waypointPath;
-    [SerializeField] private float _speed;
+    [SerializeField]
+    private WaypointPath _waypointPath;
+
+    [SerializeField]
+    private float _speed;
+
     private int _targetWaypointIndex;
+
     private Transform _previousWaypoint;
     private Transform _targetWaypoint;
+
     private float _timeToWaypoint;
     private float _elapsedTime;
-    // Start is called before the first frame update
+
     void Start()
     {
         TargetNextWaypoint();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         _elapsedTime += Time.deltaTime;
 
         float elapsedPercentage = _elapsedTime / _timeToWaypoint;
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
-        transform.SetPositionAndRotation(Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage), Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage));
+        transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
+        transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
 
-        if(elapsedPercentage >= 1)
+        if (elapsedPercentage >= 1)
         {
             TargetNextWaypoint();
         }
-
-
     }
 
     private void TargetNextWaypoint()
@@ -42,17 +45,18 @@ public class MovingPlataform : MonoBehaviour
         _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
 
         _elapsedTime = 0f;
+
         float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
         _timeToWaypoint = distanceToWaypoint / _speed;
-        print("run");
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    other.transform.SetParent(transform);
-    //}
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    other.transform.SetParent(null);
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        other.transform.SetParent(transform);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        other.transform.SetParent(null);
+    }
 }

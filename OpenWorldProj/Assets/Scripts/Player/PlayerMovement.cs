@@ -304,8 +304,11 @@ public class PlayerMovement : MonoBehaviour
             runToggle = false;
             sling.SetActive(true);
             //slingDes.SetActive(false);
-            weapon.SetActive(false);
-            weaponDes.SetActive(true);
+            if(inputActions.Movement.Attack.enabled)
+            {
+                weapon.SetActive(false);
+                weaponDes.SetActive(true);
+            }
 
             _anim.SetBool(isRunningHash, false);
             _anim.SetBool(isAimingHash, true);
@@ -322,8 +325,11 @@ public class PlayerMovement : MonoBehaviour
             }
             sling.SetActive(false);
             //slingDes.SetActive(true);
-            weapon.SetActive(true);
-            weaponDes.SetActive(false);
+            if(inputActions.Movement.Attack.enabled)
+            {
+                weapon.SetActive(true);
+                weaponDes.SetActive(false);
+            }
             isAiming = false;
             _anim.SetBool(isAimingHash, false);
             _anim.SetBool(isShootingHash, false);

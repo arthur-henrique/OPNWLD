@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : ObservableSubject
 {
@@ -20,5 +21,10 @@ public class PlayerManager : ObservableSubject
     public void ReturnToOverworld()
     {
         player.transform.position = whereToSpawnAtOverworld.position;
+    }
+    private void OnLevelWasLoaded(int level)
+    {
+        if (SceneManager.GetActiveScene().name != "1MainScene")
+            player.gameObject.transform.position = Vector3.zero;
     }
 }
