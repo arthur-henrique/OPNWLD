@@ -12,11 +12,14 @@ public class PlayerManager : ObservableSubject
     private Transform playerOverWorldTransform;
     public Vector3 pos;
 
+    public Transform respawnPoint;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         pos = transform.position;
     }
+
     
     public void SetReturnCoordinates(Transform safePos)
     {
@@ -39,6 +42,13 @@ public class PlayerManager : ObservableSubject
 
     }
 
+    public void Respawn()
+    {
+        player.DisableController();
+        playerObj.transform.position = respawnPoint.position;
+        player.EnableController();
+
+    }
     private void OnLevelWasLoaded(int level)
     {
         if (SceneManager.GetActiveScene().name == "1MainScene")

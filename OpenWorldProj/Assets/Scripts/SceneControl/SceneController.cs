@@ -8,6 +8,8 @@ public class SceneController : MonoBehaviour
     private GameManager gameManager;
     [SerializeField]
     private PlayerManager playerManager;
+    [SerializeField]
+    Transform zero;
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -22,10 +24,15 @@ public class SceneController : MonoBehaviour
         gameManager.GotSword();
         // Move the objects as to open a way into the dungeon;
     }
+    public void SetRespawnPoint(Transform newPoint)
+    {
+        playerManager.respawnPoint = newPoint;
+    }
     IEnumerator SetPos()
     {
         yield return new WaitForSeconds(0.1f);
         print("Control");
         playerManager.SetTempleCoordinates();
+        playerManager.respawnPoint = zero;
     }
 }
