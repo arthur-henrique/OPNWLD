@@ -395,7 +395,8 @@ public class PlayerMovement : MonoBehaviour
         cameraRelativeMovement = forwardRelativeMovement + rightRelativeMovement;
         
         cameraRelativeMovement.y = moveVector.y;
-        _characterController.Move(cameraRelativeMovement * Time.deltaTime);
+        if(_characterController.enabled)
+            _characterController.Move(cameraRelativeMovement * Time.deltaTime);
     }
 
     private void Start()

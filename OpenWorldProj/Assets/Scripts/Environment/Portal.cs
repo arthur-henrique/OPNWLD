@@ -16,7 +16,6 @@ public class Portal : MonoBehaviour
             other.GetComponent<PlayerMovement>().DisableController();
             if(isPortalToMainScene)
             {
-                other.GetComponentInParent<GameManager>().DisableControl();
 
                 other.GetComponentInParent<PlayerManager>().SetReturnCoordinates(safePos);
                 print("HasSet");
