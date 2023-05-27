@@ -42,7 +42,10 @@ public class ObjectPooling : MonoBehaviour
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
+                if(pool.tag == "PlayerArrow")
+                    obj.transform.SetParent(GameObject.Find("PlayerProjectiles").transform);
                 objectPool.Enqueue(obj);
+
             }
 
             // Adiciona a fila ao dicionário usando a tag como chave

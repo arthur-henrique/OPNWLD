@@ -36,10 +36,10 @@ public class HealthControl : ObservableSubject
                 //else if (health <= 0f)
                 //    NotifyDeath();
             }
-            else
-            {
-                other.gameObject.SetActive(false);
-            }
+            //else
+            //{
+            //    other.gameObject.SetActive(false);
+            //}
         }
 
     }

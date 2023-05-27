@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AttackOne'
   m_EditorClassIdentifier: 
   animOC: {fileID: 22100000, guid: d6986926080aeb3458f319dee52fe3ed, type: 2}
-  damage: 2
+  damage: 5
   minTime: 0.7
