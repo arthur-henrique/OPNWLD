@@ -58,8 +58,12 @@ public class PlayerCombat : MonoBehaviour
         lastComboEnd = Time.time;
     }
 
-    public void ColliderSwap()
+    public void ActiviateCollider()
     {
-        weapon.gameObject.SetActive(weapon.gameObject.activeSelf);
+        weapon.capscollider.enabled= true;
+    }
+    public void DeactiviateCollider()
+    {
+        weapon.capscollider.enabled = false;
     }
 }

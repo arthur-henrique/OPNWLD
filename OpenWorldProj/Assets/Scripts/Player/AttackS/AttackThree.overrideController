@@ -9,7 +9,5 @@ AnimatorOverrideController:
   m_Name: AttackThree
   m_Controller: {fileID: 9100000, guid: a5f9b6ea8f8105b4c9c3cc943a025fd7, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: -203655887218126122, guid: 71c6886724dc0ac45a32468e59e1f181,
-      type: 3}
-    m_OverrideClip: {fileID: -203655887218126122, guid: 2f87d3285229aeb4299ffa91d269c00e,
-      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 37e3d5ea87d259d429ac4b47ce498af6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 21053f3dab2b81447b739f60963dc3a5, type: 2}

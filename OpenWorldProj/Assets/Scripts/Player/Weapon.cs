@@ -6,14 +6,11 @@ public class Weapon : MonoBehaviour, IDealDamage
 {
     [SerializeField]
     public float damage;
-    public CapsuleCollider collider;
+    public CapsuleCollider capscollider;
     public float DealDamage()
     {
         return damage;
     }
 
-    public void ColliderSwap()
-    {
-        collider.isTrigger = !collider.isTrigger;
-    }
+    
 }

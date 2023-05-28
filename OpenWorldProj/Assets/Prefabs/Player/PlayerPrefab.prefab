@@ -581,8 +581,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234542009598780574}
-  m_LocalRotation: {x: -0.082911946, y: 0.8664756, z: -0.37812984, w: -0.31521964}
-  m_LocalPosition: {x: 213.45483, y: 47.568485, z: 752.38495}
+  m_LocalRotation: {x: 0.09459786, y: 0.17397931, z: -0.016793072, w: 0.9800512}
+  m_LocalPosition: {x: -0.23588192, y: 2.312757, z: -4.3027935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5073,7 +5073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  collider: {fileID: 0}
+  capscollider: {fileID: 737831826778346706}
 --- !u!4 &5486272708104702818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4502165957148481221, guid: 3617e4093ca8d5145986d37c89cfd692,

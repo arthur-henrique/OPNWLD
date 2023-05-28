@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  collider: {fileID: 764529630}
+  capscollider: {fileID: 764529630}
 --- !u!136 &764529630
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -355,6 +355,21 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 764529629}
+    - target: {fileID: 6615914731920187708, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.23587036
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615914731920187708, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3127518
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615914731920187708, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.3027954
+      objectReference: {fileID: 0}
     - target: {fileID: 6789542129566414776, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -388,17 +403,17 @@ PrefabInstance:
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.4399414
+      value: -0.23587036
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.6574554
+      value: 2.3127518
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.4788513
+      value: -4.3027954
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129621014117, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
