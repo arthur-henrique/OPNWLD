@@ -71,6 +71,15 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""627f2f14-b0ec-4d47-924f-73ed67b526e1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -205,6 +214,17 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37e0a122-d270-4c6f-9205-335c4ca99b07"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -310,6 +330,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Aim = m_Movement.FindAction("Aim", throwIfNotFound: true);
         m_Movement_Attack = m_Movement.FindAction("Attack", throwIfNotFound: true);
+        m_Movement_Heal = m_Movement.FindAction("Heal", throwIfNotFound: true);
         // FreeLookCamera
         m_FreeLookCamera = asset.FindActionMap("FreeLookCamera", throwIfNotFound: true);
         m_FreeLookCamera_MouseLookXY = m_FreeLookCamera.FindAction("MouseLookXY", throwIfNotFound: true);
@@ -378,6 +399,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Jump;
     private readonly InputAction m_Movement_Aim;
     private readonly InputAction m_Movement_Attack;
+    private readonly InputAction m_Movement_Heal;
     public struct MovementActions
     {
         private @PlayerController m_Wrapper;
@@ -387,6 +409,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
         public InputAction @Aim => m_Wrapper.m_Movement_Aim;
         public InputAction @Attack => m_Wrapper.m_Movement_Attack;
+        public InputAction @Heal => m_Wrapper.m_Movement_Heal;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -411,6 +434,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnAttack;
+                @Heal.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnHeal;
+                @Heal.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnHeal;
+                @Heal.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnHeal;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -430,6 +456,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
             }
         }
     }
@@ -482,6 +511,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
     public interface IFreeLookCameraActions
     {

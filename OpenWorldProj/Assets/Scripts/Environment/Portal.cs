@@ -7,8 +7,13 @@ public class Portal : MonoBehaviour
 {
     [SerializeField] string sceneToLoad;
     [SerializeField] Transform safePos;
+    [SerializeField] GameManager gameManager;
     public bool isPortalToMainScene;
 
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -18,9 +23,8 @@ public class Portal : MonoBehaviour
             {
 
                 other.GetComponentInParent<PlayerManager>().SetReturnCoordinates(safePos);
-                print("HasSet");
             }
-            SceneManager.LoadScene(sceneToLoad);
+            gameManager.LevelTransfer(sceneToLoad);
         }
     }
 }

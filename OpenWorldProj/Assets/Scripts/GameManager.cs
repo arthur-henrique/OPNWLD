@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
-public class GameManager : MonoBehaviour, IObserver
+public class GameManager : MonoBehaviour
 {
+    [SerializeField] Animator transitionAnimator;
     [SerializeField] PlayerMovement player;
     private PlayerController playerC;
 
     public bool hasSword, hasSling;
     public GameObject swordModel, sideSlingModel;
+
+    
 
     void Start()
     {
@@ -41,13 +45,20 @@ public class GameManager : MonoBehaviour, IObserver
 
     }
     
-    public void OnNotifyDamage(float damage)
+    public void LevelTransfer(string scene)
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(WaitToLoad(scene));
+        transitionAnimator.SetTrigger("FADETOBLACK");
+    }
+    public void ClearUp()
+    {
+        transitionAnimator.SetTrigger("CLEARUP");
     }
 
-    public void OnNotifyDeath()
+    IEnumerator WaitToLoad(string scene)
     {
-        throw new System.NotImplementedException();
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene(scene);
     }
+    
 }

@@ -7,11 +7,12 @@ using Cinemachine;
 public class PlayerMovement : MonoBehaviour
 {
     // Components
-    [SerializeField]CharacterController _characterController;
+    [SerializeField] CharacterController _characterController;
     [SerializeField] public PlayerController inputActions;
-    [SerializeField]Animator _anim;
-    [SerializeField]ObjectGen objectGen;
+    [SerializeField] Animator _anim;
+    [SerializeField] ObjectGen objectGen;
     [SerializeField] PlayerCombat combat;
+    [SerializeField] PlayerManager playerManager;
     public CinemachineVirtualCamera followCam, aimCam;
 
     // Animation Hashes
@@ -72,6 +73,10 @@ public class PlayerMovement : MonoBehaviour
 
     // 3D Models
     public GameObject weapon, sling, weaponDes, slingDes;
+
+    // Healing
+    bool isHealPressed;
+    bool isHealing;
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -97,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
         inputActions.Movement.Attack.canceled += OnAttack;
         inputActions.Movement.Aim.started += OnAim;
         inputActions.Movement.Aim.canceled += OnAim;
+        inputActions.Movement.Heal.started += OnHeal;
+        inputActions.Movement.Heal.canceled += OnHeal;
 
 
         SetUpJumpVariables();
@@ -135,6 +142,10 @@ public class PlayerMovement : MonoBehaviour
     void OnAim(InputAction.CallbackContext context)
     {
         isAimingPressed = context.ReadValueAsButton();
+    }
+    void OnHeal(InputAction.CallbackContext context)
+    {
+        isHealPressed= context.ReadValueAsButton();
     }
 
     void SetUpJumpVariables()
@@ -343,7 +354,7 @@ public class PlayerMovement : MonoBehaviour
         //GameObject arrow = Instantiate(arrowPrefab, spawnPoint.position, Quaternion.identity);
         //arrow.GetComponent<Rigidbody>().AddForce(transform.forward * 25f, ForceMode.Impulse);
         RaycastHit hit;
-        if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity ))
+        if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 15f ))
         {
             objectGen.OnShoot(spawnPoint.position, hit.point, true);
         }
@@ -357,7 +368,14 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Shoot");
     }
 
+    public void HandleHeal()
+    {
+        if(isHealPressed && !isHealing)
+        {
+            isHealing = true;
 
+        }
+    }
 
     IEnumerator JumpResetRoutine()
     {
