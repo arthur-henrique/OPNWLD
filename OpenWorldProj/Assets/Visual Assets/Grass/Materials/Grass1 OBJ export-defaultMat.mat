@@ -97,6 +97,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EmissionIntensity_Grass: 0.42
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 0

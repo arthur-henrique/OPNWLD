@@ -3,7 +3,12 @@ guid: 262403fc07e40244ba05f4e86fbe25c4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ancient_Tiles.002
+    second: {fileID: 2100000, guid: 9469578cdc14fd14db3304f833ffe679, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
