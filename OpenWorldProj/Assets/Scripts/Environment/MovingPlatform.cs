@@ -17,7 +17,7 @@ public class MovingPlatform : MonoBehaviour
 
     private float _timeToWaypoint;
     private float _elapsedTime;
-
+    private Transform originalParent;
     void Start()
     {
         TargetNextWaypoint();
@@ -52,11 +52,13 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        originalParent = other.transform.parent;
         other.transform.SetParent(transform);
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.transform.SetParent(null);
+        other.transform.SetParent(originalParent);
     }
 }
