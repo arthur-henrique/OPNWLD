@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Attacking
     bool isAttackPressed = false;
-    bool isAttackPerforming = false;
+    public bool isAttackPerforming = false;
     bool canAttack = true;
 
     // Aiming
@@ -413,7 +413,7 @@ public class PlayerMovement : MonoBehaviour
         cameraRelativeMovement = forwardRelativeMovement + rightRelativeMovement;
         
         cameraRelativeMovement.y = moveVector.y;
-        if(_characterController.enabled)
+        if(_characterController.enabled && !isAttackPerforming)
             _characterController.Move(cameraRelativeMovement * Time.deltaTime);
     }
 
@@ -453,6 +453,14 @@ public class PlayerMovement : MonoBehaviour
     {
         _characterController.enabled = true;
 
+    }
+    public void SetAttackPerformingTrue()
+    {
+        isAttackPerforming = true;
+    }
+    public void SetAttackPerformingFalse()
+    {
+        isAttackPerforming = false;
     }
     private void OnApplicationFocus(bool focus)
     {

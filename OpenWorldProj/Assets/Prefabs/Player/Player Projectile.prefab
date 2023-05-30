@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7682206808127674865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af2b9431eb76e94ca6024aa1e86bf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 25
+  projectileSpeed: 75
   timeToDeactivate: 5
   damage: 5
 --- !u!54 &-5591399818510402896

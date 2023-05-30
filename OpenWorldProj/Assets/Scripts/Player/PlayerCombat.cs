@@ -11,6 +11,7 @@ public class PlayerCombat : MonoBehaviour
     public int comboCounter;
 
     [SerializeField] Weapon weapon;
+    [SerializeField] PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class PlayerCombat : MonoBehaviour
             if(Time.time - lastClickedTime >= combo[comboCounter].minTime)
             {
                 anim.runtimeAnimatorController = combo[comboCounter].animOC;
+                playerMovement.SetAttackPerformingTrue();
                 anim.Play("Attack", 0, 0);
                 weapon.damage = combo[comboCounter].damage;
                 comboCounter++;
@@ -44,6 +46,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
         {
+            playerMovement.SetAttackPerformingFalse();
             Invoke("EndCombo", 1);
         }
 
