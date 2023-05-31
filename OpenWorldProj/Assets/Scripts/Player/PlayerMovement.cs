@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     // Aiming
     bool isAimingPressed = false;
     bool isAiming = false;
+    Vector3 centerOfScreen;
 
     // Arrow - To remove later
     public GameObject arrowPrefab;
@@ -354,7 +355,7 @@ public class PlayerMovement : MonoBehaviour
         //GameObject arrow = Instantiate(arrowPrefab, spawnPoint.position, Quaternion.identity);
         //arrow.GetComponent<Rigidbody>().AddForce(transform.forward * 25f, ForceMode.Impulse);
         RaycastHit hit;
-        if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 15f ))
+        if(Physics.Raycast(cameraTransform.position, centerOfScreen, out hit, 15f ))
         {
             objectGen.OnShoot(spawnPoint.position, hit.point, true);
         }
@@ -421,6 +422,7 @@ public class PlayerMovement : MonoBehaviour
     {
         weaponDes.SetActive(false);
         sling.SetActive(false);
+        centerOfScreen = new Vector3(Screen.width / 2, Screen.height / 2, zero);
     }
 
     private void Update()
