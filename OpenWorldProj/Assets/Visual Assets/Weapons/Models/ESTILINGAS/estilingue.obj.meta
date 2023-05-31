@@ -3,7 +3,17 @@ guid: 9533a306d62d42941b39f2b1da2ff068
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MADERA
+    second: {fileID: 2100000, guid: 2477e585ed716754f810bdb7d4cdf14b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: buracha
+    second: {fileID: 2100000, guid: 546d783e80d97184eb4ba09c4e262efe, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -47,7 +57,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
