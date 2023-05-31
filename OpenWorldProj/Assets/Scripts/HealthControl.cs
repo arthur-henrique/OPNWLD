@@ -27,12 +27,12 @@ public class HealthControl : ObservableSubject
             else if (isPlayer && other.gameObject.layer == 10)
             {
                 Debug.LogWarning("PlayerShot");
-                //float damage = damageDealer.DealDamage();
-                //health -= damage;
-                //if (health > 0)
-                //{
-                //    NotifyDamage(damage);
-                //}
+                float damage = damageDealer.DealDamage();
+                health -= damage;
+                if (health > 0)
+                {
+                    NotifyDamage(damage);
+                }
                 //else if (health <= 0f)
                 //    NotifyDeath();
             }
