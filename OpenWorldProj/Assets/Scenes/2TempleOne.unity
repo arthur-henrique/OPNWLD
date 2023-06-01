@@ -422,7 +422,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _waypointPath
       value: 
-      objectReference: {fileID: 518563705}
+      objectReference: {fileID: 842315782}
     - target: {fileID: 5169194031067988894, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
         type: 3}
       propertyPath: m_Name
