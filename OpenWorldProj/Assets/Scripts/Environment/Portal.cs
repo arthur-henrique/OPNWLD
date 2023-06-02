@@ -18,7 +18,6 @@ public class Portal : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerMovement>().DisableController();
             if(isPortalToMainScene)
             {
 

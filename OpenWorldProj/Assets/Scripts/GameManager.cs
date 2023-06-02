@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     
     public void LevelTransfer(string scene)
     {
+        StartCoroutine(WaitToDisable());
         StartCoroutine(WaitToLoad(scene));
         transitionAnimator.SetTrigger("FADETOBLACK");
     }
@@ -59,6 +60,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene(scene);
+    }
+
+    IEnumerator WaitToDisable()
+    {
+        yield return new WaitForSeconds(0.15f);
+        player.DisableController();
     }
     
 }

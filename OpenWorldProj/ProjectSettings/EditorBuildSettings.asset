@@ -11,12 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1MainScene.unity
     guid: cdbbc5ec56faacb4bba9d83445f708c3
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/2TempleOne.unity
     guid: a89da6d2de251b64e82c5a736e100197
+  - enabled: 1
+    path: Assets/Scenes/3TempleTwo.unity
+    guid: 242418c1d7154df46ba07364b3fd792e
   - enabled: 0
     path: Assets/Scenes/Oficina da Prog.unity
     guid: 99c9720ab356a0642a771bea13969a05
