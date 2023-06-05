@@ -8,6 +8,7 @@ public class PatrollState : StateMachineBehaviour
     float timer;
     List<Transform> wayPoints = new List<Transform>();
     NavMeshAgent agent;
+    Transform pontoInicial;
     Transform player;
     public float chaseRange = 8;
     Vector3 currentPosition;
@@ -15,16 +16,18 @@ public class PatrollState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        pontoInicial = animator.gameObject.transform;
         agent = animator.GetComponent<NavMeshAgent>();
+        wayPoints.Add(pontoInicial);
         timer = 0;
         currentPosition = animator.GetComponent<Transform>().position;
-        agent.speed = 2f;
+        agent.speed = 4f;
         GameObject go = GameObject.FindGameObjectWithTag("WayPoints");
         foreach(Transform t in go.transform)
         {
             wayPoints.Add(t);
         }
-        agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
+        agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count -1 )].position);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
