@@ -8,6 +8,7 @@ public class ChaseState : StateMachineBehaviour
     NavMeshAgent agent;
     Transform player;
     public float chaseRange;
+    public float attackRange = 3.5f;
     Animator anim;
     Vector3 currentPosition;
     
@@ -32,7 +33,7 @@ public class ChaseState : StateMachineBehaviour
         {
             anim.SetBool("isChasing", false);
         }
-        if (distance < 3.5)
+        if (distance < attackRange)
         {
             animator.SetBool("isAttacking", true);
         }

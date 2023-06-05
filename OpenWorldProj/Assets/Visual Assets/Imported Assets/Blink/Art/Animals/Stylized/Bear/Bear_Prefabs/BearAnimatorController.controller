@@ -575,3 +575,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRange: 20
+  attackRange: 3.5
