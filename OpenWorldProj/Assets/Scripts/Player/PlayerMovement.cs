@@ -78,6 +78,10 @@ public class PlayerMovement : MonoBehaviour
     // Healing
     bool isHealPressed;
     bool isHealing;
+
+    //Inventario
+    public Inventory inventory;
+    public GameObject hand;
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -423,6 +427,18 @@ public class PlayerMovement : MonoBehaviour
         weaponDes.SetActive(false);
         sling.SetActive(false);
         centerOfScreen = new Vector3(Screen.width / 2, Screen.height / 2, zero);
+        inventory.ItemUsed += Inventory_ItemUsed;
+    }
+
+    private void Inventory_ItemUsed(object sender, InventoryEventsArgs e)
+    {
+        IInventoryItem item = e.Item;
+        GameObject goItem = (item as MonoBehaviour).gameObject;
+        goItem.SetActive(true);
+
+        goItem.transform.parent = hand.transform;
+        goItem.transform.position = hand.transform.position;
+
     }
 
     private void Update()
@@ -475,5 +491,13 @@ public class PlayerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
     }
-
+   
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
+        if(item != null)
+        {
+            inventory.AddItem(item);
+        }
+    }
 }
