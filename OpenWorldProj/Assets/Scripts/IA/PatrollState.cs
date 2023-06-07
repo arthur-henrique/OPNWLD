@@ -8,6 +8,7 @@ public class PatrollState : StateMachineBehaviour
     float timer;
     List<Transform> wayPoints = new List<Transform>();
     NavMeshAgent agent;
+    
     Transform pontoInicial;
     Transform player;
     public float chaseRange = 8;
@@ -17,29 +18,26 @@ public class PatrollState : StateMachineBehaviour
     {
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        pontoInicial = GameObject.FindGameObjectWithTag("WayPointInicial").transform;
         agent = animator.GetComponent<NavMeshAgent>();
-        wayPoints.Add(pontoInicial);
         timer = 0;
-        currentPosition = animator.GetComponent<Transform>().position;
-        agent.speed = 4f;
-        GameObject go = GameObject.FindGameObjectWithTag("WayPoints");
-        foreach(Transform t in go.transform)
-        {
-            wayPoints.Add(t);
-        }
-        agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count -1 )].position);
+        //pontoInicial = GameObject.FindGameObjectWithTag("WayPointInicial").transform;
+        //wayPoints.Add(pontoInicial);
+        //currentPosition = animator.GetComponent<Transform>().position;
+        //agent.speed = 4f;
+        //GameObject go = GameObject.FindGameObjectWithTag("WayPoints");
+        //foreach(Transform t in go.transform)
+        //{
+        //    wayPoints.Add(t);
+        //}
+        //agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count -1 )].position);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(agent.remainingDistance <= agent.stoppingDistance)
-        {
-           agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
-        }
+       
         timer += Time.deltaTime;
-        if (timer > 5)
+        if (timer > 20)
         {
             animator.SetBool("isPatrolling", false);
         }
