@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : ObservableSubject
 {
-    [SerializeField] PlayerMovement player;
+    public static PlayerManager instance;
+    [SerializeField] public PlayerMovement player;
     [SerializeField] private Transform whereToSpawnAtOverworld;
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject playerObj;
@@ -20,6 +21,7 @@ public class PlayerManager : ObservableSubject
     {
         DontDestroyOnLoad(gameObject);
         pos = transform.position;
+        instance = this;
     }
 
     public void SetReturnCoordinates(Transform safePos)

@@ -556,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c0c85aacc992e438aef0cdd405d91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 40
+  chaseRange: 20
   attackRange: 30
 --- !u!1102 &9099257069351438174
 AnimatorState:

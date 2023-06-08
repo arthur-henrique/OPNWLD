@@ -51,6 +51,10 @@ public class BaseMonsterAI : MonoBehaviour
         podePatrulhar = true;
     }
 
+    public void Death()
+    {
+        Destroy(gameObject, 1.5f);
+    }
     
 }
 

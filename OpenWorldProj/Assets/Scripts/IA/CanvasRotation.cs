@@ -9,6 +9,7 @@ public class CanvasRotation : MonoBehaviour
     // Update is called once per frame
     private void LateUpdate()
     {
+        cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
         transform.LookAt(cam);
     }
 }
