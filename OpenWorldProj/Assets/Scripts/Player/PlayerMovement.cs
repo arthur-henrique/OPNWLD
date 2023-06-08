@@ -359,7 +359,7 @@ public class PlayerMovement : MonoBehaviour
         //GameObject arrow = Instantiate(arrowPrefab, spawnPoint.position, Quaternion.identity);
         //arrow.GetComponent<Rigidbody>().AddForce(transform.forward * 25f, ForceMode.Impulse);
         RaycastHit hit;
-        if(Physics.Raycast(cameraTransform.position, centerOfScreen, out hit, 15f ))
+        if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 60f ))
         {
             objectGen.OnShoot(spawnPoint.position, hit.point, true);
         }
