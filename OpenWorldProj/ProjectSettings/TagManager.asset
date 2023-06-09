@@ -12,6 +12,7 @@ TagManager:
   - EnemyArrow
   - GameManager
   - WayPointInicial
+  - item
   layers:
   - Default
   - TransparentFX
