@@ -64,6 +64,10 @@ public class ObjectPooling : MonoBehaviour
 
         // Pega o objeto da fila
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+        objectToSpawn.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        objectToSpawn.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        objectToSpawn.GetComponent<Rigidbody>().useGravity = false;
+        objectToSpawn.GetComponent<Projectile>().hasReach = false;
 
         // Ativa o objeto
         objectToSpawn.SetActive(true);

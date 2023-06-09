@@ -21,6 +21,6 @@ public class ObjectGen : MonoBehaviour
     public void OnShoot(Vector3 whereToSpawn, Vector3 forward, bool hasHit)
     {
         randomRot = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f));
-        objPooler.spawnFromPool(pool, whereToSpawn, forward, hasHit, randomRot);
+        objPooler.spawnFromPool(pool, whereToSpawn, forward, hasHit, Quaternion.identity);
     }
 }

@@ -1410,7 +1410,7 @@ PrefabInstance:
     - target: {fileID: 465856817414360793, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.004547119
+      value: -0.0045166016
       objectReference: {fileID: 0}
     - target: {fileID: 465856817414360793, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -2011,6 +2011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309257602109480765, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
+        type: 3}
+      propertyPath: pool
+      value: PlayerArrow
       objectReference: {fileID: 0}
     - target: {fileID: 5309257602109480766, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}

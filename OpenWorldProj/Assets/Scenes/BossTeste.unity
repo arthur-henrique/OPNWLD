@@ -3291,12 +3291,12 @@ PrefabInstance:
     - target: {fileID: 6615914731920187708, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7636612
+      value: 0.76366127
       objectReference: {fileID: 0}
     - target: {fileID: 6615914731920187708, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.4264686
+      value: -2.4264684
       objectReference: {fileID: 0}
     - target: {fileID: 6615914731920187708, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -3391,12 +3391,12 @@ PrefabInstance:
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7636612
+      value: 0.76366127
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.4264686
+      value: -2.4264684
       objectReference: {fileID: 0}
     - target: {fileID: 6789542129621014116, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -4306,8 +4306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e74b7260042a8b4388089ab47424236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 1710282661}
-  dragHandler: {fileID: 2098008078}
 --- !u!114 &1391636672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4499,7 +4497,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551848198}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.852594, y: 3.65, z: -8.6261425}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
@@ -4508,7 +4506,7 @@ Transform:
   - {fileID: 1623514538}
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1551848203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4628,8 +4626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5de10e08e255bd418c507c4238d6666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Inventory: {fileID: 1710282661}
-  numeroDeItems: {fileID: 0}
 --- !u!114 &1702419538
 MonoBehaviour:
   m_ObjectHideFlags: 0

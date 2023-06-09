@@ -11,45 +11,61 @@ public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
     private float timeToDeactivate = 5f;
     private Animator projectileAnim;
     private SphereCollider spherecollider;
+    private Rigidbody body;
     public Vector3 target { get;  set; }
     private Vector3 beyond;
     public bool hit { get; set; }
 
     [SerializeField]
     private float damage;
-
+    public bool hasReach = false;
     void Start()
     {
+        body = GetComponent<Rigidbody>();
+        hasReach = false;
         projectileAnim = GetComponent<Animator>();
         spherecollider = GetComponent<SphereCollider>();
         beyond = new (2f, 1f, 2f);
+        
     }
     public void OnObjectSpawn(Vector3 forward, bool hasHit)
     {
         if(!hasHit)
-            GetComponent<Rigidbody>().AddForce(forward * projectileSpeed/55, ForceMode.Impulse);
+            body.AddForce(forward * projectileSpeed/55, ForceMode.Impulse);
         target = forward;
         hit = hasHit;
         StartCoroutine(Deactivate());
     }
     void Update()
     {
+
+        // Ensure that the target is not null
+        if (target != null)
+        {
+            // Calculate the direction from the current position to the target position
+            Vector3 direction = target - transform.position;
+
+            // Rotate the object to face the target
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
+    
         if (hit)
         {
             Vector3 currentPosition = transform.position;
             Vector3 newPosition = currentPosition + (target - currentPosition).normalized * projectileSpeed * Time.deltaTime;
 
-            RaycastHit raycastHit;
-            if (Physics.Linecast(currentPosition, newPosition, out raycastHit))
+            if (Vector3.Distance(currentPosition, target) <= (projectileSpeed * Time.deltaTime))
             {
-                // Calculate the reflection vector based on the surface normal of the hit
-                Vector3 reflectionDirection = Vector3.Reflect(newPosition - currentPosition, raycastHit.normal);
-
-                // Move the projectile along the reflection direction
-                newPosition = raycastHit.point + reflectionDirection.normalized * projectileSpeed * Time.deltaTime;
+                hasReach = true;
+                // The projectile has reached or surpassed the target position
+                body.useGravity = true;
+                body.AddForce(transform.forward, ForceMode.Impulse);
             }
 
-            transform.position = newPosition;
+            if(!hasReach)
+            {
+                transform.position = newPosition;
+            }
         }
 
         if (!hit)
