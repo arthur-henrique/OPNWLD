@@ -1738,12 +1738,12 @@ PrefabInstance:
     - target: {fileID: 1895338893850306514, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: hasSling
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1895338893850306514, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: hasSword
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1895338893850306514, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -2256,6 +2256,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5368140903756808387, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
+        type: 3}
+      propertyPath: canvasMorte
+      value: 
+      objectReference: {fileID: 467610055}
     - target: {fileID: 5429010416292778795, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -6,6 +6,7 @@ public class HealthControl : ObservableSubject
 {
     [SerializeField] private bool isPlayer = false;
     public float health = 100f;
+    public GameObject canvasMorte;
     
 
     private void OnTriggerEnter(Collider other)
@@ -33,8 +34,13 @@ public class HealthControl : ObservableSubject
                 {
                     NotifyDamage(damage);
                 }
-                //else if (health <= 0f)
-                //    NotifyDeath();
+                else if (health <= 0f)
+                {
+                    NotifyDeath();
+                    canvasMorte.SetActive(true);
+
+                }
+                  
             }
             //else
             //{
