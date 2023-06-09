@@ -13,6 +13,7 @@ public class DeathController : MonoBehaviour
         player.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         PlayerManager.instance.player.DisableController();
+        Time.timeScale = 0;
     }
     public void Respawn()
     {
@@ -20,6 +21,7 @@ public class DeathController : MonoBehaviour
         canvasPlayer.SetActive(true);
         player.SetActive(true);
         gameObject.SetActive(false);
+        Time.timeScale = 1;
         PlayerManager.instance.Respawn();
 
 
@@ -30,6 +32,7 @@ public class DeathController : MonoBehaviour
     {
         //SceneManager.LoadScene("MainMenu");
         gameObject.SetActive(false);
+        Time.timeScale = 1;
         PlayerManager.instance.player.EnableController();
     }
 }

@@ -18,6 +18,9 @@ public class BaseMonsterAI : MonoBehaviour
     [SerializeField]
     bool podePatrulhar = true;
     public GameObject spawnDoItem;
+    public CapsuleCollider capsule;
+
+     
 
 
     public GameObject itemDrop;
@@ -69,6 +72,15 @@ public class BaseMonsterAI : MonoBehaviour
             
     }
 
+    public void AtivarCollider()
+    {
+        capsule.enabled = true;
+    }
+
+    public void DesativarCollider()
+    {
+        capsule.enabled = false;
+    }
 }
 
 
