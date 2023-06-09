@@ -18,6 +18,9 @@ public class BaseMonsterAI : MonoBehaviour
     [SerializeField]
     bool podePatrulhar = true;
 
+
+    public GameObject itemDrop;
+
     public void Shoot()
     {
       Rigidbody rb =   Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
@@ -53,9 +56,18 @@ public class BaseMonsterAI : MonoBehaviour
 
     public void Death()
     {
-        Destroy(gameObject, 1.5f);
+        StartCoroutine(Destruir());
     }
-    
+    IEnumerator Destruir()
+    {
+        yield return new WaitForSeconds(1.5f);
+       
+         Instantiate(itemDrop, gameObject.transform.position, gameObject.transform.rotation);
+        
+        Destroy(gameObject,0.4f);
+            
+    }
+
 }
 
 
