@@ -7,6 +7,7 @@ public class BossyAI : MonoBehaviour
     [SerializeField] public Transform player;
 
     // Boss state machine
+    [SerializeField]
     private BossState currentState;
 
     // NavMesh
@@ -19,6 +20,11 @@ public class BossyAI : MonoBehaviour
     // Timers
     [SerializeField] float attackTimer;
     [SerializeField] float attackDuration;
+
+    // Checkers
+    public bool isAttacking;
+    public bool alternateShot = false;
+
 
     // Distances
     public float chaseDistanceThreshold = 10f; // Adjust the value as needed
@@ -42,6 +48,8 @@ public class BossyAI : MonoBehaviour
     {
         // Update the current state
         currentState.UpdateState();
+        attackTimer += Time.deltaTime;
+
     }
 
     // Method to transition to a new state

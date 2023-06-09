@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
     private Animator projectileAnim;
     private SphereCollider spherecollider;
     public Vector3 target { get;  set; }
+    private Vector3 beyond;
     public bool hit { get; set; }
 
     [SerializeField]
@@ -21,6 +22,7 @@ public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
     {
         projectileAnim = GetComponent<Animator>();
         spherecollider = GetComponent<SphereCollider>();
+        beyond = new (2f, 1f, 2f);
     }
     public void OnObjectSpawn(Vector3 forward, bool hasHit)
     {
@@ -32,10 +34,25 @@ public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
     }
     void Update()
     {
-        if(hit)
-            transform.position = Vector3.MoveTowards(transform.position, target, projectileSpeed * Time.deltaTime);
+        if (hit)
+        {
+            Vector3 currentPosition = transform.position;
+            Vector3 newPosition = currentPosition + (target - currentPosition).normalized * projectileSpeed * Time.deltaTime;
 
-        if(!hit)
+            RaycastHit raycastHit;
+            if (Physics.Linecast(currentPosition, newPosition, out raycastHit))
+            {
+                // Calculate the reflection vector based on the surface normal of the hit
+                Vector3 reflectionDirection = Vector3.Reflect(newPosition - currentPosition, raycastHit.normal);
+
+                // Move the projectile along the reflection direction
+                newPosition = raycastHit.point + reflectionDirection.normalized * projectileSpeed * Time.deltaTime;
+            }
+
+            transform.position = newPosition;
+        }
+
+        if (!hit)
         {
             //projectileAnim.SetBool("shrink", true);
             spherecollider.isTrigger = false;

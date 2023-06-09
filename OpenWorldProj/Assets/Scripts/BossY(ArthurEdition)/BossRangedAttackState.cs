@@ -2,38 +2,51 @@ using UnityEngine;
 
 public class BossRangedAttackState : BossState
 {
-    private bool alternateShot = false;
     public BossRangedAttackState(BossyAI bossAI) : base(bossAI)
     {
     }
 
     public override void UpdateState()
     {
-        // Add ranged attack behavior here
-        // Example: Shoot projectiles at the player
-        if (!alternateShot)
+        if(!bossAI.isAttacking)
         {
-            // Shoot projectile towards the player's direction
-            Vector3 playerDirection = bossAI.player.position - bossAI.transform.position;
-            bossAI.ShootProjectile(playerDirection);
-        }
-        else
-        {
-            // Shoot two projectiles slightly in front and behind the player's position
-            Vector3 playerPosition = bossAI.player.position;
-            Vector3 offset = bossAI.transform.right; // Offset direction from boss's right side
+            Vector3 yCompensation = new Vector3(0f, 1f, 0f);
+            bossAI.isAttacking = true;
 
-            bossAI.ShootProjectile(playerPosition + offset);
-            bossAI.ShootProjectile(playerPosition - offset);
-
-            // Transition back to the Chase state when the attack is complete
-            if (bossAI.AttackComplete())
+            // Add ranged attack behavior here
+            // Example: Shoot projectiles at the player
+            if (!bossAI.alternateShot)
             {
-                // Toggle the alternate shot flag for the next attack
-                alternateShot = !alternateShot;
-
-                bossAI.TransitionToState(new BossChaseState(bossAI));
+                // Shoot projectile towards the player's direction
+                Vector3 playerDirection = bossAI.player.position + yCompensation;
+                //Debug.Log(playerDirection);
+                bossAI.ShootProjectile(playerDirection);
             }
+            else
+            {
+                // Shoot two projectiles slightly in front and behind the player's position
+                Vector3 playerPosition = bossAI.player.position + yCompensation;
+                Vector3 offset = bossAI.transform.right; // Offset direction from boss's right side
+                //Debug.Log("duo");
+
+                bossAI.ShootProjectile(playerPosition + offset);
+                bossAI.ShootProjectile(playerPosition - offset);
+
+            }
+
+            
         }
+
+        // Transition back to the Chase state when the attack is complete
+        if (bossAI.AttackComplete())
+        {
+            // Toggle the alternate shot flag for the next attack
+            bossAI.alternateShot = !bossAI.alternateShot;
+
+            bossAI.TransitionToState(new BossChaseState(bossAI));
+            bossAI.isAttacking = false;
+
+        }
+
     }
 }

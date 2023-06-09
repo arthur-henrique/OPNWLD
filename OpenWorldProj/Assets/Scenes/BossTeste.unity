@@ -2887,6 +2887,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5309257602109480765, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
+        type: 3}
+      propertyPath: pool
+      value: PlayerArrow
+      objectReference: {fileID: 0}
     - target: {fileID: 5309257602109480766, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_RootOrder
@@ -2906,7 +2911,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pools.Array.data[1].prefab
       value: 
-      objectReference: {fileID: 7682206808127674865, guid: a2e72f9dcaf48f94e8909bbe7ee65364,
+      objectReference: {fileID: 7682206808127674865, guid: f952a2c8b710b3a41b81eaa5b440aa5c,
         type: 3}
     - target: {fileID: 5309257602109480767, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -4520,7 +4525,9 @@ MonoBehaviour:
   attackCooldownTime: 0
   attackCooldownDuration: 1.5
   attackTimer: 0
-  attackDuration: 1
+  attackDuration: 2
+  isAttacking: 0
+  alternateShot: 0
   chaseDistanceThreshold: 10
   meleeDistanceThreshold: 2
   objectGen: {fileID: 1399812535}
