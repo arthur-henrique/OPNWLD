@@ -17,6 +17,7 @@ public class BaseMonsterAI : MonoBehaviour
     public bool walkPointSet;
     [SerializeField]
     bool podePatrulhar = true;
+    public GameObject spawnDoItem;
 
 
     public GameObject itemDrop;
@@ -24,8 +25,8 @@ public class BaseMonsterAI : MonoBehaviour
     public void Shoot()
     {
       Rigidbody rb =   Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 30, ForceMode.Impulse);
-        rb.AddForce(transform.up * 7, ForceMode.Impulse);
+        rb.AddForce(PlayerManager.instance.player.transform.position , ForceMode.Impulse);
+        rb.AddForce(PlayerManager.instance.player.transform.position *10, ForceMode.Impulse);
     }
 
     public void EscolherPontoPatrol()
@@ -62,7 +63,7 @@ public class BaseMonsterAI : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
        
-         Instantiate(itemDrop, gameObject.transform.position, gameObject.transform.rotation);
+         Instantiate(itemDrop, spawnDoItem.transform.position, gameObject.transform.rotation);
         
         Destroy(gameObject,0.4f);
             

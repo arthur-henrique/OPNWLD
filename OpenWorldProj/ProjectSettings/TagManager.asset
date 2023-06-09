@@ -13,6 +13,7 @@ TagManager:
   - GameManager
   - WayPointInicial
   - item
+  - itemInicial
   layers:
   - Default
   - TransparentFX

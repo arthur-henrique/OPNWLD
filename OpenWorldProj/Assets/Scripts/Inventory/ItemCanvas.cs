@@ -5,13 +5,13 @@ using UnityEngine;
 public class ItemCanvas : MonoBehaviour
 {
     public GameObject canvas;
-    Collider collider;
+    Collider colliderObj;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            collider = gameObject.GetComponent<Collider>();
-            collider.enabled = false;
+            colliderObj = gameObject.GetComponent<Collider>();
+            colliderObj.enabled = false;
             canvas.SetActive(true);
             
         }
