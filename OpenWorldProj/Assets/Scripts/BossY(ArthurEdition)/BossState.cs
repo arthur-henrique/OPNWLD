@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEngine;
 public abstract class BossState
 {
     protected BossyAI bossAI;
