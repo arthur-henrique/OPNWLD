@@ -774,7 +774,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6645a3db55ef0c478638eaddedb98ff, type: 2}
+  - {fileID: 2100000, guid: c8a253bc1d9e7814a87d01583a336bd9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1030,6 +1030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   health: 60
+  canvasMorte: {fileID: 0}
 --- !u!1 &4344787801417793763
 GameObject:
   m_ObjectHideFlags: 0
