@@ -28,6 +28,7 @@ public class PlayerManager : ObservableSubject
     {
         whereToSpawnAtOverworld = safePos;
         pos = whereToSpawnAtOverworld.position;
+        
     }
     public void SetTempleCoordinates()
     {
