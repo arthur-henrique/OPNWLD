@@ -28,6 +28,7 @@ public class BossyAI : MonoBehaviour
     // Checkers
     public bool isAttacking;
     public bool alternateShot = false;
+    public bool canShoot;
 
 
     // Distances
