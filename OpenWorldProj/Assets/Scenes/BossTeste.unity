@@ -5568,6 +5568,8 @@ MonoBehaviour:
   isAttacking: 0
   alternateShot: 0
   canShoot: 0
+  isTooClose: 0
+  canRotate: 0
   chaseDistanceThreshold: 10
   meleeDistanceThreshold: 2
   meleeAttackRange: 7
@@ -8391,6 +8393,8 @@ MonoBehaviour:
   isAttacking: 0
   alternateShot: 0
   canShoot: 0
+  isTooClose: 0
+  canRotate: 0
   chaseDistanceThreshold: 10
   meleeDistanceThreshold: 2
   meleeAttackRange: 7

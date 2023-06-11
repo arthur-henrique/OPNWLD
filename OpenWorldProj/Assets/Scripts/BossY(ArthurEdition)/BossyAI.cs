@@ -6,6 +6,7 @@ public class BossyAI : MonoBehaviour
 {
     // Reference to the player
     [SerializeField] public Transform player;
+    private Quaternion targetRotation;
 
     // Boss state machine
     private BossState currentState;
@@ -16,6 +17,7 @@ public class BossyAI : MonoBehaviour
     // NavMesh
     public NavMeshAgent agent;
     public float movementSpeed;
+    private float rotationSpeed = 3f;
 
     // Cooldowns
     [SerializeField] float attackCooldownTime;
@@ -29,6 +31,8 @@ public class BossyAI : MonoBehaviour
     public bool isAttacking;
     public bool alternateShot = false;
     public bool canShoot;
+    public bool isTooClose;
+    public bool canRotate;
 
 
     // Distances
@@ -74,9 +78,19 @@ public class BossyAI : MonoBehaviour
             // Calculate the direction from the current position to the target position
             Vector3 direction = player.position - transform.position;
             Vector3 correctedDirection = new Vector3(direction.x, 0f, direction.z);
+            if (!isTooClose)
+            {
+                transform.rotation = Quaternion.LookRotation(correctedDirection);
+            }
+            else if(isTooClose && canRotate)
+            {
+                targetRotation = Quaternion.LookRotation(correctedDirection);
+                StartCoroutine(DelayedRotation());
+            }
+            //Vector3 whereToLook = Vector3.Lerp(transform.forward, correctedDirection, 1.5f * Time.deltaTime);
 
             // Rotate the object to face the target
-            transform.rotation = Quaternion.LookRotation(correctedDirection);
+            
         }
     }
 
@@ -181,9 +195,27 @@ public class BossyAI : MonoBehaviour
     public void ActivateCone()
     {
         coneMesh.enabled = true;
+        canRotate = false;
     }
     public void DeactivateCone()
     {
         coneMesh.enabled = false;
+        canRotate = true;
+        print(canRotate);
     }
+    private IEnumerator DelayedRotation()
+    {
+        canRotate = false;
+
+        yield return new WaitForSeconds(1.2f);
+
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.5f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        canRotate = true;
+    }
+
 }
