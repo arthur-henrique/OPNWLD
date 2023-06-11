@@ -18,6 +18,7 @@ public class BossChaseState : BossState
         if (distanceToPlayer > detectionDistance)
         {
             canShoot = false;
+            bossAI.canLeap = true;
 
             bossAI.TransitionToState(new BossIdleState(bossAI));
             bossAI.anim.SetBool("isPatrolling", true);
@@ -30,6 +31,7 @@ public class BossChaseState : BossState
         {
             canShoot = false;
             bossAI.isTooClose = false;
+            bossAI.canLeap = true;
 
 
             // Calculate the direction towards the player
@@ -55,6 +57,8 @@ public class BossChaseState : BossState
         if (bossAI.ReadyToAttack() && canShoot)
         {
             bossAI.TransitionToState(new BossRangedAttackState(bossAI));
+            bossAI.canLeap = true;
+
         }
         // Transition to the MeleeAttack state when the player gets too close
         else if (Vector3.Distance(bossAI.transform.position, bossAI.player.position) < bossAI.chaseDistanceThreshold)

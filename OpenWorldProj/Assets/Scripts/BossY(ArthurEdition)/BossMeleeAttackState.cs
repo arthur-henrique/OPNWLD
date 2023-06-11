@@ -18,13 +18,16 @@ public class BossMeleeAttackState : BossState
             bossAI.isAttacking = true;
             // Add melee attack behavior here
             // Example: Perform melee attacks on the player
-            if (!hasPerformedLeapAttack)
+            if (bossAI.canLeap)
             {
                 PerformLeapAttack();
-                hasPerformedLeapAttack = true;
+                bossAI.canLeap = false;
             }
 
-            DealConeDamage();
+            if(bossAI.canBite)
+            {
+                DealConeDamage();
+            }
 
             // Additional melee attack logic
 
@@ -43,7 +46,11 @@ public class BossMeleeAttackState : BossState
         // Implement your leap attack logic here
         // This can include moving the boss towards the player with a specific leap distance
         // You can use the bossAI.agent.Move() method or any other movement logic you prefer
-        Debug.Log("Leap");
+        bossAI.canBite = false;
+        Vector3 leapPosition = bossAI.player.position + (bossAI.player.position - bossAI.transform.position).normalized * leapDistance;
+        bossAI.anim.SetTrigger("leap");
+        bossAI.agent.Move(bossAI.movementSpeed * Time.deltaTime * leapPosition);
+        
     }
 
     private void DealConeDamage()

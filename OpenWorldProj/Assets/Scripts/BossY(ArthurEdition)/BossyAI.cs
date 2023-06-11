@@ -32,6 +32,8 @@ public class BossyAI : MonoBehaviour
     public bool alternateShot = false;
     public bool canShoot;
     public bool isTooClose;
+    public bool canLeap;
+    public bool canBite;
     public bool canRotate;
 
 
@@ -49,6 +51,10 @@ public class BossyAI : MonoBehaviour
     public MeshCollider coneMesh;
     public float coneDamage;
 
+    // Leap Cube Attack
+    public BoxCollider cubeMesh;
+    public float leapDamage;
+
 
     private void Start()
     {
@@ -65,9 +71,6 @@ public class BossyAI : MonoBehaviour
         // Update the current state
         currentState.UpdateState();
         attackTimer += Time.deltaTime;
-
-        
-
     }
 
     private void LateUpdate()
@@ -201,7 +204,19 @@ public class BossyAI : MonoBehaviour
     {
         coneMesh.enabled = false;
         canRotate = true;
-        print(canRotate);
+    }
+
+    public void ActivateLeapCube()
+    {
+        cubeMesh.enabled = true;
+        canRotate = false;
+    }
+    public void DeactivateLeapCube()
+    {
+        cubeMesh.enabled = false;
+        canRotate = true;
+        StartCoroutine(DelayToBite());
+
     }
     private IEnumerator DelayedRotation()
     {
@@ -217,5 +232,9 @@ public class BossyAI : MonoBehaviour
 
         canRotate = true;
     }
-
+    private IEnumerator DelayToBite()
+    {
+        yield return new WaitForSeconds(0.35f);
+        canBite = true;
+    }
 }
