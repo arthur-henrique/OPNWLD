@@ -3602,10 +3602,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1793538446, guid: 7ccc408dc5cb5814e95193a9fabd717a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4343675219662646485, guid: 7ccc408dc5cb5814e95193a9fabd717a,
         type: 3}
       propertyPath: m_RootOrder
@@ -3661,42 +3657,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4343859054415644372, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343859054415644372, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343859054871590240, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343859054871590240, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343859055737699047, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: itemDrop
-      value: 
-      objectReference: {fileID: 6570395215007428207, guid: 8060438a3f03848468bbf6748599e055,
-        type: 3}
     - target: {fileID: 4344768086748812599, guid: 7ccc408dc5cb5814e95193a9fabd717a,
         type: 3}
       propertyPath: m_Name
       value: Golem (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4441240288189551195, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d6645a3db55ef0c478638eaddedb98ff, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ccc408dc5cb5814e95193a9fabd717a, type: 3}
 --- !u!1 &1695975653
@@ -4248,10 +4213,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1793538446, guid: 7ccc408dc5cb5814e95193a9fabd717a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4343675219662646485, guid: 7ccc408dc5cb5814e95193a9fabd717a,
         type: 3}
       propertyPath: m_RootOrder
@@ -4307,55 +4268,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4343859054415644372, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343859054415644372, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343859054871590240, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343859054871590240, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 4343859055737699047, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: itemDrop
-      value: 
-      objectReference: {fileID: 6570395215007428207, guid: 8060438a3f03848468bbf6748599e055,
-        type: 3}
-    - target: {fileID: 4343859055737699047, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: spawnDoItem
-      value: 
-      objectReference: {fileID: 1997212974}
     - target: {fileID: 4344768086748812599, guid: 7ccc408dc5cb5814e95193a9fabd717a,
         type: 3}
       propertyPath: m_Name
       value: Golem
       objectReference: {fileID: 0}
-    - target: {fileID: 4441240288189551195, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d6645a3db55ef0c478638eaddedb98ff, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ccc408dc5cb5814e95193a9fabd717a, type: 3}
---- !u!1 &1997212974 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 319522035, guid: 7ccc408dc5cb5814e95193a9fabd717a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1997212973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2042162865
 PrefabInstance:
   m_ObjectHideFlags: 0

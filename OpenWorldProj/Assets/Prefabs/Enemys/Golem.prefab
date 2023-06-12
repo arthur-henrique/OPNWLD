@@ -229,9 +229,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1793538446}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 60
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 60
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -429,6 +429,7 @@ MonoBehaviour:
   _agentHealth: {fileID: 699197843}
   healthSlider: {fileID: 468406741}
   anim: {fileID: 4403015639543849503}
+  isASpecialCase: 0
 --- !u!114 &1388555159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,7 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  health: 60
+  health: 10
   canvasMorte: {fileID: 0}
 --- !u!1 &4344787801417793763
 GameObject:
