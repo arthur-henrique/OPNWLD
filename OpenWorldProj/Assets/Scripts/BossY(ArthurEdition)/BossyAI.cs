@@ -274,4 +274,9 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
     {
         throw new System.NotImplementedException();
     }
+
+    public void OnNotifyHeal(float heal)
+    {
+        throw new System.NotImplementedException();
+    }
 }

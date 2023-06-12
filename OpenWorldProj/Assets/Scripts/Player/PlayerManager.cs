@@ -11,6 +11,7 @@ public class PlayerManager : ObservableSubject
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject playerObj;
     [SerializeField] public HealthControl playerHealthControl;
+    public HealthSliderControl sliderControl;
     private Transform playerOverWorldTransform;
     public Vector3 pos;
 
@@ -57,6 +58,7 @@ public class PlayerManager : ObservableSubject
     public void RecoverHealth()
     {
         playerHealthControl.health += valueToHeal;
+        sliderControl.OnNotifyHeal(valueToHeal); 
     }
     private void OnLevelWasLoaded(int level)
     {

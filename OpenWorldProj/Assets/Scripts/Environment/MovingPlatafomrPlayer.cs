@@ -22,21 +22,35 @@ public class MovingPlatafomrPlayer : MonoBehaviour
     void Start()
     {
         TargetNextWaypoint();
+        playerColindindo = true;
+        StartCoroutine(DesligarPlayerColidindo());
+    }
+    IEnumerator DesligarPlayerColidindo()
+    {
+        yield return new WaitForSeconds(1f);
+        playerColindindo = false;
     }
 
     void FixedUpdate()
     {
-        _elapsedTime += Time.deltaTime;
+      
 
-        float elapsedPercentage = _elapsedTime / _timeToWaypoint;
-        elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
-        transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
-        transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
+            _elapsedTime += Time.deltaTime;
 
-        if (elapsedPercentage >= 1)
+             float elapsedPercentage = _elapsedTime / _timeToWaypoint;
+             elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
+             transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
+             transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
+        if (playerColindindo)
         {
-            TargetNextWaypoint();
+
+             if (elapsedPercentage >= 1)
+             {
+                 TargetNextWaypoint();
+                
+             }
         }
+        
     }
 
     private void TargetNextWaypoint()
@@ -55,8 +69,11 @@ public class MovingPlatafomrPlayer : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            Debug.Log("PlayerEntru");
             originalParent = other.transform.parent;
             other.transform.SetParent(transform);
+            playerColindindo = true;
+            StartCoroutine(DesligarPlayerColidindo());
         }
 
     }
@@ -67,6 +84,7 @@ public class MovingPlatafomrPlayer : MonoBehaviour
         {
             other.transform.SetParent(originalParent);
             print("HasExited");
+           
         }
     }
 }

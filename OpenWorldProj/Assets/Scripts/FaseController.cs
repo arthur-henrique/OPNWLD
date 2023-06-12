@@ -5,6 +5,7 @@ using UnityEngine;
 public class FaseController : MonoBehaviour
 {
     public MovingPlatform platform;
+    public MovingPlatafomrPlayer platafomrPlayer;
     
     
 
@@ -13,7 +14,15 @@ public class FaseController : MonoBehaviour
     {
         if(gameObject.transform.childCount == 0)
         {
-            platform.enabled = true;
+            if(platafomrPlayer != null)
+            {
+                platafomrPlayer.enabled = true;
+            }
+            if(platform != null)
+            {
+
+              platform.enabled = true;
+            }
         }
     }
 }

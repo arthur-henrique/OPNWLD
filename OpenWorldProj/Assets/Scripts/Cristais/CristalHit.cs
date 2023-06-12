@@ -13,7 +13,7 @@ public class CristalHit : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerProjectile"))
+        if (other.CompareTag("PlayerArrow"))
         {
             if (!cristalAtivado)
             {

@@ -1732,6 +1732,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1756584553757275935, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756584553757275935, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
+        type: 3}
+      propertyPath: sliderControl
+      value: 
+      objectReference: {fileID: 1668405611}
+    - target: {fileID: 1756584553757275935, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
+        type: 3}
       propertyPath: playerHealthControl
       value: 
       objectReference: {fileID: 596972520}
@@ -1743,7 +1753,7 @@ PrefabInstance:
     - target: {fileID: 1895338893850306514, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: hasSword
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1895338893850306514, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -3709,6 +3719,18 @@ MonoBehaviour:
   contadorText: {fileID: 1692494394}
   inventarioCheio: {fileID: 0}
   SemCura: {fileID: 1189833214}
+--- !u!114 &1668405611 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3202323517031230661, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1086230970}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927432555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34bf14aa38f1454bbd50043a62354cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1692494392
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,12 @@ public class HealthSliderControl : MonoBehaviour, IObserver, IDeathObserver
             anim.SetTrigger("Damage");
 
     }
+    public void OnNotifyHeal(float heal)
+    {
+        healthSlider.value += heal;
+        
+    }
+
 
     void ObserveSubject()
     {

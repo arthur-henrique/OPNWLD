@@ -10,15 +10,15 @@ public class BaseMonsterAI : MonoBehaviour
     public Transform projectilePoint;
     public List<Transform> wayPoints;
     NavMeshAgent agent;
-    public float walkPointRange;
-    public LayerMask whatIsGround;
-
+    bool inCooldown;
+    public GameObject pedra;
     public Vector3 walkpoint;
     public bool walkPointSet;
     [SerializeField]
     bool podePatrulhar = true;
     public GameObject spawnDoItem;
     public CapsuleCollider capsule;
+    
 
      
 
@@ -27,9 +27,34 @@ public class BaseMonsterAI : MonoBehaviour
 
     public void Shoot()
     {
-      Rigidbody rb =   Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-        rb.AddForce(PlayerManager.instance.player.transform.position , ForceMode.Impulse);
-        rb.AddForce(PlayerManager.instance.player.transform.position *10, ForceMode.Impulse);
+      Rigidbody rb = Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward*30, ForceMode.Impulse);
+        rb.AddForce(transform.up*-2, ForceMode.Impulse);
+
+    }
+    public void Spawnar()
+    {
+        if (!inCooldown)
+        {
+             Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+            inCooldown = true;
+        }
+    }
+    IEnumerator CollingDown()
+    {
+        yield return new WaitForSeconds(10f);
+        inCooldown = false;
+    }
+       
+
+    public void AtivarPedra()
+    {
+        pedra.SetActive(true);
+    }
+
+    public void DesativarPedra()
+    {
+        pedra.SetActive(false);
     }
 
     public void EscolherPontoPatrol()
@@ -64,7 +89,7 @@ public class BaseMonsterAI : MonoBehaviour
     }
     IEnumerator Destruir()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
        
          Instantiate(itemDrop, spawnDoItem.transform.position, gameObject.transform.rotation);
         
