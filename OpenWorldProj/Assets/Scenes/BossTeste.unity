@@ -712,10 +712,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PolyArtWizardStandardMat
       objectReference: {fileID: 0}
-    - target: {fileID: 1248815240492774, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4463868907105534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4027,8 +4023,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   anim: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  normalAlbedo: {fileID: 0}
+  redAlbedo: {fileID: 0}
   agent: {fileID: 0}
   movementSpeed: 0
+  _agentHealth: {fileID: 0}
   attackCooldownTime: 0
   attackCooldownDuration: 1.5
   attackTimer: 0
@@ -5148,6 +5148,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1469325543, guid: a1cdb3ea78606d342937b1e61f8491ec, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469325543, guid: a1cdb3ea78606d342937b1e61f8491ec, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6373832952886966031, guid: a1cdb3ea78606d342937b1e61f8491ec,
         type: 3}
       propertyPath: m_Name

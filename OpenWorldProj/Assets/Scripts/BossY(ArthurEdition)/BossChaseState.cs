@@ -12,7 +12,6 @@ public class BossChaseState : BossState
     
     public override void UpdateState()
     {
-        Debug.Log("Am Chase");
         float distanceToPlayer = Vector3.Distance(bossAI.transform.position, bossAI.player.position);
 
         if (distanceToPlayer > detectionDistance)
@@ -23,7 +22,6 @@ public class BossChaseState : BossState
             bossAI.TransitionToState(new BossIdleState(bossAI));
             bossAI.anim.SetBool("isPatrolling", true);
 
-            Debug.Log("TooFar");
             return;
         }
 
@@ -41,7 +39,6 @@ public class BossChaseState : BossState
             // Move the boss towards the player
             bossAI.agent.Move(bossAI.movementSpeed * Time.deltaTime * direction);
             bossAI.anim.SetBool("isPatrolling", true);
-            Debug.Log("I'm Moving");
         }
 
         if (distanceToPlayer <= desiredDistance && distanceToPlayer >= bossAI.chaseDistanceThreshold)
@@ -61,11 +58,17 @@ public class BossChaseState : BossState
 
         }
         // Transition to the MeleeAttack state when the player gets too close
-        else if (Vector3.Distance(bossAI.transform.position, bossAI.player.position) < bossAI.chaseDistanceThreshold)
+        else if (Vector3.Distance(bossAI.transform.position, bossAI.player.position) < bossAI.meleeDistanceThreshold)
         {
             bossAI.isTooClose = true;
+            Vector3 direction = bossAI.player.position - bossAI.transform.position;
+            direction.Normalize();
+
+            if(Vector3.Distance(bossAI.transform.position, bossAI.player.position) > 5f)
+            {
+                bossAI.agent.Move(bossAI.movementSpeed * Time.deltaTime * direction);
+            }
             bossAI.TransitionToState(new BossMeleeAttackState(bossAI));
-            Debug.Log("BossMelee");
 
         }
     }

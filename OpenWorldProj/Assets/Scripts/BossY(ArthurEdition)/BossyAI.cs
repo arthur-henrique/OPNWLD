@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossyAI : MonoBehaviour
+public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
 {
     // Reference to the player
     [SerializeField] public Transform player;
@@ -14,10 +14,17 @@ public class BossyAI : MonoBehaviour
     // Animator
     public Animator anim;
 
+    // Renderer
+    public SkinnedMeshRenderer meshRenderer;
+    public Texture normalAlbedo, redAlbedo;
+
     // NavMesh
     public NavMeshAgent agent;
     public float movementSpeed;
     private float rotationSpeed = 3f;
+
+    // Health Control
+    public HealthControl _agentHealth;
 
     // Cooldowns
     [SerializeField] float attackCooldownTime;
@@ -62,6 +69,7 @@ public class BossyAI : MonoBehaviour
         // Initialize the boss AI with the Idle state
         agent = GetComponent<NavMeshAgent>();
         movementSpeed = agent.speed;
+        ObserveSubject();
 
         player = GameObject.FindWithTag("Player").transform;
     }
@@ -145,19 +153,15 @@ public class BossyAI : MonoBehaviour
 
     IEnumerator Shoot(Vector3 dir, Vector3 dirTwo)
     {
-        print(alternateShot);
         yield return new WaitForSeconds(0.35f);
-        print(alternateShot);
 
         if (!alternateShot)
         {
-            print("Single");
             objectGen.OnShoot(projectileSpawnPoint.position, dir, true);
             alternateShot = !alternateShot;
         }
         else
         {
-            print("due");
             objectGen.OnShoot(projectileSpawnPoint.position, dir, true);
             objectGen.OnShoot(projectileSpawnPoint.position, dirTwo, true);
             alternateShot = !alternateShot;
@@ -195,6 +199,18 @@ public class BossyAI : MonoBehaviour
 
     }
 
+    IEnumerator ReturnToNomal()
+    {
+        yield return new WaitForSeconds(0.25f);
+        meshRenderer.material.SetTexture("_BaseColorMap", normalAlbedo);
+        meshRenderer.UpdateGIMaterials();
+
+    }
+
+    public void ColorChange()
+    {
+        StartCoroutine(ReturnToNomal());
+    }
     public void ActivateCone()
     {
         coneMesh.enabled = true;
@@ -218,6 +234,12 @@ public class BossyAI : MonoBehaviour
         StartCoroutine(DelayToBite());
 
     }
+
+    void ObserveSubject()
+    {
+        _agentHealth.AddDamageObserver(this);
+        _agentHealth.AddDeathObserver(this);
+    }
     private IEnumerator DelayedRotation()
     {
         canRotate = false;
@@ -236,5 +258,20 @@ public class BossyAI : MonoBehaviour
     {
         yield return new WaitForSeconds(0.35f);
         canBite = true;
+    }
+
+    public void OnNotifyDamage(float damage)
+    {
+        print("Red");
+        meshRenderer.material.SetTexture("_BaseColorMap", redAlbedo);
+        meshRenderer.UpdateGIMaterials();
+        ColorChange();
+    }
+
+    
+
+    public void OnNotifyDeath()
+    {
+        throw new System.NotImplementedException();
     }
 }

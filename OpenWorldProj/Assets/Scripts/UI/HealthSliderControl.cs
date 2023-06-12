@@ -9,6 +9,8 @@ public class HealthSliderControl : MonoBehaviour, IObserver, IDeathObserver
     public Slider healthSlider;
     public Animator anim;
 
+    public bool isASpecialCase;
+
     void Start()
     {
         healthSlider.value = healthSlider.maxValue;
@@ -17,7 +19,8 @@ public class HealthSliderControl : MonoBehaviour, IObserver, IDeathObserver
     public void OnNotifyDamage(float damage)
     {
         healthSlider.value -= damage;
-        anim.SetTrigger("Damage");
+        if(!isASpecialCase)
+            anim.SetTrigger("Damage");
 
     }
 
