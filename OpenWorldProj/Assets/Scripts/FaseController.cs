@@ -6,6 +6,7 @@ public class FaseController : MonoBehaviour
 {
     public MovingPlatform platform;
     public MovingPlatafomrPlayer platafomrPlayer;
+    public Animator ponte;
     
     
 
@@ -22,6 +23,11 @@ public class FaseController : MonoBehaviour
             {
 
               platform.enabled = true;
+            }
+
+            if(ponte != null)
+            {
+                ponte.SetBool("isMoving", true);
             }
         }
     }

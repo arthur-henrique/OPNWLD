@@ -1712,7 +1712,7 @@ PrefabInstance:
     - target: {fileID: 8237318423528734083, guid: accec60aad275d8418ea6ee66fdf4813,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8237318423528734083, guid: accec60aad275d8418ea6ee66fdf4813,
         type: 3}
@@ -2040,6 +2040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 161259727}
   platafomrPlayer: {fileID: 0}
+  ponte: {fileID: 0}
 --- !u!1001 &1315548449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2181,6 +2182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platform: {fileID: 0}
   platafomrPlayer: {fileID: 1902399589}
+  ponte: {fileID: 0}
 --- !u!4 &1379486196
 Transform:
   m_ObjectHideFlags: 0
