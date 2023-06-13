@@ -70,8 +70,8 @@ public class MovingPlatafomrPlayer : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Debug.Log("PlayerEntru");
-            originalParent = other.transform.parent;
-            other.transform.SetParent(transform);
+            //originalParent = other.transform.parent;
+            //other.transform.SetParent(transform);
             playerColindindo = true;
             StartCoroutine(DesligarPlayerColidindo());
         }
@@ -82,7 +82,7 @@ public class MovingPlatafomrPlayer : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            other.transform.SetParent(originalParent);
+            //other.transform.SetParent(originalParent);
             print("HasExited");
            
         }
