@@ -5,7 +5,7 @@ using UnityEngine;
 public class CristalCount : MonoBehaviour
 {
     public int quantidadeDeCristais;
-    public MovingPlatform movingPlatform;
+    public MovingPlatafomrPlayer movingPlatform;
 
     // Update is called once per frame
     void Update()
