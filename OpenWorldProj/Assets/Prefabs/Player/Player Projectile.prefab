@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 55
   timeToDeactivate: 5
+  isFromPlayer: 1
   damage: 5
   hasReach: 0
 --- !u!54 &-5591399818510402896

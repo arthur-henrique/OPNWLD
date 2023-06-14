@@ -4041,7 +4041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   playerManager: {fileID: 0}
-  zero: {fileID: 0}
+  zero: {fileID: 1652968959}
 --- !u!1001 &1702824947
 PrefabInstance:
   m_ObjectHideFlags: 0
