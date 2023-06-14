@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 464968347}
   - component: {fileID: 464968346}
   m_Layer: 5
-  m_Name: Play (1)
+  m_Name: Sair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,7 +336,7 @@ RectTransform:
   m_GameObject: {fileID: 464968344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.46087, y: 0.46087, z: 0.46087}
+  m_LocalScale: {x: 0.4053744, y: 0.4567959, z: 0.4567959}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1156103024}
@@ -344,7 +344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -291.2, y: -159.6}
+  m_AnchoredPosition: {x: -306, y: -171.6}
   m_SizeDelta: {x: 478, y: 121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464968346
@@ -376,7 +376,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 1987904891, guid: b22704420c0b29e41acf3feaea62decc,
+    m_HighlightedSprite: {fileID: -1910579723, guid: 9fb4c4d0e3613d94286e42fa699fd5a4,
       type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2130491841, guid: b22704420c0b29e41acf3feaea62decc, type: 3}
+  m_Sprite: {fileID: -365518435, guid: 9fb4c4d0e3613d94286e42fa699fd5a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -478,7 +478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -210.7, y: 33.8}
+  m_AnchoredPosition: {x: -249, y: -0}
   m_SizeDelta: {x: 772, y: 168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667136266
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 981518291}
   - component: {fileID: 981518290}
   m_Layer: 5
-  m_Name: Play
+  m_Name: Jogar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -710,7 +710,7 @@ RectTransform:
   m_GameObject: {fileID: 981518288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.46087, y: 0.46087, z: 0.46087}
+  m_LocalScale: {x: 0.5011961, y: 0.46087, z: 0.46087}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1156103024}
@@ -718,7 +718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -290.6, y: -9.8}
+  m_AnchoredPosition: {x: -282.59976, y: -9.800003}
   m_SizeDelta: {x: 478, y: 121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981518290
@@ -750,7 +750,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: -619099361, guid: b22704420c0b29e41acf3feaea62decc,
+    m_HighlightedSprite: {fileID: 1723817333, guid: 9fb4c4d0e3613d94286e42fa699fd5a4,
       type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
@@ -798,7 +798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -287001355, guid: b22704420c0b29e41acf3feaea62decc, type: 3}
+  m_Sprite: {fileID: -1241944279, guid: 9fb4c4d0e3613d94286e42fa699fd5a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1123,7 +1123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -210.7, y: 33.8}
+  m_AnchoredPosition: {x: -210.7, y: 17.5}
   m_SizeDelta: {x: 772, y: 168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1470626305
@@ -1155,7 +1155,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: -1226424515, guid: b22704420c0b29e41acf3feaea62decc,
+    m_HighlightedSprite: {fileID: -779253595, guid: 9fb4c4d0e3613d94286e42fa699fd5a4,
       type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1601980971, guid: b22704420c0b29e41acf3feaea62decc, type: 3}
+  m_Sprite: {fileID: -1245680467, guid: 9fb4c4d0e3613d94286e42fa699fd5a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
