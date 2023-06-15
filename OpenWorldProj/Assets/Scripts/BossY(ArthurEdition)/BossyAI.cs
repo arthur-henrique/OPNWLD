@@ -65,6 +65,8 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
     //Materials
     public Material DragonsMaterial;
 
+    // Self Collider
+    public CapsuleCollider bossCollider;
 
     private void Start()
     {
@@ -197,7 +199,8 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
         anim.SetBool("scream", true);
         yield return new WaitForSeconds(1f);
         anim.SetBool("scream", false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+        bossCollider.enabled = true;
         currentState = new BossIdleState(this);
 
     }
@@ -291,7 +294,12 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
 
     public void OnNotifyDeath()
     {
-        throw new System.NotImplementedException();
+        bossCollider.isTrigger = false;
+        Destroy(_agentHealth);
+        anim.SetTrigger("Die");
+        DeactivateCone();
+        DeactivateLeapCube();
+        this.enabled= false;
     }
 
     public void OnNotifyHeal(float heal)
