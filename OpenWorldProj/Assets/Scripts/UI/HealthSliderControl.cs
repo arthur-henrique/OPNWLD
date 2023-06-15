@@ -19,7 +19,7 @@ public class HealthSliderControl : MonoBehaviour, IObserver, IDeathObserver
     public void OnNotifyDamage(float damage)
     {
         healthSlider.value -= damage;
-        if(!isASpecialCase)
+        if (!isASpecialCase)
             anim.SetTrigger("Damage");
 
     }
