@@ -847,9 +847,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "Log #1\n\nFinalmente cheguei nas ilhas perdidas, ap\xF3s v\xE1rios
         dias velejando.\n\nMuito tempo atr\xE1s, meu povo foi expulso daqui por um
-        grande drag\xE3o que ficou conhecido como N\xCAX\xDC.\n\nCome\xE7o hoje minha
-        explora\xE7\xE3o na pequena ilha T\xF4ria, onde espero encontrar alguma forma
-        de me defender dos monstros que existem aqui."
+        grande drag\xE3o que ficou conhecido como <b>N\xEAx\xFC</b>.\n\nCome\xE7o
+        hoje minha explora\xE7\xE3o na pequena ilha T\xF4ria, onde espero encontrar
+        alguma forma de me defender dos monstros que existem aqui. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286483940309402579, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16eb8a192a08554b9ce34b83e8bb20f, type: 3}
@@ -1781,7 +1786,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 262403fc07e40244ba05f4e86fbe25c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 133.23969
+      value: 134.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 262403fc07e40244ba05f4e86fbe25c4,
         type: 3}
@@ -4554,7 +4559,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 262403fc07e40244ba05f4e86fbe25c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 133.9697
+      value: 134.71
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 262403fc07e40244ba05f4e86fbe25c4,
         type: 3}
@@ -4825,6 +4830,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Log #2
       objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565031, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7286483939225170606, guid: b16eb8a192a08554b9ce34b83e8bb20f,
         type: 3}
       propertyPath: m_text
@@ -4833,8 +4843,8 @@ PrefabInstance:
         monstros rochosos que invadiram nossos velhos templos.\n\nLembro de meus
         av\xF3s e av\xF4s contando hist\xF3rias sobre os grandes festivais que costumavam
         fazer aqui. Espero logo derrotar N\xEAx\xFC para que meu povo possa voltar.
-        \n\nMas para isso irei precisar de mais armas, talvez encontre uma neste
-        templo."
+        \n\nMas para isso irei precisar de <b>mais armas</b>, talvez encontre uma
+        neste <b>templo</b>."
       objectReference: {fileID: 0}
     - target: {fileID: 7286483940309402579, guid: b16eb8a192a08554b9ce34b83e8bb20f,
         type: 3}
@@ -7654,6 +7664,8 @@ Transform:
   - {fileID: 515825768}
   - {fileID: 57422452}
   - {fileID: 590433231}
+  - {fileID: 2115290305}
+  - {fileID: 1307454839}
   m_Father: {fileID: 1602984229}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11880,6 +11892,98 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5851464875105419811, guid: ec2465843e2b3c34d8947120c0907dbd,
     type: 3}
   m_PrefabInstance: {fileID: 1278514852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1307454838
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 882924409}
+    m_Modifications:
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 177.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565031, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_Name
+      value: Log #4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286483939225170606, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_text
+      value: "Log #4\n\nEncontrei o \xFAltimo templo da ilha. N\xEAx\xFC tem que
+        estar escondido aqui dentro.\n\nN\xE3o poderei falhar agora, o futuro do
+        meu povo depende disso."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286483939225170606, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286483940309402579, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b16eb8a192a08554b9ce34b83e8bb20f, type: 3}
+--- !u!4 &1307454839 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1307454838}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1315908611
 PrefabInstance:
@@ -17275,6 +17379,99 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5757623362411245695, guid: d2490b138f549b64ca02e68e941b056a,
     type: 3}
   m_PrefabInstance: {fileID: 2113681341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2115290304
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 882924409}
+    m_Modifications:
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832217176283565031, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_Name
+      value: Log #3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286483939225170606, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_text
+      value: "Log #3\n\nLembro que me avisaram sobre a grande parede rochosa que
+        divide a ilha. Deve haver algum <b>cristal</b> por aqui que possa ser ativado
+        para que essas pedras se movam.\n\nPara isso precisarei <b>atirar</b> nele,
+        mas onde ele est\xE1?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286483939225170606, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286483940309402579, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b16eb8a192a08554b9ce34b83e8bb20f, type: 3}
+--- !u!4 &2115290305 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5832217176283565024, guid: b16eb8a192a08554b9ce34b83e8bb20f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2115290304}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2123421570
 PrefabInstance:
