@@ -1683,7 +1683,7 @@ PrefabInstance:
     - target: {fileID: 1476109648460937123, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1687631167799390042, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -1748,12 +1748,12 @@ PrefabInstance:
     - target: {fileID: 1895338893850306514, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: hasSling
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1895338893850306514, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: hasSword
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1895338893850306514, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}

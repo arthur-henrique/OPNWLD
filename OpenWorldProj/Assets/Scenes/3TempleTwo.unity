@@ -356,47 +356,47 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 738321682}
+    m_TransformParent: {fileID: 1517029693}
     m_Modifications:
     - target: {fileID: 7104307236976527493, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_Name
-      value: CristalPrefab (1)
+      value: CristalPrefab 3
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.893763
+      value: 0.1304264
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.742203
+      value: 0.20999908
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.113338
+      value: 0.1988945
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
@@ -435,12 +435,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 600805a6c34d58b4a93d40f823b11234, type: 3}
---- !u!4 &175508906 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
-    type: 3}
-  m_PrefabInstance: {fileID: 175508905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &175508907 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7104307236976527493, guid: 600805a6c34d58b4a93d40f823b11234,
@@ -1750,9 +1744,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 546252067}
-  - {fileID: 1479041905}
-  - {fileID: 2019119526}
-  - {fileID: 175508906}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2002,7 +1993,7 @@ PrefabInstance:
     - target: {fileID: 5169194031067988894, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
         type: 3}
       propertyPath: m_Name
-      value: temple102 (3)
+      value: Plataforma Cristal 2
       objectReference: {fileID: 0}
     - target: {fileID: 5546035855494273316, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
         type: 3}
@@ -2079,6 +2070,12 @@ PrefabInstance:
 --- !u!4 &855460176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5546035855494273316, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
+    type: 3}
+  m_PrefabInstance: {fileID: 855460175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &855460177 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4938001326674929788, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
     type: 3}
   m_PrefabInstance: {fileID: 855460175}
   m_PrefabAsset: {fileID: 0}
@@ -3401,47 +3398,47 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 738321682}
+    m_TransformParent: {fileID: 1646122213}
     m_Modifications:
     - target: {fileID: 7104307236976527493, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_Name
-      value: CristalPrefab (3)
+      value: CristalPrefab 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.788643
+      value: 0.07786751
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.652312
+      value: 0.16505432
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.7915916
+      value: 0.23476791
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
@@ -3451,7 +3448,7 @@ PrefabInstance:
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0034903563
+      value: 0.0034903553
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
@@ -3461,7 +3458,7 @@ PrefabInstance:
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0046038777
+      value: -0.0046038767
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
@@ -3480,12 +3477,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 600805a6c34d58b4a93d40f823b11234, type: 3}
---- !u!4 &1479041905 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
-    type: 3}
-  m_PrefabInstance: {fileID: 1479041904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1479041906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7104307236976527493, guid: 600805a6c34d58b4a93d40f823b11234,
@@ -3559,7 +3550,7 @@ PrefabInstance:
     - target: {fileID: 5169194031067988894, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
         type: 3}
       propertyPath: m_Name
-      value: temple102 (4)
+      value: Plataforma Cristal 3
       objectReference: {fileID: 0}
     - target: {fileID: 5546035855494273316, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
         type: 3}
@@ -3636,6 +3627,12 @@ PrefabInstance:
 --- !u!4 &1517029692 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5546035855494273316, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1517029691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1517029693 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4938001326674929788, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
     type: 3}
   m_PrefabInstance: {fileID: 1517029691}
   m_PrefabAsset: {fileID: 0}
@@ -4105,6 +4102,117 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1613909443}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1631486028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1631486033}
+  - component: {fileID: 1631486032}
+  - component: {fileID: 1631486031}
+  - component: {fileID: 1631486030}
+  - component: {fileID: 1631486029}
+  m_Layer: 0
+  m_Name: PlayerCatcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1631486029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631486028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3927def0ca364ed4e80f41970660b4f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
+--- !u!65 &1631486030
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631486028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1631486031
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631486028}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1631486032
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631486028}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1631486033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631486028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.652189, y: -13.1, z: 213}
+  m_LocalScale: {x: 200, y: 1, z: 600}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1640957911
 GameObject:
   m_ObjectHideFlags: 0
@@ -4166,7 +4274,7 @@ PrefabInstance:
     - target: {fileID: 5169194031067988894, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
         type: 3}
       propertyPath: m_Name
-      value: temple102 (2)
+      value: Plataforma Cristal 1
       objectReference: {fileID: 0}
     - target: {fileID: 5546035855494273316, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
         type: 3}
@@ -4243,6 +4351,12 @@ PrefabInstance:
 --- !u!4 &1646122212 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5546035855494273316, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1646122211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1646122213 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4938001326674929788, guid: 29bdbcfcf3b75d94f91b5266f9349c34,
     type: 3}
   m_PrefabInstance: {fileID: 1646122211}
   m_PrefabAsset: {fileID: 0}
@@ -4780,47 +4894,47 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 738321682}
+    m_TransformParent: {fileID: 855460177}
     m_Modifications:
     - target: {fileID: 7104307236976527493, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_Name
-      value: CristalPrefab (2)
+      value: CristalPrefab 2
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.749763
+      value: 0.05842781
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.993203
+      value: 0.21050072
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.313339
+      value: 0.09889221
       objectReference: {fileID: 0}
     - target: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
         type: 3}
@@ -4859,12 +4973,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 600805a6c34d58b4a93d40f823b11234, type: 3}
---- !u!4 &2019119526 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7628043775898112575, guid: 600805a6c34d58b4a93d40f823b11234,
-    type: 3}
-  m_PrefabInstance: {fileID: 2019119525}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2019119527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7104307236976527493, guid: 600805a6c34d58b4a93d40f823b11234,
