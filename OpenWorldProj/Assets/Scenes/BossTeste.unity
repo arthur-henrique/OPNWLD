@@ -4082,6 +4082,7 @@ MonoBehaviour:
   coneDamage: 0
   cubeMesh: {fileID: 0}
   leapDamage: 0
+  DragonsMaterial: {fileID: 0}
 --- !u!195 &1551848204
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9267,6 +9268,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6373832952415875001, guid: a1cdb3ea78606d342937b1e61f8491ec,
+        type: 3}
+      propertyPath: DragonsMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 00cf1916c402b1940ac300d6eb8f4c2c, type: 2}
+    - target: {fileID: 6373832952883794493, guid: a1cdb3ea78606d342937b1e61f8491ec,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00cf1916c402b1940ac300d6eb8f4c2c, type: 2}
     - target: {fileID: 6373832952886966031, guid: a1cdb3ea78606d342937b1e61f8491ec,
         type: 3}
       propertyPath: m_Name

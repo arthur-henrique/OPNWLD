@@ -62,6 +62,9 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
     public BoxCollider cubeMesh;
     public float leapDamage;
 
+    //Materials
+    public Material DragonsMaterial;
+
 
     private void Start()
     {
@@ -262,13 +265,29 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
 
     public void OnNotifyDamage(float damage)
     {
-        print("Red");
-        meshRenderer.material.SetTexture("_BaseColorMap", redAlbedo);
-        meshRenderer.UpdateGIMaterials();
-        ColorChange();
+        StartCoroutine(ChangeColorDelay());
     }
 
-    
+    /// <summary>
+    /// Changes the Dragon's material color for damage
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ChangeColorDelay()
+    {
+        for (int i = 0; i < 11; i++)
+        {
+            DragonsMaterial.SetFloat("_TurnRed", i / 10f);
+            yield return new WaitForSecondsRealtime(0.014f);
+        }
+        yield return new WaitForSecondsRealtime(0.08f);
+        for (int i = 9; i > -1; i--)
+        {
+            DragonsMaterial.SetFloat("_TurnRed", i / 10f);
+            yield return new WaitForSecondsRealtime(0.014f);
+        }
+    }
+
+
 
     public void OnNotifyDeath()
     {
