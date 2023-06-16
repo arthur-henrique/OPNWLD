@@ -24,6 +24,10 @@ public class SceneController : MonoBehaviour
         gameManager.GotSword();
         // Move the objects as to open a way into the dungeon;
     }
+    public void OpenSecondSideDoor()
+    {
+        gameManager.GotSling();
+    }
     public void SetRespawnPoint(Transform newPoint)
     {
         playerManager.respawnPoint = newPoint;

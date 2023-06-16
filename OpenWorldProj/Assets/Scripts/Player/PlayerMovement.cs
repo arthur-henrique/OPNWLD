@@ -476,10 +476,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void DisableController()
     {
+        print("Moven't");
         _characterController.enabled = false;
     }
     public void EnableController()
     {
+        print("Move");
         _characterController.enabled = true;
 
     }

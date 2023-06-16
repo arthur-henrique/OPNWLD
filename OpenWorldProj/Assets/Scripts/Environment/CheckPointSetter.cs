@@ -10,7 +10,8 @@ public class CheckPointSetter : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            controller.SetRespawnPoint(transform);
+            PlayerManager.instance.respawnPoint = gameObject.transform;
+            //controller.SetRespawnPoint(transform);
             gameObject.SetActive(false);
         }
     }

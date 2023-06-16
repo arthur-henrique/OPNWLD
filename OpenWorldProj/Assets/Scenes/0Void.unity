@@ -1998,12 +1998,12 @@ PrefabInstance:
     - target: {fileID: 4336222267402476956, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4471834736494579058, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4505609450324144557, guid: 2a9ab3426d44b1a40bcdf4afa83ef9e7,
         type: 3}
@@ -4559,7 +4559,7 @@ GameObject:
   - component: {fileID: 2143169627}
   m_Layer: 9
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: PlayerArrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

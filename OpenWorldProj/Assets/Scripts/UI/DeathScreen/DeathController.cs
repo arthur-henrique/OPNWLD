@@ -13,7 +13,7 @@ public class DeathController : MonoBehaviour
         player.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         PlayerManager.instance.player.DisableController();
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
     public void Respawn()
     {

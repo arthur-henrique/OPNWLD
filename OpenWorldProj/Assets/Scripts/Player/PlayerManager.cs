@@ -49,9 +49,11 @@ public class PlayerManager : ObservableSubject
 
     public void Respawn()
     {
+
         player.DisableController();
         playerObj.transform.position = respawnPoint.position;
         player.EnableController();
+        gameManager.ClearUp();
 
     }
 
