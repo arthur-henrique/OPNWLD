@@ -59,7 +59,7 @@ public class Projectile : MonoBehaviour, IPooledObject, IDealDamage
                 hasReach = true;
                 // The projectile has reached or surpassed the target position
                 body.useGravity = true;
-                body.AddForce(transform.forward, ForceMode.Impulse);
+                //body.AddForce(transform.forward, ForceMode.Impulse);
             }
 
             if(!hasReach)
