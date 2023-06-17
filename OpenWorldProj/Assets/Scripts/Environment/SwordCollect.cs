@@ -5,8 +5,8 @@ using UnityEngine;
 public class SwordCollect : MonoBehaviour
 {
     [SerializeField] SceneController scene;
-    public GameObject enemys;
     public bool isSling;
+    public GameObject canvasTutorial;
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -14,15 +14,17 @@ public class SwordCollect : MonoBehaviour
             if(!isSling)
             {
                 scene.OpenFirstSideDoor();
-                gameObject.SetActive(false);
-                if(enemys != null)
-                enemys.SetActive(true);
+                canvasTutorial.SetActive(true);
+                
+               
+
             }
             else
             {
                 scene.OpenSecondSideDoor();
-                gameObject.SetActive(false);
+                canvasTutorial.SetActive(true);
                 
+
             }
             
         }

@@ -149,7 +149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.1536, y: 0.6806}
+  m_AnchoredPosition: {x: -16.1536, y: -48}
   m_SizeDelta: {x: 301.3016, y: 384.2558}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7286483939054989330
@@ -256,11 +256,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dia 1\n\nFinalmente cheguei nas ilhas perdidas, ap\xF3s v\xE1rios dias
+  m_text: "Log #1\n\nFinalmente cheguei nas ilhas perdidas, ap\xF3s v\xE1rios dias
     velejando.\n\nMuito tempo atr\xE1s, meu povo foi expulso daqui por um grande
-    drag\xE3o que ficou conhecido como N\xCAX\xDC.\n\nCome\xE7o hoje minha explora\xE7\xE3o
-    na pequena ilha T\xF4ria, onde espero encontrar alguma forma de me defender dos
-    monstros que existem aqui."
+    drag\xE3o que ficou conhecido como <b>N\xEAx\xFC</b>.\n\nCome\xE7o hoje minha
+    explora\xE7\xE3o na pequena ilha T\xF4ria, onde espero encontrar alguma forma
+    de me defender dos monstros que existem aqui. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -450,18 +450,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7286483940309402579}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 7286483940309402574}
         m_TargetAssemblyTypeName: CanvasItem, Assembly-CSharp
         m_MethodName: ReligarCursor
@@ -487,6 +475,7 @@ GameObject:
   - component: {fileID: 7286483940309402577}
   - component: {fileID: 7286483940309402578}
   - component: {fileID: 7286483940309402574}
+  - component: {fileID: 315690635}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -589,6 +578,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPotion: {fileID: 5832217176283565031}
+  enemySpawn: {fileID: 0}
+  anim: {fileID: 0}
+--- !u!95 &315690635
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286483940309402579}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9f6634642e5645048804d635521604de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &7286483941133765610
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +611,6 @@ GameObject:
   - component: {fileID: 7286483941133765609}
   - component: {fileID: 7286483941133765607}
   - component: {fileID: 7286483941133765608}
-  - component: {fileID: 7286483941133765606}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -667,23 +677,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &7286483941133765606
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7286483941133765610}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 85b09affe3c2ea447984c824cdfac204, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
