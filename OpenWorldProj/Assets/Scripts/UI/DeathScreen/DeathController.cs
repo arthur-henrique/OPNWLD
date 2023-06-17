@@ -22,6 +22,8 @@ public class DeathController : MonoBehaviour
         player.SetActive(true);
         gameObject.SetActive(false);
         Time.timeScale = 1;
+        PlayerManager.instance.playerHealthControl.health = 100;
+        PlayerManager.instance.RecoverHealth();
         PlayerManager.instance.Respawn();
 
 

@@ -3150,7 +3150,7 @@ MonoBehaviour:
   podePatrulhar: 1
   spawnDoItem: {fileID: 1314746673674632899}
   capsule: {fileID: 0}
-  itemDrop: {fileID: 6570395215007428207, guid: 8060438a3f03848468bbf6748599e055,
+  itemDrop: {fileID: 4250006672611966053, guid: fe4ef9f99c4fca34e92520ea2c74524d,
     type: 3}
 --- !u!195 &1312829387168220541
 NavMeshAgent:

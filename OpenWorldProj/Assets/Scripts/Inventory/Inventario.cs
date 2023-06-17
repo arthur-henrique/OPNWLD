@@ -10,6 +10,7 @@ public class Inventario : MonoBehaviour
     public TextMeshProUGUI contadorText;
     public GameObject inventarioCheio;
     public GameObject SemCura;
+   
 
 
 
@@ -40,6 +41,7 @@ public class Inventario : MonoBehaviour
             SemCura.SetActive(true);
         }
 
+       
 
 
     }

@@ -370,7 +370,7 @@ MonoBehaviour:
   podePatrulhar: 1
   spawnDoItem: {fileID: 9169659956128749746}
   capsule: {fileID: 6618012899811069168}
-  itemDrop: {fileID: 6570395215007428207, guid: 8060438a3f03848468bbf6748599e055,
+  itemDrop: {fileID: 4250006672611966053, guid: fe4ef9f99c4fca34e92520ea2c74524d,
     type: 3}
 --- !u!54 &9169659955765769683
 Rigidbody:

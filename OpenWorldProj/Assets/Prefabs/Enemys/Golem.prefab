@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 699197843}
   m_Layer: 0
   m_Name: Golem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -977,16 +977,13 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 4343859054415644372}
   - {fileID: 4343859054871590240}
-  walkPointRange: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
+  pedra: {fileID: 0}
   walkpoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   podePatrulhar: 1
   spawnDoItem: {fileID: 319522035}
   capsule: {fileID: 2636517345573933233}
-  itemDrop: {fileID: 6570395215007428207, guid: 8060438a3f03848468bbf6748599e055,
+  itemDrop: {fileID: 4250006672611966053, guid: fe4ef9f99c4fca34e92520ea2c74524d,
     type: 3}
 --- !u!54 &699197842
 Rigidbody:
@@ -1472,7 +1469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4345412837955417323}
   m_LocalRotation: {x: -0.36172852, y: 0.60757923, z: -0.36172864, w: 0.6075791}
-  m_LocalPosition: {x: 0, y: 1.1480598, z: -0.08117676}
+  m_LocalPosition: {x: 0, y: 1.1480589, z: -0.0811882}
   m_LocalScale: {x: 0.009999999, y: 0.009999999, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -2685,7 +2685,7 @@ MonoBehaviour:
   podePatrulhar: 0
   spawnDoItem: {fileID: 1954703978}
   capsule: {fileID: 108562028}
-  itemDrop: {fileID: 6570395215007428207, guid: 8060438a3f03848468bbf6748599e055,
+  itemDrop: {fileID: 4250006672611966053, guid: fe4ef9f99c4fca34e92520ea2c74524d,
     type: 3}
 --- !u!1 &8111713445617822088
 GameObject:

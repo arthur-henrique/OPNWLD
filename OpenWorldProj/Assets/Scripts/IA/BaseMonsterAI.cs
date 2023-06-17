@@ -90,8 +90,12 @@ public class BaseMonsterAI : MonoBehaviour
     IEnumerator Destruir()
     {
         yield return new WaitForSeconds(0.5f);
-       
+       if(itemDrop != null)
+        {
+
          Instantiate(itemDrop, spawnDoItem.transform.position, gameObject.transform.rotation);
+        }
+
         
         Destroy(gameObject,0.4f);
             

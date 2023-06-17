@@ -894,17 +894,13 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 6444409929224302338}
   - {fileID: 6444409929877494966}
-  walkPointRange: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
   pedra: {fileID: 7287706547944554708}
   walkpoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   podePatrulhar: 1
   spawnDoItem: {fileID: 7288891709745704229}
   capsule: {fileID: 4733726220514113895}
-  itemDrop: {fileID: 6570395215007428207, guid: 8060438a3f03848468bbf6748599e055,
+  itemDrop: {fileID: 4250006672611966053, guid: fe4ef9f99c4fca34e92520ea2c74524d,
     type: 3}
 --- !u!54 &7288891710439538756
 Rigidbody:

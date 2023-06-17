@@ -10,7 +10,7 @@ public class PlayerManager : ObservableSubject
     [SerializeField] private Transform whereToSpawnAtOverworld;
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject playerObj;
-    [SerializeField] public HealthControl playerHealthControl;
+    public HealthControl playerHealthControl;
     public HealthSliderControl sliderControl;
     private Transform playerOverWorldTransform;
     public Vector3 pos;

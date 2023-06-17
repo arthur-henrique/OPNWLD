@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Inventario
     public Inventario inventario;
-    public GameObject vidaCheia;
+    
     
    
     private void Awake()
@@ -456,16 +456,16 @@ public class PlayerMovement : MonoBehaviour
         HandleAttack();
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (PlayerManager.instance.playerHealthControl.health != 100)
-            {
+            
                 PlayerManager.instance.RecoverHealth();
                 inventario.UsouItem();
                 Debug.Log("Curou");
-            }
-            else
-            {
-                vidaCheia.SetActive(true);
-            }
+                if (PlayerManager.instance.playerHealthControl.health > 100)
+                {
+                    PlayerManager.instance.playerHealthControl.health = 100;
+                }
+            
+            
 
 
 
@@ -510,14 +510,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("item") && inventario.contador < inventario.capacidadeMax)
         {
+            Animator anim = other.GetComponent<Animator>();
+            anim.SetBool("Catch", true);
             inventario.PegouItem();
-            Destroy(other.gameObject);
+            
         }
 
-        if (other.CompareTag("itemInicial"))
-        {
-            inventario.PegouItem();
-           
-        }
+       
     }
 }
