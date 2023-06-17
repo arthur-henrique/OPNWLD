@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8640484586484152375
+--- !u!114 &-8892085466119060219
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,17 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
-  m_Name: WhiteBalance
+  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
+  m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
   active: 1
-  temperature:
-    m_OverrideState: 1
-    m_Value: -8.6
-  tint:
+  postExposure:
     m_OverrideState: 0
-    m_Value: -20.2
---- !u!114 &-6865673924527313409
+    m_Value: -0.15
+  contrast:
+    m_OverrideState: 1
+    m_Value: 17
+  colorFilter:
+    m_OverrideState: 0
+    m_Value: {r: 0.9779054, g: 1, b: 0.8355795, a: 1}
+  hueShift:
+    m_OverrideState: 0
+    m_Value: 0
+  saturation:
+    m_OverrideState: 1
+    m_Value: 6.1
+--- !u!114 &-8175891970389705616
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -28,14 +37,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
-  m_Name: Tonemapping
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
   m_EditorClassIdentifier: 
   active: 1
-  mode:
+  shadows:
     m_OverrideState: 1
-    m_Value: 1
---- !u!114 &-3650849184905802813
+    m_Value: {r: 0.103773594, g: 0.06713116, b: 0.06713116, a: 1}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 0.6415094, g: 0.4876163, b: 0.4876163, a: 1}
+  balance:
+    m_OverrideState: 1
+    m_Value: -10
+--- !u!114 &-4160398166944562629
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,7 +96,7 @@ MonoBehaviour:
   bladeRotation:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &-2656714327448373601
+--- !u!114 &-3713653184409654085
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,20 +105,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
-  m_Name: SplitToning
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
+    m_Value: {x: 1, y: 0.8558134, z: 0.9058017, w: 0}
+  midtones:
+    m_OverrideState: 1
+    m_Value: {x: 0.87012345, y: 0.9006132, z: 1, w: 0}
   highlights:
     m_OverrideState: 1
-    m_Value: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
-  balance:
-    m_OverrideState: 1
-    m_Value: -6.4
---- !u!114 &-1699947473876679243
+    m_Value: {x: 0.9645158, y: 1, z: 0.91996247, w: 0}
+  shadowsStart:
+    m_OverrideState: 0
+    m_Value: 0
+  shadowsEnd:
+    m_OverrideState: 0
+    m_Value: 0.3
+  highlightsStart:
+    m_OverrideState: 0
+    m_Value: 0.55
+  highlightsEnd:
+    m_OverrideState: 0
+    m_Value: 1
+--- !u!114 &-1118153080436061845
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,25 +139,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
-  m_Name: ColorAdjustments
+  m_Script: {fileID: 11500000, guid: cdfbdbb87d3286943a057f7791b43141, type: 3}
+  m_Name: ChannelMixer
   m_EditorClassIdentifier: 
   active: 1
-  postExposure:
-    m_OverrideState: 0
-    m_Value: -0.15
-  contrast:
+  redOutRedIn:
     m_OverrideState: 1
-    m_Value: 22.2
-  colorFilter:
-    m_OverrideState: 0
-    m_Value: {r: 0.9779054, g: 1, b: 0.8355795, a: 1}
-  hueShift:
+    m_Value: 96
+  redOutGreenIn:
+    m_OverrideState: 1
+    m_Value: -4
+  redOutBlueIn:
+    m_OverrideState: 1
+    m_Value: -3
+  greenOutRedIn:
     m_OverrideState: 0
     m_Value: 0
-  saturation:
+  greenOutGreenIn:
+    m_OverrideState: 0
+    m_Value: 100
+  greenOutBlueIn:
+    m_OverrideState: 0
+    m_Value: 0
+  blueOutRedIn:
+    m_OverrideState: 0
+    m_Value: 0
+  blueOutGreenIn:
+    m_OverrideState: 0
+    m_Value: 0
+  blueOutBlueIn:
+    m_OverrideState: 0
+    m_Value: 100
+--- !u!114 &-1060342027977545503
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
+  m_Name: WhiteBalance
+  m_EditorClassIdentifier: 
+  active: 1
+  temperature:
     m_OverrideState: 1
-    m_Value: 5.5
+    m_Value: 22
+  tint:
+    m_OverrideState: 0
+    m_Value: -20.2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,18 +199,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Temple_GVProfile
+  m_Name: Temple_GVProfile 1
   m_EditorClassIdentifier: 
   components:
-  - {fileID: -6865673924527313409}
-  - {fileID: -1699947473876679243}
-  - {fileID: 4822746955581350607}
-  - {fileID: -3650849184905802813}
-  - {fileID: 1077382389220047246}
-  - {fileID: -2656714327448373601}
-  - {fileID: -8640484586484152375}
-  - {fileID: 2830529859949776073}
---- !u!114 &1077382389220047246
+  - {fileID: 608602067446747951}
+  - {fileID: -8892085466119060219}
+  - {fileID: -3713653184409654085}
+  - {fileID: -4160398166944562629}
+  - {fileID: 3305281052795757163}
+  - {fileID: -8175891970389705616}
+  - {fileID: -1060342027977545503}
+  - {fileID: -1118153080436061845}
+--- !u!114 &608602067446747951
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
+  m_Name: Tonemapping
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &3305281052795757163
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,77 +251,3 @@ MonoBehaviour:
   clamp:
     m_OverrideState: 1
     m_Value: 0.0662
---- !u!114 &2830529859949776073
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdfbdbb87d3286943a057f7791b43141, type: 3}
-  m_Name: ChannelMixer
-  m_EditorClassIdentifier: 
-  active: 1
-  redOutRedIn:
-    m_OverrideState: 1
-    m_Value: 116
-  redOutGreenIn:
-    m_OverrideState: 1
-    m_Value: -13
-  redOutBlueIn:
-    m_OverrideState: 1
-    m_Value: -3
-  greenOutRedIn:
-    m_OverrideState: 0
-    m_Value: 0
-  greenOutGreenIn:
-    m_OverrideState: 0
-    m_Value: 100
-  greenOutBlueIn:
-    m_OverrideState: 0
-    m_Value: 0
-  blueOutRedIn:
-    m_OverrideState: 0
-    m_Value: 0
-  blueOutGreenIn:
-    m_OverrideState: 0
-    m_Value: 0
-  blueOutBlueIn:
-    m_OverrideState: 0
-    m_Value: 100
---- !u!114 &4822746955581350607
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
-  m_Name: ShadowsMidtonesHighlights
-  m_EditorClassIdentifier: 
-  active: 1
-  shadows:
-    m_OverrideState: 1
-    m_Value: {x: 1, y: 0.890308, z: 0.9322548, w: 0}
-  midtones:
-    m_OverrideState: 1
-    m_Value: {x: 0.81869054, y: 0.81796503, z: 1, w: 0}
-  highlights:
-    m_OverrideState: 1
-    m_Value: {x: 0.9645158, y: 1, z: 0.91996247, w: 0}
-  shadowsStart:
-    m_OverrideState: 0
-    m_Value: 0
-  shadowsEnd:
-    m_OverrideState: 0
-    m_Value: 0.3
-  highlightsStart:
-    m_OverrideState: 0
-    m_Value: 0.55
-  highlightsEnd:
-    m_OverrideState: 0
-    m_Value: 1
