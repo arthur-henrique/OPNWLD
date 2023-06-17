@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRange: 10
-  attackRange: 3.5
+  attackRange: 3
 --- !u!114 &-4328363747020507258
 MonoBehaviour:
   m_ObjectHideFlags: 1

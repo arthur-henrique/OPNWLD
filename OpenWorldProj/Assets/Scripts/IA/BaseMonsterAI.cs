@@ -38,11 +38,12 @@ public class BaseMonsterAI : MonoBehaviour
         {
              Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
             inCooldown = true;
+            StartCoroutine(CollingDown());
         }
     }
     IEnumerator CollingDown()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(4f);
         inCooldown = false;
     }
        
