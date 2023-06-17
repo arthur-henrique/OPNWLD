@@ -2,13 +2,16 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class BattleGlobalVolume : MonoBehaviour
+public class BattleGlobalVolume : MonoBehaviour, IObserver, IDeathObserver
 {
 
     private Volume volumeVar;
     private Bloom bloomVar;
     private Vignette vignetteVar;
-    
+
+    public HealthControl agentHealth;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +19,7 @@ public class BattleGlobalVolume : MonoBehaviour
         volumeVar.profile.TryGet(out bloomVar);
         volumeVar.profile.TryGet(out vignetteVar);
         vignetteVar.intensity = new ClampedFloatParameter(0.5f,0f, 1f,true);
+        AddObserver();
     }
 
     [ContextMenu("test")]
@@ -25,6 +29,25 @@ public class BattleGlobalVolume : MonoBehaviour
         vignetteVar.intensity.value = 0.5f; //tem que ter as opções já habilitadas anteriormente
     }
 
-}
+    void AddObserver()
+    {
+        agentHealth.AddDamageObserver(this);
+        agentHealth.AddDeathObserver(this);
+    }
 
-//design pattern observer
+
+    public void OnNotifyDeath()
+    {
+
+    }
+
+    public void OnNotifyDamage(float damage)
+    {
+
+    }
+
+    public void OnNotifyHeal(float heal)
+    {
+
+    }
+}
