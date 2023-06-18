@@ -10,7 +10,7 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
     private Volume volumeVar;
     //private Bloom bloomVar;
     private Vignette vignetteVar;
-    static float t = 0.0f;
+    private ChromaticAberration chromaticVar;
 
     public HealthControl agentHealth;
 
@@ -20,27 +20,9 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
         //volumeVar.profile.TryGet(out bloomVar);
         volumeVar.profile.TryGet(out vignetteVar);
         //vignetteVar.intensity = new ClampedFloatParameter(0.5f,0f, 1f,true);
+        volumeVar.profile.TryGet(out chromaticVar);
         StartCoroutine(FindPlayer());
     }
-
-    void Update()
-    {
-        vignetteVar.intensity.value = Mathf.Lerp(0, 0.455f, t);
-        
-        if (t < 1.0f)
-        {
-        t += 1f * Time.deltaTime;
-        }
-        //vignetteVar.intensity.value = 0.455f;
-
-    }
-
-    /*[ContextMenu("test")]
-    private void Test()
-    {
-        bloomVar.scatter.value = 0.1f;
-        vignetteVar.intensity.value = 0.5f; //tem que ter as opções já habilitadas anteriormente
-    }*/
 
     void AddObserver()
     {
@@ -57,11 +39,14 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
     public void OnNotifyDamage(float damage)
     {
         print("levou dano");
+        vignetteVar.color.value = (Color.red);
+        StartCoroutine(VignetteValue());
     }
 
     public void OnNotifyHeal(float heal)
     {
-
+        vignetteVar.color.value = (Color.green);
+        StartCoroutine(VignetteValue());
     }
 
     IEnumerator FindPlayer()
@@ -70,5 +55,41 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
         agentHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthControl>();
         AddObserver();
 
+    }
+
+    IEnumerator VignetteValue()
+    {
+        print("vignette value mudado");
+        for (float i = 0; i < 0.456f; i+= 0.0455f)
+        {
+            vignetteVar.intensity.value = i;
+            yield return new WaitForSecondsRealtime(0.034f);
+        }
+        yield return new WaitForSecondsRealtime(0.025f);
+        for (float i = 0.454f; i > -1; i -= 0.0455f)
+        {
+            vignetteVar.intensity.value = i;
+            yield return new WaitForSecondsRealtime(0.034f);
+        }
+
+        //vignetteVar.intensity.value = 0.455f;
+    }
+
+    //PARA O DRAGAO
+    IEnumerator ChromaticValue()
+    {
+        //Condição para iniciar: StartCoroutine(ChromaticValue());
+        for (float i = 0; i < 0.539f; i += 0.0538f)
+        {
+            chromaticVar.intensity.value = i;
+            yield return new WaitForSecondsRealtime(0.034f);
+        }
+        //Colocar aqui a condição de quando que o efeito vai acabar:
+        //if(dragao parar de rugir) {
+        for (float i = 0.537f; i > -1; i -= 0.0538f)
+        {
+            chromaticVar.intensity.value = i;
+            yield return new WaitForSecondsRealtime(0.034f);
+        }
     }
 }
