@@ -29,7 +29,7 @@ public class HealthControl : ObservableSubject
                     NotifyDeath();
                 }
             }
-            else if (isPlayer && isDead && other.gameObject.layer == 10)
+            else if (isPlayer && !isDead && other.gameObject.layer == 10)
             {
                 Debug.LogWarning("PlayerShot");
                 float damage = damageDealer.DealDamage();
