@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class GlobalVolumeScript : MonoBehaviour, IObserver, IDeathObserver
+public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDeathObserver
 {
 
     private Volume volumeVar;
@@ -29,7 +29,7 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, IDeathObserver
         
         if (t < 1.0f)
         {
-        t += 2.3f * Time.deltaTime;
+        t += 1f * Time.deltaTime;
         }
         //vignetteVar.intensity.value = 0.455f;
 
