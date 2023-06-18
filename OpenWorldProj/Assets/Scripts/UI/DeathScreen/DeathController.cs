@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DeathController : MonoBehaviour
 {
     public GameObject canvasPlayer, player;
+    public GameObject playerPrefab;
     
     private void Update()
     {
@@ -32,9 +33,10 @@ public class DeathController : MonoBehaviour
 
     public void CarregarMainMenu()
     {
-        //SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
         gameObject.SetActive(false);
         Time.timeScale = 1;
         PlayerManager.instance.player.EnableController();
+        Destroy(playerPrefab);
     }
 }
