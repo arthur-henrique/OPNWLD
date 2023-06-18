@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -18,7 +20,7 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
         //volumeVar.profile.TryGet(out bloomVar);
         volumeVar.profile.TryGet(out vignetteVar);
         //vignetteVar.intensity = new ClampedFloatParameter(0.5f,0f, 1f,true);
-        AddObserver();
+        StartCoroutine(FindPlayer());
     }
 
     void Update()
@@ -59,6 +61,14 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
 
     public void OnNotifyHeal(float heal)
     {
+
+    }
+
+    IEnumerator FindPlayer()
+    {
+        yield return new WaitForSeconds(0.15f);
+        agentHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthControl>();
+        AddObserver();
 
     }
 }
