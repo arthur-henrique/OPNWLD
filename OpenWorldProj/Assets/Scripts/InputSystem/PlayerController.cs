@@ -319,6 +319,74 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""CheatCode"",
+            ""id"": ""a4c73890-fc0f-4a2f-a80a-3789a7d1e291"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveToSafePos"",
+                    ""type"": ""Button"",
+                    ""id"": ""908c2dde-07a5-4c08-847b-46da27a1c04b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Invincible"",
+                    ""type"": ""Button"",
+                    ""id"": ""189f0b33-438e-4593-aaf4-995c9a8d049b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Vincible"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad7c44dc-6fbd-4e3b-a2c7-96ca2f99b9f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""be60a601-af94-43ef-b3c1-af9ef40c3944"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveToSafePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fee610f-a7cb-4706-aa9f-2be77887c478"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Invincible"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba8e5354-f4e1-4026-beff-181fbfa5a891"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vincible"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -335,6 +403,11 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         m_FreeLookCamera = asset.FindActionMap("FreeLookCamera", throwIfNotFound: true);
         m_FreeLookCamera_MouseLookXY = m_FreeLookCamera.FindAction("MouseLookXY", throwIfNotFound: true);
         m_FreeLookCamera_MouseZoom = m_FreeLookCamera.FindAction("MouseZoom", throwIfNotFound: true);
+        // CheatCode
+        m_CheatCode = asset.FindActionMap("CheatCode", throwIfNotFound: true);
+        m_CheatCode_MoveToSafePos = m_CheatCode.FindAction("MoveToSafePos", throwIfNotFound: true);
+        m_CheatCode_Invincible = m_CheatCode.FindAction("Invincible", throwIfNotFound: true);
+        m_CheatCode_Vincible = m_CheatCode.FindAction("Vincible", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -504,6 +577,55 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         }
     }
     public FreeLookCameraActions @FreeLookCamera => new FreeLookCameraActions(this);
+
+    // CheatCode
+    private readonly InputActionMap m_CheatCode;
+    private ICheatCodeActions m_CheatCodeActionsCallbackInterface;
+    private readonly InputAction m_CheatCode_MoveToSafePos;
+    private readonly InputAction m_CheatCode_Invincible;
+    private readonly InputAction m_CheatCode_Vincible;
+    public struct CheatCodeActions
+    {
+        private @PlayerController m_Wrapper;
+        public CheatCodeActions(@PlayerController wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveToSafePos => m_Wrapper.m_CheatCode_MoveToSafePos;
+        public InputAction @Invincible => m_Wrapper.m_CheatCode_Invincible;
+        public InputAction @Vincible => m_Wrapper.m_CheatCode_Vincible;
+        public InputActionMap Get() { return m_Wrapper.m_CheatCode; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CheatCodeActions set) { return set.Get(); }
+        public void SetCallbacks(ICheatCodeActions instance)
+        {
+            if (m_Wrapper.m_CheatCodeActionsCallbackInterface != null)
+            {
+                @MoveToSafePos.started -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnMoveToSafePos;
+                @MoveToSafePos.performed -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnMoveToSafePos;
+                @MoveToSafePos.canceled -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnMoveToSafePos;
+                @Invincible.started -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnInvincible;
+                @Invincible.performed -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnInvincible;
+                @Invincible.canceled -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnInvincible;
+                @Vincible.started -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnVincible;
+                @Vincible.performed -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnVincible;
+                @Vincible.canceled -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnVincible;
+            }
+            m_Wrapper.m_CheatCodeActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MoveToSafePos.started += instance.OnMoveToSafePos;
+                @MoveToSafePos.performed += instance.OnMoveToSafePos;
+                @MoveToSafePos.canceled += instance.OnMoveToSafePos;
+                @Invincible.started += instance.OnInvincible;
+                @Invincible.performed += instance.OnInvincible;
+                @Invincible.canceled += instance.OnInvincible;
+                @Vincible.started += instance.OnVincible;
+                @Vincible.performed += instance.OnVincible;
+                @Vincible.canceled += instance.OnVincible;
+            }
+        }
+    }
+    public CheatCodeActions @CheatCode => new CheatCodeActions(this);
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -517,5 +639,11 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     {
         void OnMouseLookXY(InputAction.CallbackContext context);
         void OnMouseZoom(InputAction.CallbackContext context);
+    }
+    public interface ICheatCodeActions
+    {
+        void OnMoveToSafePos(InputAction.CallbackContext context);
+        void OnInvincible(InputAction.CallbackContext context);
+        void OnVincible(InputAction.CallbackContext context);
     }
 }

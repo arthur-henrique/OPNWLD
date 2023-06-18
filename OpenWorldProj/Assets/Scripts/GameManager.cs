@@ -9,13 +9,29 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Animator transitionAnimator;
     [SerializeField] PlayerMovement player;
+    [SerializeField] HealthControl playerHealth;
     private PlayerController playerC;
+    private PlayerController managerActions;
+
 
     public bool hasSword, hasSling;
     public GameObject swordModel, sideSlingModel;
 
-    
 
+    private void Awake()
+    {
+        managerActions = new PlayerController();
+
+    }
+
+    private void OnEnable()
+    {
+        managerActions.Enable();
+    }
+    private void OnDisable()
+    {
+        managerActions.Disable();
+    }
     void Start()
     {
         playerC = player.inputActions;
@@ -31,6 +47,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    private void Update()
+    {
+        if(managerActions.CheatCode.Invincible.WasPressedThisFrame())
+        {
+            playerHealth.health = 150000f;
+        }
+
+        if(managerActions.CheatCode.Vincible.WasPressedThisFrame())
+        {
+            playerHealth.health = 100f;
+        }
+
+        if(managerActions.CheatCode.MoveToSafePos.WasPressedThisFrame())
+        {
+            LevelTransfer("1MainScene");
+        }
+    }
     public void GotSword()
     {
         hasSword = true;

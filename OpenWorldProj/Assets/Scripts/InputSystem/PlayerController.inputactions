@@ -297,6 +297,74 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "CheatCode",
+            "id": "a4c73890-fc0f-4a2f-a80a-3789a7d1e291",
+            "actions": [
+                {
+                    "name": "MoveToSafePos",
+                    "type": "Button",
+                    "id": "908c2dde-07a5-4c08-847b-46da27a1c04b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Invincible",
+                    "type": "Button",
+                    "id": "189f0b33-438e-4593-aaf4-995c9a8d049b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Vincible",
+                    "type": "Button",
+                    "id": "ad7c44dc-6fbd-4e3b-a2c7-96ca2f99b9f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "be60a601-af94-43ef-b3c1-af9ef40c3944",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveToSafePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0fee610f-a7cb-4706-aa9f-2be77887c478",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Invincible",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba8e5354-f4e1-4026-beff-181fbfa5a891",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Vincible",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimeController : MonoBehaviour
 {
@@ -42,9 +43,19 @@ public class TimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateTimeOfDay();
-        RotateSun();
-        UpdateLightSettings();
+        if(SceneManager.GetActiveScene().name != "1MainScene")
+        {
+            RenderSettings.ambientLight = nightAmbientLight;
+            sunLight.transform.rotation = Quaternion.AngleAxis(270f, Vector3.right);
+            sunLight.intensity = 0f;
+        }
+        else
+        {
+            UpdateTimeOfDay();
+            RotateSun();
+            UpdateLightSettings();
+        }
+        
     }
 
     private void UpdateTimeOfDay()
