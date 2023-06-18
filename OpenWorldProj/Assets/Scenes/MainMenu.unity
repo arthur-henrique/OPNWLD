@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_text: "<b>Game Design</b>\nMateus Torres - Layout dos templos, overworld, hist\xF3ria\n\n<b>Programa\xE7\xE3o</b>\nArthur
     Henrique Cezar Souza - Programa\xE7\xE3o geral, jogador, IA Drag\xE3o\nKayke
     Celli - Programa\xE7\xE3o geral, IA inimigos\n\n<b>Arte</b>\nAnna Beatriz Nakai
-    Ricchetti - Terreno overworld, ilumina\xE7\xE3o, \xE1gua, po\xE7\xE3o\nAnt\xF4nio
+    Ricchetti - Environment art, shaders, post processing, alguns props e scripts\nAnt\xF4nio
     Taddeo - Overworld, est\xE1tua\nCastanha - UI\nMateus Torres - UI, \xC1rvores
     e arbustos, templo, vila, interior dos templos"
   m_isRightToLeft: 0
