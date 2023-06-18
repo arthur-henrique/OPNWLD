@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4972075284605354487}
   - component: {fileID: 4972075284605354485}
   - component: {fileID: 4972075284605354484}
+  - component: {fileID: 2092884687811827955}
   m_Layer: 0
   m_Name: CristalPrefab
   m_TagString: Untagged
@@ -83,6 +84,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cristalAtivado: 0
   movingPlatform: {fileID: 0}
+--- !u!54 &2092884687811827955
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2852975295655593062}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6492508453421399231
 GameObject:
   m_ObjectHideFlags: 0

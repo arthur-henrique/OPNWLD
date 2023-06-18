@@ -328,6 +328,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "BearArms",
+                    "type": "Button",
+                    "id": "abf1cc61-69bc-47da-bbd0-71d02d9d4d2e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -361,6 +370,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Vincible",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7c76b0e-34de-4c13-996e-510acff67cd9",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BearArms",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

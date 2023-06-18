@@ -73,6 +73,7 @@ public class MovingPlatafomrPlayer : MonoBehaviour
             //originalParent = other.transform.parent;
             //other.transform.SetParent(transform);
             playerColindindo = true;
+            GameManager.instance.Darken();
             StartCoroutine(DesligarPlayerColidindo());
         }
 

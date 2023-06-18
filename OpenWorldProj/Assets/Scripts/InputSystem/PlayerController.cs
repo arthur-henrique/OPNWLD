@@ -350,6 +350,15 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BearArms"",
+                    ""type"": ""Button"",
+                    ""id"": ""abf1cc61-69bc-47da-bbd0-71d02d9d4d2e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -385,6 +394,17 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""action"": ""Vincible"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7c76b0e-34de-4c13-996e-510acff67cd9"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BearArms"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -408,6 +428,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         m_CheatCode_MoveToSafePos = m_CheatCode.FindAction("MoveToSafePos", throwIfNotFound: true);
         m_CheatCode_Invincible = m_CheatCode.FindAction("Invincible", throwIfNotFound: true);
         m_CheatCode_Vincible = m_CheatCode.FindAction("Vincible", throwIfNotFound: true);
+        m_CheatCode_BearArms = m_CheatCode.FindAction("BearArms", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -584,6 +605,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     private readonly InputAction m_CheatCode_MoveToSafePos;
     private readonly InputAction m_CheatCode_Invincible;
     private readonly InputAction m_CheatCode_Vincible;
+    private readonly InputAction m_CheatCode_BearArms;
     public struct CheatCodeActions
     {
         private @PlayerController m_Wrapper;
@@ -591,6 +613,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         public InputAction @MoveToSafePos => m_Wrapper.m_CheatCode_MoveToSafePos;
         public InputAction @Invincible => m_Wrapper.m_CheatCode_Invincible;
         public InputAction @Vincible => m_Wrapper.m_CheatCode_Vincible;
+        public InputAction @BearArms => m_Wrapper.m_CheatCode_BearArms;
         public InputActionMap Get() { return m_Wrapper.m_CheatCode; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -609,6 +632,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Vincible.started -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnVincible;
                 @Vincible.performed -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnVincible;
                 @Vincible.canceled -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnVincible;
+                @BearArms.started -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnBearArms;
+                @BearArms.performed -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnBearArms;
+                @BearArms.canceled -= m_Wrapper.m_CheatCodeActionsCallbackInterface.OnBearArms;
             }
             m_Wrapper.m_CheatCodeActionsCallbackInterface = instance;
             if (instance != null)
@@ -622,6 +648,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @Vincible.started += instance.OnVincible;
                 @Vincible.performed += instance.OnVincible;
                 @Vincible.canceled += instance.OnVincible;
+                @BearArms.started += instance.OnBearArms;
+                @BearArms.performed += instance.OnBearArms;
+                @BearArms.canceled += instance.OnBearArms;
             }
         }
     }
@@ -645,5 +674,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         void OnMoveToSafePos(InputAction.CallbackContext context);
         void OnInvincible(InputAction.CallbackContext context);
         void OnVincible(InputAction.CallbackContext context);
+        void OnBearArms(InputAction.CallbackContext context);
     }
 }
