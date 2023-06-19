@@ -618,6 +618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4972075284605354484, guid: f53717bf681086440b2877262887cfe7, type: 3}
+    - {fileID: 2092884687811827955, guid: f53717bf681086440b2877262887cfe7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f53717bf681086440b2877262887cfe7, type: 3}
 --- !u!4 &57422452 stripped
 Transform:
@@ -6970,7 +6971,7 @@ MonoBehaviour:
   sceneToLoad: 4TempleThree
   safePos: {fileID: 645408089}
   gameManager: {fileID: 0}
-  globalVolume: {fileID: 0}
+  globalVolume: {fileID: 216119184}
   isPortalToMainScene: 1
 --- !u!65 &782975387
 BoxCollider:
@@ -11003,7 +11004,7 @@ MonoBehaviour:
   sceneToLoad: 3TempleTwo
   safePos: {fileID: 388403628}
   gameManager: {fileID: 0}
-  globalVolume: {fileID: 0}
+  globalVolume: {fileID: 216119184}
   isPortalToMainScene: 1
 --- !u!65 &1050756339
 BoxCollider:
@@ -11639,7 +11640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1155879856
 Transform:
   m_ObjectHideFlags: 0
