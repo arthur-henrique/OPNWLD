@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDeathObserver
+public class GlobalVolumeScript : MonoBehaviour, IObserver, IHealingObserver, IDeathObserver
 {
 
     private Volume volumeVar;
@@ -13,6 +13,7 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
     private ChromaticAberration chromaticVar;
 
     public HealthControl agentHealth;
+    public PlayerManager playerM;
 
     void Start()
     {
@@ -28,11 +29,14 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
     {
         agentHealth.AddDamageObserver(this);
         agentHealth.AddDeathObserver(this);
+        playerM.AddHealObserver(this);
     }
     public void RemoveObserver()
     {
         agentHealth.RemoveDamageObserver(this);
         agentHealth.RemoveDeathObserver(this);
+        playerM.RemoveHealObserver(this);
+
     }
 
 
@@ -48,7 +52,7 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
         StartCoroutine(VignetteValue());
     }
 
-    public void OnNotifyHeal(float heal)
+    public void OnNotifyHeal()
     {
         vignetteVar.color.value = (Color.green);
         StartCoroutine(VignetteValue());
@@ -58,6 +62,8 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
     {
         yield return new WaitForSeconds(0.15f);
         agentHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthControl>();
+        playerM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerManager>();
+
         AddObserver();
 
     }

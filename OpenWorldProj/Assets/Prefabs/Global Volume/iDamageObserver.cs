@@ -1,3 +1,3 @@
-﻿internal interface iDamageObserver
+﻿internal interface IHealObserver
 {
 }

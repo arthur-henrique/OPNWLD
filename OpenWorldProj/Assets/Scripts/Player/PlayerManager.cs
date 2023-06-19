@@ -60,7 +60,8 @@ public class PlayerManager : ObservableSubject
     public void RecoverHealth()
     {
         playerHealthControl.health += valueToHeal;
-        sliderControl.OnNotifyHeal(valueToHeal); 
+        sliderControl.OnNotifyHeal(valueToHeal);
+        NotifyHeal();
     }
     private void OnLevelWasLoaded(int level)
     {

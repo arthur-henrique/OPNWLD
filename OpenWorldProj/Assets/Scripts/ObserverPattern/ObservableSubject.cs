@@ -5,7 +5,7 @@ public abstract class ObservableSubject : MonoBehaviour
 {
     private List<IObserver> _damageObservers = new List<IObserver>();
     private List<IDeathObserver> _deathObservers = new List<IDeathObserver>();
-
+    private List<IHealingObserver> _healObservers = new List<IHealingObserver>();
 
     // Add the observer to the subject's collection
     public void AddDamageObserver(IObserver observer)
@@ -32,6 +32,18 @@ public abstract class ObservableSubject : MonoBehaviour
         _deathObservers.Remove(observer);
     }
 
+    public void AddHealObserver(IHealingObserver observer)
+    {
+        _healObservers.Add(observer);
+    }
+
+    // Remove the observer to the subject's collection
+
+    public void RemoveHealObserver(IHealingObserver observer)
+    {
+        _healObservers.Remove(observer);
+    }
+
     // Notify each observer that an event has occurred
     protected void NotifyDamage(float damageToNotify)
     {
@@ -46,6 +58,14 @@ public abstract class ObservableSubject : MonoBehaviour
         _deathObservers.ForEach((_observer) =>
         {
             _observer.OnNotifyDeath();
+        });
+    }
+
+    protected void NotifyHeal()
+    {
+        _healObservers.ForEach((_observer) =>
+        {
+            _observer.OnNotifyHeal();
         });
     }
 }
