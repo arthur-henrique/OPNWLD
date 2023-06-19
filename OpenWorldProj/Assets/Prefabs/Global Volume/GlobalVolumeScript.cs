@@ -84,23 +84,22 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
     {
         StartCoroutine(ChromaticValue());
     }
+
     //PARA O DRAGAO
     IEnumerator ChromaticValue()
     {
         //Condição para iniciar: StartCoroutine(ChromaticValue());
-        for (float i = 0; i < 0.539f; i += 0.0538f)
+        for (float i = 0f; i < 61; i += 6)
         {
-            chromaticVar.intensity.value = i;
-            yield return new WaitForSecondsRealtime(0.034f);
-
+            chromaticVar.intensity.value = i / 100;
+            yield return new WaitForSecondsRealtime(0.1f);
         }
         //Colocar aqui a condição de quando que o efeito vai acabar:
         //if(dragao parar de rugir) {
-        for (float i = 0.537f; i > -1; i -= 0.0538f)
+        for (float i = 60f; i > -1; i -= 6)
         {
-            chromaticVar.intensity.value = i;
-            yield return new WaitForSecondsRealtime(0.034f);
-
+            chromaticVar.intensity.value = i / 100;
+            yield return new WaitForSecondsRealtime(0.1f);
         }
     }
 }
