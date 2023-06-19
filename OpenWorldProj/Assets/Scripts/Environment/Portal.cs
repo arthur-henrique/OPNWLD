@@ -8,7 +8,9 @@ public class Portal : MonoBehaviour
     [SerializeField] string sceneToLoad;
     [SerializeField] Transform safePos;
     [SerializeField] GameManager gameManager;
+    [SerializeField] GlobalVolumeScript globalVolume;
     public bool isPortalToMainScene;
+
 
     private void Start()
     {
@@ -20,9 +22,9 @@ public class Portal : MonoBehaviour
         {
             if(isPortalToMainScene)
             {
-
                 other.GetComponentInParent<PlayerManager>().SetReturnCoordinates(safePos);
             }
+            globalVolume.RemoveObserver();
             gameManager.LevelTransfer(sceneToLoad);
         }
     }

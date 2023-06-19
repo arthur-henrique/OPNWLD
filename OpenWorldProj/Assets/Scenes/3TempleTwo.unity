@@ -1433,6 +1433,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064226227d232e14bbae182a684f9c85, type: 3}
+--- !u!114 &465958108 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1722991669501857720, guid: 064226227d232e14bbae182a684f9c85,
+    type: 3}
+  m_PrefabInstance: {fileID: 465958107}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94abf81ceeb2e904cb4594046b46782c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &522409883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5386,6 +5398,11 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: 1MainScene
       objectReference: {fileID: 0}
+    - target: {fileID: 3414322502670354934, guid: b6efa81689523ec4c9e703aeed9923c0,
+        type: 3}
+      propertyPath: globalVolume
+      value: 
+      objectReference: {fileID: 465958108}
     - target: {fileID: 3414322502670354934, guid: b6efa81689523ec4c9e703aeed9923c0,
         type: 3}
       propertyPath: isPortalToMainScene

@@ -1877,6 +1877,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3309802e058d20249aa4fbe374ce5a3b, type: 3}
+--- !u!114 &216119184 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 463290925232858824, guid: 3309802e058d20249aa4fbe374ce5a3b,
+    type: 3}
+  m_PrefabInstance: {fileID: 216119183}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94abf81ceeb2e904cb4594046b46782c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &220695809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6958,6 +6970,7 @@ MonoBehaviour:
   sceneToLoad: 4TempleThree
   safePos: {fileID: 645408089}
   gameManager: {fileID: 0}
+  globalVolume: {fileID: 0}
   isPortalToMainScene: 1
 --- !u!65 &782975387
 BoxCollider:
@@ -10990,6 +11003,7 @@ MonoBehaviour:
   sceneToLoad: 3TempleTwo
   safePos: {fileID: 388403628}
   gameManager: {fileID: 0}
+  globalVolume: {fileID: 0}
   isPortalToMainScene: 1
 --- !u!65 &1050756339
 BoxCollider:
@@ -11195,6 +11209,7 @@ MonoBehaviour:
   sceneToLoad: 3TempleTwo
   safePos: {fileID: 1422639675}
   gameManager: {fileID: 0}
+  globalVolume: {fileID: 0}
   isPortalToMainScene: 1
 --- !u!65 &1098960723
 BoxCollider:
@@ -17275,6 +17290,7 @@ MonoBehaviour:
   sceneToLoad: 2TempleOne
   safePos: {fileID: 1850548089}
   gameManager: {fileID: 0}
+  globalVolume: {fileID: 216119184}
   isPortalToMainScene: 1
 --- !u!65 &1804536738
 BoxCollider:

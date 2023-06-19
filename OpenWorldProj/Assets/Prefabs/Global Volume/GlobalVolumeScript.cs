@@ -29,6 +29,11 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
         agentHealth.AddDamageObserver(this);
         agentHealth.AddDeathObserver(this);
     }
+    public void RemoveObserver()
+    {
+        agentHealth.RemoveDamageObserver(this);
+        agentHealth.RemoveDeathObserver(this);
+    }
 
 
     public void OnNotifyDeath()
