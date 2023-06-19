@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Mateusquismo
+  companyName: DefaultCompany
   productName: "N\xE9x\xFC"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -276,7 +276,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: c2d8bb87691276f4d93f1b74330d1d90, type: 3}
+      m_Icon: {fileID: 2800000, guid: 9672e4ea1d83b024f8ea13a57f2729bd, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
