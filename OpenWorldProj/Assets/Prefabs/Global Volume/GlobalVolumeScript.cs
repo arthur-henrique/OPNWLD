@@ -80,6 +80,10 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
         //vignetteVar.intensity.value = 0.455f;
     }
 
+    public void Roar()
+    {
+        StartCoroutine(ChromaticValue());
+    }
     //PARA O DRAGAO
     IEnumerator ChromaticValue()
     {
@@ -88,6 +92,7 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
         {
             chromaticVar.intensity.value = i;
             yield return new WaitForSecondsRealtime(0.034f);
+
         }
         //Colocar aqui a condição de quando que o efeito vai acabar:
         //if(dragao parar de rugir) {
@@ -95,6 +100,7 @@ public class GlobalVolumeScript : MonoBehaviour, IObserver, iDamageObserver, IDe
         {
             chromaticVar.intensity.value = i;
             yield return new WaitForSecondsRealtime(0.034f);
+
         }
     }
 }

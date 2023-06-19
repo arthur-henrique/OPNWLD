@@ -68,6 +68,9 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
     // Self Collider
     public CapsuleCollider bossCollider;
 
+    // Global Volume
+    [SerializeField] GlobalVolumeScript globalVolume;
+
     private void Start()
     {
         StartCoroutine(Introduction());
@@ -196,6 +199,7 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
 
     IEnumerator Introduction()
     {
+        globalVolume.Roar();
         anim.SetBool("scream", true);
         yield return new WaitForSeconds(1f);
         anim.SetBool("scream", false);
