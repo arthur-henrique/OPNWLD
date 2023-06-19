@@ -5898,6 +5898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionAnimator: {fileID: 0}
   player: {fileID: 1010066619631338725}
+  playerHealth: {fileID: 0}
   hasSword: 1
   hasSling: 1
   swordModel: {fileID: 8730480980932552914}
@@ -8212,6 +8213,7 @@ MonoBehaviour:
   isPlayer: 1
   health: 100
   canvasMorte: {fileID: 0}
+  isDead: 0
 --- !u!1 &3590566272944341270
 GameObject:
   m_ObjectHideFlags: 0
@@ -9466,6 +9468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5025044296162564272}
   - component: {fileID: 5025044296162564273}
+  - component: {fileID: 5025044296162564279}
   m_Layer: 0
   m_Name: TempleBoss_GV
   m_TagString: Untagged
@@ -9473,6 +9476,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5025044296162564279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025044296162564278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94abf81ceeb2e904cb4594046b46782c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentHealth: {fileID: 0}
 --- !u!4 &5046043355740425154
 Transform:
   m_ObjectHideFlags: 0
@@ -10542,6 +10558,7 @@ MonoBehaviour:
   isPlayer: 1
   health: 100
   canvasMorte: {fileID: 0}
+  isDead: 0
 --- !u!137 &5412367374484581976
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -12229,7 +12246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234542010599755562}
   m_LocalRotation: {x: -0.094508074, y: -0.2840584, z: -0.028148446, w: 0.9537226}
-  m_LocalPosition: {x: 3.0908568, y: 0.76366127, z: -2.4264684}
+  m_LocalPosition: {x: 3.0908568, y: 0.7636612, z: -2.4264686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12579,7 +12596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6789542130632818130}
   m_LocalRotation: {x: -0.094508074, y: -0.2840584, z: -0.028148446, w: 0.9537226}
-  m_LocalPosition: {x: 3.0908568, y: 0.76366127, z: -2.4264684}
+  m_LocalPosition: {x: 3.0908568, y: 0.7636612, z: -2.4264686}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
