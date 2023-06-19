@@ -69,5 +69,12 @@ public class PlayerManager : ObservableSubject
         {
             ReturnToOverworld();
         }
+        else if(SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            Time.timeScale = 1f;
+            Destroy(gameObject);
+        }
+
+
     }
 }
