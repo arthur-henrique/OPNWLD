@@ -17,6 +17,7 @@ public class BossSleep : MonoBehaviour
     IEnumerator AwakeBoss()
     {
         yield return new WaitForSeconds(2f);
+        print("chamouAwakeBoss");
         boss.enabled = true;
         this.enabled = false;
     }

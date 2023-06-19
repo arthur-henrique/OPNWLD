@@ -42,6 +42,7 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
     public bool canLeap;
     public bool canBite;
     public bool canRotate;
+    private bool canChangeState = false;
 
 
     // Distances
@@ -79,14 +80,18 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
         movementSpeed = agent.speed;
         ObserveSubject();
 
-        player = GameObject.FindWithTag("Player").transform;
     }
 
     private void Update()
     {
         // Update the current state
-        currentState.UpdateState();
-        attackTimer += Time.deltaTime;
+        if(canChangeState)
+        {
+            currentState.UpdateState();
+            attackTimer += Time.deltaTime;
+        }
+        
+        
     }
 
     private void LateUpdate()
@@ -200,12 +205,15 @@ public class BossyAI : MonoBehaviour, IObserver, IDeathObserver
     IEnumerator Introduction()
     {
         globalVolume.Roar();
+        player = GameObject.FindWithTag("Player").transform;
+
         anim.SetBool("scream", true);
         yield return new WaitForSeconds(1f);
         anim.SetBool("scream", false);
         yield return new WaitForSeconds(1.5f);
         bossCollider.enabled = true;
         currentState = new BossIdleState(this);
+        canChangeState = true;
 
     }
 

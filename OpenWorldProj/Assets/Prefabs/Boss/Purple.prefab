@@ -1338,6 +1338,7 @@ MonoBehaviour:
   leapDamage: 0
   DragonsMaterial: {fileID: 2100000, guid: 00cf1916c402b1940ac300d6eb8f4c2c, type: 2}
   bossCollider: {fileID: 751101654}
+  globalVolume: {fileID: 0}
 --- !u!136 &751101654
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1367,6 +1368,7 @@ MonoBehaviour:
   isPlayer: 0
   health: 100
   canvasMorte: {fileID: 0}
+  isDead: 0
 --- !u!1 &6373832952886966353
 GameObject:
   m_ObjectHideFlags: 0
